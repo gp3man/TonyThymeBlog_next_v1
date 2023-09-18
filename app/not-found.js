@@ -7,11 +7,13 @@ const NotFound = () => {
       <Image
           height="270"
           width="480"
+          alt="meatAndPotatoes"
           src={protein}
+          className="rounded-lg"
         ></Image>
-      <h1 className="text-3xl">Hmm... There's no protein down this road. </h1>
-      <p className="text-md">
-        <Link href="/" className="text-blue-500 hover:text-green-500">
+      <h1 className="text-2xl">Hmmm... There's no protein down this road. </h1>
+      <p className="text-lg">
+        <Link href="/" className="text-blue-200 hover:text-green-600">
           Turn Back
         </Link>
       </p>

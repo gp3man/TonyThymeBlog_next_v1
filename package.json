@@ -1,6 +1,6 @@
 {
-  "name": "share_jams_next",
-  "version": "0.1.0",
+  "name": "tonythyme_v1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

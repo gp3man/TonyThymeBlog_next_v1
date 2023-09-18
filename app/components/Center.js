@@ -16,7 +16,7 @@ const Center = () => {
   // }, []);
 
   return (
-    <div className="flex-grow h-screen overflow-y-scroll scrollbar-hide">
+    <div className="flex-grow min-h-screen m-1 pt-16 pb-14 overflow-y-scroll scrollbar-hide ">
       Home Page
     </div>
   );
