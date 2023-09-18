@@ -5,8 +5,8 @@ import RecoilProvider from "./providers/recoilProvider.js";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "ShareJams V2",
-  description: "Share Your Heart",
+  title: "Tony Thyme",
+  description: "Recipe Blog",
 };
 
 export default function RootLayout({ children }) {
