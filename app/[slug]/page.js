@@ -2,7 +2,7 @@ import { client } from "@/lib/contentful.js";
 import { redirect } from "next/dist/server/api-utils";
 import ContentfulImage from "../components/ContentfulImage";
 import RecipeDetail from "../components/RecipeDetail";
-// import RichText from "../components/RichText";
+import RichText from "../components/RichText";
 // import ContentfulImage from "../components/ContentfulImage";
 // import Link from "next/link";
 
@@ -63,8 +63,9 @@ export default async function RecipePage({ params }) {
                   <input type="checkbox" /> {ingredient}
                 </li>
               ))}
+              <hr/>
             </ul>
-            {/* <RichText content={procedure} /> */}
+            <RichText content={procedure} />
           </div>
         </RecipeDetail>
       </article>
