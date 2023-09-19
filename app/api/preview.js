@@ -8,10 +8,10 @@ const handler = async (req, res) => {
   }
 
   const response = await previewClient.getEntries({
-    content_type: "recipeCookbook",
+    content_type: "recipe",
     "fields.slug": slug,
   });
-
+  console.log("Preview fired! " + response)
   const recipe = response?.items?.[0];
 
   if (!recipe) {

@@ -1,19 +1,20 @@
-import { client } from "@/lib/contentful.js";
+import { client, previewClient } from "@/lib/contentful.js";
 import { redirect } from "next/dist/server/api-utils";
 import ContentfulImage from "../components/ContentfulImage";
 import RecipeDetail from "../components/RecipeDetail";
 import RichText from "../components/RichText";
-// import ContentfulImage from "../components/ContentfulImage";
-// import Link from "next/link";
+import Link from "next/link";
 
-export default async function RecipePage({ params }) {
-  const response = await client.getEntries({
+export default async function RecipePage({ params, preview = false }) {
+  const currentClient = preview ? previewClient : client;
+  const response = await currentClient.getEntries({
     content_type: "recipe",
     "fields.slug": params.slug,
   });
   if (!response?.items?.length) {
-    redirect("/");
+    redirect('/');
   }
+
   const recipe = response?.items?.[0];
   const {
     banners,
@@ -28,6 +29,12 @@ export default async function RecipePage({ params }) {
   return (
     <>
       <article className="flex-grow min-h-screen m-4 pt-16 pb-14 overflow-y-scroll scrollbar-hide">
+        {preview && (
+          <>
+            You're in preview mode!!!
+            <Link href="/api/exit-preview">Exit preview</Link>
+          </>
+        )}
         <RecipeDetail className="flex">
           <ContentfulImage
             className=""
@@ -59,7 +66,7 @@ export default async function RecipePage({ params }) {
             <ul className="flex flex-col ">
               <span className="text-bold">Ingredients</span>
               {ingredients.map((ingredient, i) => (
-                <li id={ingredient + i}>
+                <li key={ingredient + i}>
                   <input type="checkbox" /> {ingredient}
                 </li>
               ))}
