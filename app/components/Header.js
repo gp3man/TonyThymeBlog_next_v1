@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import { TfiHome } from "react-icons/tfi";
 const Header = () => {

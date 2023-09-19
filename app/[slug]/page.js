@@ -1,5 +1,5 @@
 import { client, previewClient } from "@/lib/contentful.js";
-import { redirect } from "next/dist/server/api-utils";
+// import { redirect } from "next/dist/server/api-utils";
 import ContentfulImage from "../components/ContentfulImage";
 import RecipeDetail from "../components/RecipeDetail";
 import RichText from "../components/RichText";
@@ -11,9 +11,9 @@ export default async function RecipePage({ params, preview = false }) {
     content_type: "recipe",
     "fields.slug": params.slug,
   });
-  if (!response?.items?.length) {
-    redirect('/');
-  }
+  // if (!response?.items?.length) {
+  //   redirect('/');
+  // }
 
   const recipe = response?.items?.[0];
   const {
@@ -27,6 +27,7 @@ export default async function RecipePage({ params, preview = false }) {
     authorsNotes,
   } = recipe?.fields;
   return (
+    <>
       <article className="flex-grow min-h-screen m-4 pt-16 pb-14 overflow-y-scroll scrollbar-hide justify-center">
         {preview && (
           <>
@@ -75,5 +76,6 @@ export default async function RecipePage({ params, preview = false }) {
           </div>
         </RecipeDetail>
       </article>
+    </>
   );
 }

@@ -1,6 +1,6 @@
 const Hero = () => {
   return (
-    <section className="bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1642112177610-c1ff271857dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1978&q=80')] bg-gray-700 bg-blend-multiply">
+    <section className=" min-h-screen bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1642112177610-c1ff271857dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1978&q=80')] bg-gray-700 bg-blend-multiply">
       <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
           Coming To Your Table Soon
@@ -24,9 +24,9 @@ const Hero = () => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
@@ -35,7 +35,7 @@ const Hero = () => {
             href="#"
             className="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400"
           >
-            Learn more
+            Meet Tony
           </a>
         </div>
       </div>
