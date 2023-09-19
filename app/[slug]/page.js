@@ -6,16 +6,19 @@ import RecipeDetail from "../components/RecipeDetail";
 // import ContentfulImage from "../components/ContentfulImage";
 // import Link from "next/link";
 
-export default async function RecipePage({params}) {
-  const response = await client.getEntries({ content_type: "recipe", "fields.slug": params.slug, });
-  if (!response?.items?.length){
-    redirect('/')
+export default async function RecipePage({ params }) {
+  const response = await client.getEntries({
+    content_type: "recipe",
+    "fields.slug": params.slug,
+  });
+  if (!response?.items?.length) {
+    redirect("/");
   }
-  const recipe = response?.items?.[0]
-  console.log(recipe)
+  const recipe = response?.items?.[0];
   const {
-    banner,
+    banners,
     procedure,
+    ingredients,
     recipeBy,
     serves,
     title,
@@ -26,14 +29,13 @@ export default async function RecipePage({params}) {
   return (
     <>
       <article className="flex-grow min-h-screen m-4 pt-16 pb-14 overflow-y-scroll scrollbar-hide">
-        Details
-        {/* <RecipeDetail>
+        <RecipeDetail className="flex">
           <ContentfulImage
             className=""
             alt={title}
-            src={banner?.fields?.file?.url}
-            width={banner?.fields?.file?.details?.image?.width}
-            height={banner?.fields?.file?.details?.image?.height}
+            src={banners?.[0]?.fields?.file?.url}
+            width={banners?.[0]?.fields?.file?.details?.image?.width}
+            height={banners?.[0]?.fields?.file?.details?.image?.height}
           />
           <div className="">
             Author:
@@ -46,7 +48,7 @@ export default async function RecipePage({params}) {
                 height={recipeBy?.image?.fields?.file?.details?.image?.height}
               />
             )}
-            <span>{recipeBy}</span>
+            <span> {recipeBy?.fields?.name}</span>
           </div>
           <div>
             <h1>{title}</h1>
@@ -55,9 +57,18 @@ export default async function RecipePage({params}) {
             </h3>
             <span>Cook Time: {timeToCook} minutes</span>
             <span>Serves: {serves}</span>
-            <RichText content={procedure} />
+            <ul className="flex flex-col ">
+              <span className="text-bold">Ingredients</span>
+              {ingredients.map((ingredient, i) => (
+                <li id={ingredient + i}>
+                  <input type="checkbox" /> {ingredient}
+                </li>
+              ))}
+            </ul>
+
+            {/* <RichText content={procedure} /> */}
           </div>
-        </RecipeDetail> */}
+        </RecipeDetail>
       </article>
     </>
   );

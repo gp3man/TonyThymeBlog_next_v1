@@ -1,4 +1,3 @@
-'use client'
 
 const RecipeDetail = ({children}) => {
   return ( <>{children}</> );
