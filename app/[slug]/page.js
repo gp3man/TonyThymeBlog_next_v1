@@ -27,15 +27,14 @@ export default async function RecipePage({ params, preview = false }) {
     authorsNotes,
   } = recipe?.fields;
   return (
-    <>
-      <article className="flex-grow min-h-screen m-4 pt-16 pb-14 overflow-y-scroll scrollbar-hide">
+      <article className="flex-grow min-h-screen m-4 pt-16 pb-14 overflow-y-scroll scrollbar-hide justify-center">
         {preview && (
           <>
             You're in preview mode!!!
             <Link href="/api/exit-preview">Exit preview</Link>
           </>
         )}
-        <RecipeDetail className="flex">
+        <RecipeDetail className="flex justify-center">
           <ContentfulImage
             className=""
             alt={title}
@@ -76,6 +75,5 @@ export default async function RecipePage({ params, preview = false }) {
           </div>
         </RecipeDetail>
       </article>
-    </>
   );
 }
