@@ -1,23 +1,21 @@
 // "use client";
-// import { useEffect, useState } from "react";
-// import { shuffle } from "lodash";
-// const colors = [
-//   "from-indigo-500",
-//   "from-blue-500",
-//   "from-green-500",
-//   "from-red-500",
-//   "from-yellow-500",
-//   "from-pink-500",
-//   "from-purple-500",
-// ];
-const Center = () => {
-  // useEffect(() => {
-  //   setColor(shuffle(colors).pop());
-  // }, []);
+import RecipeCard from "./RecipeCard";
 
+const Center = ({recipes, announcement}) => {
+// console.log(recipes)
+// console.log(announcement)
   return (
-    <div className="flex-grow min-h-screen m-1 pt-16 pb-14 overflow-y-scroll scrollbar-hide ">
-      Home Page
+    <div className="flex-grow min-h-screen m-4 pt-16 pb-14 overflow-y-scroll scrollbar-hide">
+      {announcement && (
+        <div className="flex justify-center"> Show announcements here!</div>
+      )}
+      <div className="flex justify-center">
+      <div className="flex flex-col">
+      {recipes?.map((recipe, i)=>(
+        <RecipeCard id={recipe?.fields.slug || i} recipe={recipe} />
+      ))}
+      </div>
+      </div>
     </div>
   );
 };

@@ -1,15 +1,15 @@
 // import Sidebar from "./components/Sidebar.js";
 import Center from "./components/Center.js";
+import { client } from "@/lib/contentful.js";
 
 export default async function Home() {
+  const { items } = await client.getEntries({ content_type: "recipe" });
+  const Message = await client.getEntries({ content_type: "announcement" });
   return (
-    <div className="h-screen overflow-hidden text-slate-50">
+    <div className="h-screen overflow-hidden text-slate-950 dark:text-slate-50">
       <main className="flex">
-        {/* <Sidebar /> */}
-        <Center />
+        <Center recipes={items} announcement={Message?.items} />
       </main>
-      {/* <div className="sticky bottom-0">
-      </div> */}
     </div>
   );
 }
