@@ -63,7 +63,7 @@ export default async function RecipePage({ params }) {
                   <input type="checkbox" /> {ingredient}
                 </li>
               ))}
-              <hr/>
+              <hr />
             </ul>
             <RichText content={procedure} />
           </div>
