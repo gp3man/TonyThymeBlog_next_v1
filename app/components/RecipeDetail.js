@@ -1,6 +1,5 @@
-
-const RecipeDetail = ({children}) => {
-  return ( <>{children}</> );
-}
+const RecipeDetail = ({ children }) => {
+  return <>{children}</>;
+};
 
 export default RecipeDetail;

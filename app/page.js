@@ -1,4 +1,3 @@
-// import Sidebar from "./components/Sidebar.js";
 import Center from "./components/Center.js";
 import { client } from "@/lib/contentful.js";
 

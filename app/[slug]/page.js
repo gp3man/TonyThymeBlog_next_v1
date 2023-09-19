@@ -23,9 +23,8 @@ export default async function RecipePage({ params }) {
     serves,
     title,
     timeToCook,
-    slug,
     authorsNotes,
-  } = recipe.fields;
+  } = recipe?.fields;
   return (
     <>
       <article className="flex-grow min-h-screen m-4 pt-16 pb-14 overflow-y-scroll scrollbar-hide">
@@ -65,7 +64,6 @@ export default async function RecipePage({ params }) {
                 </li>
               ))}
             </ul>
-
             {/* <RichText content={procedure} /> */}
           </div>
         </RecipeDetail>
