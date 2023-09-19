@@ -1,5 +1,5 @@
 const RecipeDetail = ({ children }) => {
-  return <>{children}</>;
+  return <div>{children}</div>;
 };
 
 export default RecipeDetail;

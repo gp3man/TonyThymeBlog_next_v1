@@ -4,6 +4,7 @@ import ContentfulImage from "../components/ContentfulImage";
 import RecipeDetail from "../components/RecipeDetail";
 import RichText from "../components/RichText";
 import Link from "next/link";
+import PhotoCard from "../components/PhotoCard";
 
 export default async function RecipePage({ params, preview = false }) {
   const currentClient = preview ? previewClient : client;
@@ -35,34 +36,46 @@ export default async function RecipePage({ params, preview = false }) {
             <Link href="/api/exit-preview">Exit preview</Link>
           </>
         )}
-        <RecipeDetail className="flex justify-center">
-          <ContentfulImage
-            className=""
-            alt={title}
-            src={banners?.[0]?.fields?.file?.url}
-            width={banners?.[0]?.fields?.file?.details?.image?.width}
-            height={banners?.[0]?.fields?.file?.details?.image?.height}
-          />
-          <div className="">
-            Author:
-            {recipeBy?.fields?.image?.fields && (
-              <ContentfulImage
-                className=""
-                alt={recipeBy?.image?.fields?.title}
-                src={recipeBy?.image?.fields?.file?.url}
-                width={recipeBy?.image?.fields?.file?.details?.image?.width}
-                height={recipeBy?.image?.fields?.file?.details?.image?.height}
-              />
-            )}
-            <span> {recipeBy?.fields?.name}</span>
+        <RecipeDetail className="flex flex-col justify-center">
+          <header>
+            <h1 className="text-2xl font-bold">{title}</h1>
+            <div>
+              <p className="text-sm font-thin">
+                By:
+                <span> {recipeBy?.fields?.name}</span>
+              </p>
+              {recipeBy?.fields?.image?.fields && (
+                <ContentfulImage
+                  alt={recipeBy?.image?.fields?.title}
+                  src={recipeBy?.image?.fields?.file?.url}
+                  width={recipeBy?.image?.fields?.file?.details?.image?.width}
+                  height={recipeBy?.image?.fields?.file?.details?.image?.height}
+                  className="w-[20] h-[20] rounded-full"
+                />
+              )}
+            </div>
+          </header>
+          <PhotoCard photos={banners} />
+          {/* DishTimes */}
+          <div className="DishTimes">
+            <div>
+              <h2>Cook Time</h2>
+              <p>{timeToCook}</p>
+            </div>
+            <div>
+              <h2>Serves</h2>
+              <p>{serves}</p>
+            </div>
           </div>
-          <div>
-            <h1>{title}</h1>
-            <h3>
-              Author Notes: {authorsNotes} <hr />{" "}
-            </h3>
-            <span>Cook Time: {timeToCook} minutes</span>
-            <span>Serves: {serves}</span>
+          {/* Notes */}
+          <div className="Notes">
+            <h2>Author Notes</h2>
+            <p>
+              {authorsNotes} <hr />
+            </p>
+          </div>
+          {/* Method Block */}
+          <div className="Method">
             <ul className="flex flex-col ">
               <span className="text-bold">Ingredients</span>
               {ingredients.map((ingredient, i) => (
