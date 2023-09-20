@@ -35,11 +35,11 @@ export default async function RecipePage({ params, preview = false }) {
             <Link href="/api/exit-preview">Exit preview</Link>
           </>
         )}
-        <RecipeDetail className="flex flex-col justify-center">
+        <RecipeDetail>
           <header>
-            <h1 className="text-2xl font-bold">{title}</h1>
+            <h1 className="text-3xl font-bold py-1">{title}</h1>
             <div>
-              <p className="text-sm font-thin">
+              <p className="text-sm font-thin text-gray-400 pb-4">
                 By:
                 <span> {recipeBy?.fields?.name}</span>
               </p>
@@ -56,40 +56,41 @@ export default async function RecipePage({ params, preview = false }) {
           </header>
           <PhotoCard photos={banners} />
           {/* DishTimes */}
-          <div className="DishTimes">
+          <div className="bg-green-900 px-6 mx-4 ">
             <div>
-              <h2>Cook Time</h2>
-              <p>{timeToCook}</p>
+              <h2 className="font-bold ">Cook Time</h2>
+              <p className="text-gray-300">{timeToCook}</p>
             </div>
             <div>
-              <h2>Serves</h2>
-              <p>{serves}</p>
+              <hr className="opacity-5" />
+              <h2 className="font-bold ">Serves</h2>
+              <p className="text-gray-300">{serves}</p>
             </div>
           </div>
           {/* Notes */}
-          <div className="Notes">
-            <h2>Author Notes</h2>
-            <p>
+          <div className="py-6 m-4 text-left">
+            <h2 className="font-bold text-lg">Author Notes</h2>
+            <p className="pb-1 text-gray-300">
               {authorsNotes}
             </p>
-            <hr />
+            <hr className="opacity-5 border-green-800" />
           </div>
           {/* Method Block */}
-          <div className="Method">
+          <div className="text-left m-4">
             <div>
-              <ul className="flex flex-col ">
-                <span className="text-bold">Ingredients</span>
+              <ul className="flex flex-col py-3 ">
+                <span className="font-bold py-3 text-lg">Ingredients</span><hr className="opacity-50 border-green-800 py-3"/>
                 {ingredients.map((ingredient, i) => (
-                  <li key={ingredient + i}>
-                    <input type="checkbox" /> {ingredient}
+                  <li className="py-1 text-gray-300" key={ingredient + i}>
+                    <input type="checkbox"/> {ingredient}
                   </li>
                 ))}
-                <hr></hr>
               </ul>
             </div>
-            <div>
-              <h2>Directions</h2>
-              <RichText content={procedure} />
+            <div className="py-3">
+              <h2 className="font-bold py-3 text-lg">Directions</h2>
+              <hr className="opacity-50 border-green-800 py-3"/>
+              <RichText className="text-gray-300" content={procedure} />
             </div>
           </div>
         </RecipeDetail>

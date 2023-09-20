@@ -21,7 +21,7 @@ const PhotoCard = ({ photos }) => {
   };
   console.log(photos[currentIndex]?.fields?.file?.url)
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col p-3">
       <div>
         <div className="sm:min-w-[300px] md:min-w-[500px] lg:min-w-[800px] xl:min-w-[1000px] lg:min-h-[600px]  sm:min-h-[300px] w-full m-auto py-16 px-4 relative group">
           <div
