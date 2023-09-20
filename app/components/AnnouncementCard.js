@@ -55,11 +55,11 @@ const Announcement = ({ data }) => {
               <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                 {details}
               </p>
-              {location && (
+              {/* {location && (
                 <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                   {}
                 </p>
-              )}
+              )} */}
             </div>
             {/* <!-- Modal footer --> */}
             <div className="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">

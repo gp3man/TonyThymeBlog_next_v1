@@ -19,13 +19,16 @@ const PhotoCard = ({ photos }) => {
   const gotToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
+  console.log(photos[currentIndex]?.fields?.file?.url)
   return (
-    <div className="flex">
+    <div className="flex flex-col">
       <div>
         <div className="sm:min-w-[300px] md:min-w-[500px] lg:min-w-[800px] xl:min-w-[1000px] lg:min-h-[600px]  sm:min-h-[300px] w-full m-auto py-16 px-4 relative group">
-          <div className="absolute top-0 left-0 w-full h-full rounded-2xl bg-center bg-cover duration-500">
-            <ContentfulImage
-              className=""
+          <div
+          style={{ backgroundImage: `url(http://localhost3000${photos[currentIndex]?.fields?.file?.url})` }}
+          className="top-0 left-0 w-full h-full rounded-2xl bg-center bg-cover duration-500">
+            {/* <ContentfulImage
+              className="sm:min-w-[300px] md:min-w-[500px] lg:min-w-[800px] xl:min-w-[1000px] lg:min-h-[600px]  sm:min-h-[300px] absolute"
               alt={photos?.[currentIndex]?.fields?.file?.url}
               src={photos?.[currentIndex]?.fields?.file?.url}
               width={
@@ -34,7 +37,7 @@ const PhotoCard = ({ photos }) => {
               height={
                 photos?.[currentIndex]?.fields?.file?.details?.image?.height
               }
-            />
+            /> */}
           </div>
           <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-slate-50 cursor-pointer">
             {" "}
@@ -49,7 +52,7 @@ const PhotoCard = ({ photos }) => {
           {photos.map((shot, slideIndex) => (
             <div
               key={slideIndex}
-              className="text-2xl text-violet-700 cursor-pointer"
+              className="text-2xl text-gray-500 cursor-pointer"
               onClick={() => gotToSlide(slideIndex)}
             >
               <BsDot />

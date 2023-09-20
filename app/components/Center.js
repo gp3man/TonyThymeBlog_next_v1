@@ -7,7 +7,7 @@ const Center = ({ recipes, announcement }) => {
   return (
     <div className="flex-grow min-h-screen m-4 pt-10 pb-14 overflow-y-scroll scrollbar-hide">
       <Hero />
-      {announcement && <Announcement data={announcement} />}
+      {announcement ? <Announcement data={announcement} /> : null}
       <div className="flex justify-center">
         <div className="flex flex-wrap">
           {recipes?.map((recipe, i) => (

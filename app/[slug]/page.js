@@ -28,7 +28,6 @@ export default async function RecipePage({ params, preview = false }) {
     authorsNotes,
   } = recipe?.fields;
   return (
-    <>
       <section className="flex min-h-screen m-4 pt-16 pb-14 overflow-y-scroll scrollbar-hide justify-center">
         {preview && (
           <>
@@ -71,8 +70,9 @@ export default async function RecipePage({ params, preview = false }) {
           <div className="Notes">
             <h2>Author Notes</h2>
             <p>
-              {authorsNotes} <hr />
+              {authorsNotes}
             </p>
+            <hr />
           </div>
           {/* Method Block */}
           <div className="Method">
@@ -84,7 +84,7 @@ export default async function RecipePage({ params, preview = false }) {
                     <input type="checkbox" /> {ingredient}
                   </li>
                 ))}
-                <hr />
+                <hr></hr>
               </ul>
             </div>
             <div>
@@ -94,6 +94,5 @@ export default async function RecipePage({ params, preview = false }) {
           </div>
         </RecipeDetail>
       </section>
-    </>
   );
 }
