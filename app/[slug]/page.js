@@ -29,7 +29,7 @@ export default async function RecipePage({ params, preview = false }) {
   } = recipe?.fields;
   return (
     <>
-      <article className="flex-grow min-h-screen m-4 pt-16 pb-14 overflow-y-scroll scrollbar-hide justify-center">
+      <section className="flex min-h-screen m-4 pt-16 pb-14 overflow-y-scroll scrollbar-hide justify-center">
         {preview && (
           <>
             You're in preview mode!!!
@@ -76,19 +76,24 @@ export default async function RecipePage({ params, preview = false }) {
           </div>
           {/* Method Block */}
           <div className="Method">
-            <ul className="flex flex-col ">
-              <span className="text-bold">Ingredients</span>
-              {ingredients.map((ingredient, i) => (
-                <li key={ingredient + i}>
-                  <input type="checkbox" /> {ingredient}
-                </li>
-              ))}
-              <hr />
-            </ul>
-            <RichText content={procedure} />
+            <div>
+              <ul className="flex flex-col ">
+                <span className="text-bold">Ingredients</span>
+                {ingredients.map((ingredient, i) => (
+                  <li key={ingredient + i}>
+                    <input type="checkbox" /> {ingredient}
+                  </li>
+                ))}
+                <hr />
+              </ul>
+            </div>
+            <div>
+              <h2>Directions</h2>
+              <RichText content={procedure} />
+            </div>
           </div>
         </RecipeDetail>
-      </article>
+      </section>
     </>
   );
 }
