@@ -19,7 +19,6 @@ const PhotoCard = ({ photos }) => {
   const gotToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
-  console.log(photos[currentIndex]?.fields?.file?.url)
   return (
     <div className="flex flex-col p-3">
       <div>
