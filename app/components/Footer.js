@@ -1,3 +1,4 @@
+import {RiTwitterXLine, RiInstagramLine, RiTiktokLine } from "react-icons/ri"
 const Footer = () => {
   return (
     <footer className="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
@@ -28,6 +29,15 @@ const Footer = () => {
                 Contact
               </a>
             </li>
+            {/* <li>
+              <RiTiktokLine />
+            </li>
+            <li>
+              <RiInstagramLine />
+            </li>
+            <li>
+              <RiTwitterXLine />
+            </li> */}
           </ul>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
