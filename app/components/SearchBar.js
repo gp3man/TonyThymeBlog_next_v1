@@ -1,7 +1,9 @@
 "use client";
 // import { useRecoilState } from "recoil";
 // import { SearchName } from "../atoms/searchAtom";
-const SearchBar = () => {
+
+
+const SearchBar = ({recipes}) => {
   // const [name, setName] = useState("");
   // useEffect(() => {
   //   if (volume > 0 && volume < 100) {

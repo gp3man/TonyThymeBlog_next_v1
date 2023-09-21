@@ -3,7 +3,8 @@ import { client } from "@/lib/contentful.js";
 import SearchBar from "../components/SearchBar";
 // import { RecoilValue } from "recoil";
 import FilterSidebar from "../components/FilterSideBar";
-export default async function Recipes() {
+export default async function Recipes({props}) {
+  console.log(props)
   const response = await client.getEntries({
     content_type: "recipe",
   });
@@ -24,7 +25,7 @@ export default async function Recipes() {
       {/* <FilterSidebar /> */}
       <header className="flex flex-col p-3 m-3">
         <p className="font-bold text-3xl">Recipes</p>
-        <SearchBar />
+        <SearchBar recipes={recipes} />
       </header>
     </div>
   );
