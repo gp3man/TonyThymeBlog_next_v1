@@ -26,8 +26,9 @@ export default async function Recipes({ props }) {
       {/* <FilterSidebar /> */}
       <header className="flex flex-col p-3 m-3 justify-center">
         <p className="font-bold text-3xl text-center">Recipes</p>
-        <SearchBar recipes={recipes} />
+        <SearchBar />
       </header>
+
       <section id="AllRecipes" className="flex justify-center">
         {recipes ? (
           <div className="flex flex-wrap py-4 justify-center">
@@ -45,6 +46,7 @@ export default async function Recipes({ props }) {
           </div>
         )}
       </section>
+
     </div>
   );
 }
