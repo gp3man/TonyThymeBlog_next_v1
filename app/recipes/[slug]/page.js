@@ -1,10 +1,10 @@
 import { client, previewClient } from "@/lib/contentful.js";
 // import { redirect } from "next/dist/server/api-utils";
-import ContentfulImage from "../components/ContentfulImage";
-import RecipeDetail from "../components/RecipeDetail";
-import RichText from "../components/RichText";
+import ContentfulImage from "../../components/ContentfulImage";
+import RecipeDetail from "../../components/RecipeDetail";
+import RichText from "../../components/RichText";
 import Link from "next/link";
-import PhotoCard from "../components/PhotoCard";
+import PhotoCard from "../../components/PhotoCard";
 
 export default async function RecipePage({ params, preview = false }) {
   const currentClient = preview ? previewClient : client;

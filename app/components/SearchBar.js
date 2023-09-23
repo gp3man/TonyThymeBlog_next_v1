@@ -18,12 +18,12 @@ const SearchBar = ({recipes}) => {
   //   []
   // );
   return (
-    <form
+    <form className="flex justify-center"
       onSubmit={(e) => {
         e.preventDefault(console.log(e.target.Name.value));
       }}
     >
-      <div className="relative mt-12 w-[60vw]">
+      <div className="relative mt-6 w-[60vw]">
         <input
           className="peer relative -top-3.5 m-6 w-[60vw] rounded-md border-b-2 border-slate-900 focus: outline-none focus:border-green-600 dark:text-gray-500 placeholder-transparent"
           type="text"

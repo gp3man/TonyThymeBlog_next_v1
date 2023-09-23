@@ -6,15 +6,22 @@ const NavBar = () => {
       <div className="pl-1">
         <span className="cursor-pointer">Tony🌿Thyme</span>
       </div>
-      <div className="absolute pr-4 end-4">
-        <Link href={"/"}>
-          <p className="border-green-700 hover:text-green-400 dark:border-green-500 border-opacity-30 px-3 cursor-pointer sm:text-base">
-            {<TfiHome size={20} />}
-          </p>
+      <div className="absolute flex  pr-4 end-4">
+        <Link
+          href={"/recipes"}
+          className="border-green-700 hover:text-green-400 dark:border-green-500 border-opacity-30 px-3 cursor-pointer sm:text-base active:font-bold "
+        >
+          <p>Recipes</p>
+        </Link>
+        <Link
+          href={"/"}
+          className="border-green-700 hover:text-green-400 dark:border-green-500 border-opacity-30 px-3 cursor-pointer sm:text-base border-l-2 active:text-xl"
+        >
+          <p>{<TfiHome size={20} />}</p>
         </Link>
       </div>
     </nav>
   );
-}
+};
 
 export default NavBar;

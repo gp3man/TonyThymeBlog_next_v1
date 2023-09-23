@@ -1,7 +1,7 @@
 import { previewClient } from "@/lib/contentful";
 
-export default async function preview (req,res) {
-  const { secret, slug } = req?.searchParams
+export default async function preview(req, res) {
+  const { secret, slug } = req?.searchParams;
   if (secret !== process.env.CONTENTFUL_PREVIEW_SECRET || !slug) {
     return res?.status(401).json({ message: "Invalid token" });
   }
@@ -15,6 +15,6 @@ export default async function preview (req,res) {
   }
   res?.setPreviewData({});
   const url = `/${recipe.fields.slug}`;
-  res?.setHeader('Location',url)
+  res?.setHeader("Location", url);
   return res?.status(307).end();
-};
+}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 const Hero = () => {
   return (
     <section className=" min-h-screen bg-center bg-no-repeat bg-[url('https://images.unsplash.com/photo-1642112177610-c1ff271857dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1978&q=80')] bg-gray-700 bg-blend-multiply">
@@ -10,9 +11,9 @@ const Hero = () => {
           meets your table, and touches your soul. Do you have Thyme?
         </p>
         <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-          <a
-            href="#"
-            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+          <Link
+            href="#hotRecipes"
+            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 dark:focus:ring-green-900"
           >
             Get to Cooking
             <svg
@@ -30,13 +31,13 @@ const Hero = () => {
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            href="/About"
             className="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400"
           >
             Meet Tony
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -53,5 +53,6 @@ const FilterSidebar = () => {
     </div>
   );
 };
-
+//fixed z-50 inset-0 overflow-y-auto lg:hidden
+//fixed inset-0 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80 from tailwind
 export default FilterSidebar;
