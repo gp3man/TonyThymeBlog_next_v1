@@ -8,18 +8,22 @@ import { useRouter } from "next/navigation";
 // import { SearchName } from "../atoms/searchAtom";
 
 const SearchBar = () => {
+  const router = useRouter();
   const [name, setName] = useState("");
   useEffect(() => {
-    if (name.length) {
+    if (name.length > 3) {
       debouncedSearch(name);
     }
-  }, [name]);
+    if (name === "") {
+      router.push("/recipes");
+    }
+  }, [name, router]);
 
   const debouncedSearch = useCallback(
-    debounce((name) => {
-      console.log(name);
+    debounce((lookUp) => {
+      router.push(`/recipes?search=${name}`);
     }, 500),
-    []
+    [name, router]
   );
   return (
     <div className="flex justify-center">
