@@ -4,13 +4,12 @@ import SearchBar from "../components/SearchBar";
 // import { RecoilValue } from "recoil";
 import FilterSidebar from "../components/FilterSideBar";
 import RecipeCard from "../components/RecipeCard";
-export default async function Recipes({ props }) {
-  console.log(props);
-  const response = await client.getEntries({
-    content_type: "recipe",
-  });
+import { getRecipes } from "@/lib/getRecipes";
+export default async function Recipes(params) {
+  const items = await getRecipes(params)
+  console.log(items)
 
-  const recipes = response?.items;
+  // const recipes = response?.items;
   // const {
   //   banners,
   //   procedure,
@@ -30,9 +29,9 @@ export default async function Recipes({ props }) {
       </header>
 
       <section id="AllRecipes" className="flex justify-center">
-        {recipes ? (
+        {items ? (
           <div className="flex flex-wrap py-4 justify-center">
-            {recipes?.map((recipe, i) => (
+            {items?.map((recipe, i) => (
               <RecipeCard key={recipe?.fields.slug || i} recipe={recipe} />
             ))}
           </div>
