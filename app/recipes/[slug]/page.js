@@ -37,28 +37,37 @@ export default async function RecipePage({ params, preview = false }) {
       )}
       <RecipeDetail>
         <header>
-          <h1 className="text-3xl font-bold py-1">{title}</h1>
+          <h1 className="md:text-3xl font-bold py-1">{title}</h1>
           <div className="flex flex-col justify-center content-center">
-            <p className="text-sm font-thin text-gray-400 pb-4">
+            <p className="text-sm font-thin text-gray-400 ">
               By:
               <span className=""> {recipeBy?.fields?.name}</span>
+              </p>
               {recipeBy?.fields?.image && (
-                <ContentfulImage
-                  alt={recipeBy?.fields?.image?.fields?.title}
-                  src={recipeBy?.fields?.image?.fields?.file?.url}
-                  width={
-                    recipeBy?.fields?.image?.fields?.file?.details?.image?.width
-                  }
-                  height={
-                    recipeBy?.fields?.image?.fields?.file?.details?.image
-                      ?.height
-                  }
-                  className="w-[30px] h-[30px] rounded-full left-1/2"
-                />
+                <div className="flex justify-center pb-4">
+                  <ContentfulImage
+                    alt={recipeBy?.fields?.image?.fields?.title}
+                    src={recipeBy?.fields?.image?.fields?.file?.url}
+                    width={
+                      recipeBy?.fields?.image?.fields?.file?.details?.image
+                        ?.width
+                    }
+                    height={
+                      recipeBy?.fields?.image?.fields?.file?.details?.image
+                        ?.height
+                    }
+                    className="w-[20px] h-[20px md:w-[40px] md:h-[40px] rounded-full left-1/2"
+                  />
+                </div>
               )}
-            </p>
           </div>
         </header>
+        <div className="py-2 m-2 text-left">
+          <h2 className="font-bold py-3 text-lg">Author Notes</h2>
+          <hr className="opacity-50 border-orange-800 py-3" />
+          <p className="pb-1 text-gray-300">{authorsNotes}</p>
+        </div>
+        {/* Photo */}
         <PhotoCard photos={banners} />
         {/* DishTimes */}
         <div className="bg-orange-900 px-6 mx-4 ">
@@ -73,11 +82,6 @@ export default async function RecipePage({ params, preview = false }) {
           </div>
         </div>
         {/* Notes */}
-        <div className="py-6 m-4 text-left">
-          <h2 className="font-bold text-lg">Author Notes</h2>
-          <p className="pb-1 text-gray-300">{authorsNotes}</p>
-          <hr className="opacity-5 border-orange-800" />
-        </div>
         {/* Method Block */}
         <div className="text-left m-4">
           <div>
