@@ -26,17 +26,6 @@ const PhotoCard = ({ photos }) => {
           <div
           style={{ backgroundImage: `url(${photos[currentIndex]?.fields?.file?.url})` }}
           className="absolute top-0 left-0 w-full h-full rounded-2xl bg-center bg-cover duration-500">
-            {/* <ContentfulImage
-              className="sm:min-w-[300px] md:min-w-[500px] lg:min-w-[800px] xl:min-w-[1000px] lg:min-h-[600px]  sm:min-h-[300px] absolute"
-              alt={photos?.[currentIndex]?.fields?.file?.url}
-              src={photos?.[currentIndex]?.fields?.file?.url}
-              width={
-                photos?.[currentIndex]?.fields?.file?.details?.image?.width
-              }
-              height={
-                photos?.[currentIndex]?.fields?.file?.details?.image?.height
-              }
-            /> */}
           </div>
           <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-stone-50 cursor-pointer">
             {" "}

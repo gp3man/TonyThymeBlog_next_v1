@@ -1,31 +1,19 @@
-// 'use client'
-import { client } from "@/lib/contentful.js";
 import SearchBar from "../components/SearchBar";
-// import { RecoilValue } from "recoil";
 import FilterSidebar from "../components/FilterSideBar";
 import RecipeCard from "../components/RecipeCard";
 import { getRecipes } from "@/lib/getRecipes";
-export default async function Recipes(params) {
-  const items = await getRecipes(params)
-  console.log(items)
+export default async function Recipes({ searchParams }) {
+  const items = await getRecipes(searchParams);
 
-  // const recipes = response?.items;
-  // const {
-  //   banners,
-  //   procedure,
-  //   ingredients,
-  //   recipeBy,
-  //   serves,
-  //   title,
-  //   timeToCook,
-  //   authorsNotes,
-  // } = recipes[index]?.fields;
   return (
     <div className="min-h-screen m-4 pt-10 pb-14 overflow-y-scroll scrollbar-hide justify-center ">
       {/* <FilterSidebar /> */}
       <header className="flex flex-col p-3 m-3 justify-center">
         <p className="font-bold text-3xl text-center">Recipes</p>
-        <SearchBar />
+        <div>
+          <SearchBar />
+          <Link></Link>
+        </div>
       </header>
 
       <section id="AllRecipes" className="flex justify-center">
@@ -45,7 +33,6 @@ export default async function Recipes(params) {
           </div>
         )}
       </section>
-
     </div>
   );
 }
