@@ -6,7 +6,7 @@ const RecipeCard = ({ recipe }) => {
   const { title, timeToCook, thumbnail, serves, slug } = recipe?.fields;
   return (
     <Link className="p-2" href={`/recipes/${slug}`} aria-label={title}>
-      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="max-w-sm bg-white border border-stone-200 rounded-lg shadow dark:bg-stone-800 dark:border-stone-700">
         <ContentfulImage
           src={thumbnail?.fields?.file?.url}
           width={thumbnail?.fields?.file?.details?.image?.width}
@@ -16,14 +16,14 @@ const RecipeCard = ({ recipe }) => {
         />
         <div className="p-5">
           <div>
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white truncate">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-stone-900 dark:text-white truncate">
               {title}
             </h5>
           </div>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          <p className="mb-3 font-normal text-stone-700 dark:text-stone-400">
             Serves {serves}
           </p>
-          <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+          <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-orange-700 rounded-lg hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
             <CgTimer size={20} className="pr-1" /> {timeToCook}
           </div>
         </div>
