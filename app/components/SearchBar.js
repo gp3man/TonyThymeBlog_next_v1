@@ -11,7 +11,7 @@ const SearchBar = () => {
   const router = useRouter();
   const [name, setName] = useState("");
   useEffect(() => {
-    if (name.length > 3) {
+    if (name.length) {
       debouncedSearch(name);
     }
     if (name === "") {
