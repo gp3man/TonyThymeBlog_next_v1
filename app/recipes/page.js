@@ -1,5 +1,4 @@
 import SearchBar from "../components/SearchBar";
-import FilterSidebar from "../components/FilterSideBar";
 import RecipeCard from "../components/RecipeCard";
 import { getRecipes } from "@/lib/getRecipes";
 export default async function Recipes({ searchParams }) {
@@ -12,7 +11,7 @@ export default async function Recipes({ searchParams }) {
         <p className="font-bold text-3xl text-center">Recipes</p>
         <div>
           <SearchBar />
-          <Link></Link>
+          {/* <Link></Link> */}
         </div>
       </header>
 
