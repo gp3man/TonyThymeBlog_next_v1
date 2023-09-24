@@ -23,7 +23,7 @@ const Center = ({ recipes, announcement }) => {
             <span className="font-normal text-lg text-gray-400">
               Try Looking for all my Recipes{" "}
               <Link
-                className="font-bold underline hover:text-green-500"
+                className="font-bold underline hover:text-orange-500"
                 href="/recipes"
               >
                 Here

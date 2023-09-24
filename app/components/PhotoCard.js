@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { BsDot } from "react-icons/bs";
-import ContentfulImage from "./ContentfulImage";
+// import ContentfulImage from "./ContentfulImage";
 
 const PhotoCard = ({ photos }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -51,7 +51,7 @@ const PhotoCard = ({ photos }) => {
           {photos.map((shot, slideIndex) => (
             <div
               key={slideIndex}
-              className="text-2xl text-gray-500 cursor-pointer"
+              className="text-2xl text-orange-500 cursor-pointer"
               onClick={() => gotToSlide(slideIndex)}
             >
               <BsDot />

@@ -9,13 +9,13 @@ const NavBar = () => {
       <div className="absolute flex  pr-4 end-4">
         <Link
           href={"/recipes"}
-          className="border-green-700 hover:text-green-400 dark:border-green-500 border-opacity-30 px-3 cursor-pointer sm:text-base active:font-bold "
+          className="border-orange-700 hover:text-orange-400 dark:border-orange-500 border-opacity-30 px-3 cursor-pointer sm:text-base active:font-bold "
         >
           <p>Recipes</p>
         </Link>
         <Link
           href={"/"}
-          className="border-green-700 hover:text-green-400 dark:border-green-500 border-opacity-30 px-3 cursor-pointer sm:text-base border-l-2 active:text-xl"
+          className="border-orange-700 hover:text-orange-400 dark:border-orange-500 border-opacity-30 px-3 cursor-pointer sm:text-base border-l-2 active:text-xl"
         >
           <p>{<TfiHome size={20} />}</p>
         </Link>

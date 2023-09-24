@@ -61,7 +61,7 @@ export default async function RecipePage({ params, preview = false }) {
         </header>
         <PhotoCard photos={banners} />
         {/* DishTimes */}
-        <div className="bg-green-900 px-6 mx-4 ">
+        <div className="bg-orange-900 px-6 mx-4 ">
           <div>
             <h2 className="font-bold ">Cook Time</h2>
             <p className="text-gray-300">{timeToCook}</p>
@@ -76,14 +76,14 @@ export default async function RecipePage({ params, preview = false }) {
         <div className="py-6 m-4 text-left">
           <h2 className="font-bold text-lg">Author Notes</h2>
           <p className="pb-1 text-gray-300">{authorsNotes}</p>
-          <hr className="opacity-5 border-green-800" />
+          <hr className="opacity-5 border-orange-800" />
         </div>
         {/* Method Block */}
         <div className="text-left m-4">
           <div>
             <ul className="flex flex-col py-3 ">
               <span className="font-bold py-3 text-lg">Ingredients</span>
-              <hr className="opacity-50 border-green-800 py-3" />
+              <hr className="opacity-50 border-orange-800 py-3" />
               {ingredients.map((ingredient, i) => (
                 <li className="py-1 text-gray-300" key={ingredient + i}>
                   <input type="checkbox" /> {ingredient}
@@ -93,7 +93,7 @@ export default async function RecipePage({ params, preview = false }) {
           </div>
           <div className="py-3">
             <h2 className="font-bold py-3 text-lg">Directions</h2>
-            <hr className="opacity-50 border-green-800 py-3" />
+            <hr className="opacity-50 border-orange-800 py-3" />
             <RichText className="text-gray-300" content={procedure} />
           </div>
         </div>

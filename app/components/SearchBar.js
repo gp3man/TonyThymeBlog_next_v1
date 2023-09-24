@@ -29,7 +29,7 @@ const SearchBar = () => {
     <div className="flex justify-center">
       <div className="relative mt-6 w-[60vw] flex flex-col justify-center">
         <input
-          className="peer relative -top-3.5 m-6  rounded-md border-b-4 border-x-2 border-slate-900 focus: outline-none focus:border-green-600 dark:text-gray-500 placeholder-transparent"
+          className="peer relative -top-3.5 m-6  rounded-md border-b-4 border-x-2 border-slate-900 focus: outline-none focus:border-orange-600 dark:text-gray-500 placeholder-transparent"
           type="text"
           name="Name"
           id="Name"
