@@ -1,236 +1,175 @@
-const Filter = () => {
+"use client";
+
+import { useState } from "react";
+import DownCaret from "./DownCaret";
+import UpCaret from "./UpCaret";
+
+const Filter = ({selection}) => {
+
+
+  const [meal, setMeal] = useState(false);
+  const [dietary, setDietary] = useState(false);
+  const [method, setMethod] = useState(false);
+  const [protein, setProtein] = useState(false);
   return (
-    <div>
-      <button
-        id="dropdownCheckboxButton"
-        data-dropdown-toggle="dropdownDefaultCheckbox"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        type="button"
-      >
-        By Meal{" "}
-        <svg
-          class="w-2.5 h-2.5 ml-2.5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 10 6"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 4 4 4-4"
-          />
-        </svg>
-      </button>
-
-      {/* <--- Dropdown menu --> */}
-      <div
-        id="dropdownDefaultCheckbox"
-        class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
-      >
-        <ul
-          class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200"
-          aria-labelledby="dropdownCheckboxButton"
-        >
-          <li>
-            <div class="flex items-center">
-              <input
-                id="checkbox-item-1"
-                type="checkbox"
-                value=""
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                for="checkbox-item-1"
-                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Default checkbox
-              </label>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      {/* Small screen */}
-      <div
-        id="accordion-color"
-        data-accordion="collapse"
-        data-active-classes="bg-blue-100 dark:bg-gray-800 text-blue-600 dark:text-white md:hidden"
-      >
-        <h2 id="accordion-color-heading-1">
+    <div className="bg-stone-900 rounded-lg p-1 w-80%">
+      Filter By:
+      <div className="flex-row md:flex justify-around space-y-1 m-2 p-2">
+        <div className="flex flex-col">
           <button
+            id="dropdownCheckboxButton"
+            className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
             type="button"
-            class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800"
-            data-accordion-target="#accordion-color-body-1"
-            aria-expanded="true"
-            aria-controls="accordion-color-body-1"
+            onClick={() => {
+              setMeal(!meal);
+            }}
           >
-            <span>By Meal</span>
-            <svg
-              data-accordion-icon
-              class="w-3 h-3 rotate-180 shrink-0"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 10 6"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5 5 1 1 5"
-              />
-            </svg>
+            Meal {meal ? <UpCaret /> : <DownCaret />}
           </button>
-        </h2>
-        <div
-          id="accordion-color-body-1"
-          class="hidden"
-          aria-labelledby="accordion-color-heading-1"
-        >
-          <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-            <p class="mb-2 text-gray-500 dark:text-gray-400">
-              Flowbite is an open-source library of interactive components built
-              on top of Tailwind CSS including buttons, dropdowns, modals,
-              navbars, and more.
-            </p>
-            <p class="text-gray-500 dark:text-gray-400">
-              Check out this guide to learn how to{" "}
-              <a
-                href="/docs/getting-started/introduction/"
-                class="text-blue-600 dark:text-blue-500 hover:underline"
-              >
-                get started
-              </a>{" "}
-              and start developing websites even faster with components on top
-              of Tailwind CSS.
-            </p>
-          </div>
-        </div>
-        <h2 id="accordion-color-heading-2">
-          <button
-            type="button"
-            class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800"
-            data-accordion-target="#accordion-color-body-2"
-            aria-expanded="false"
-            aria-controls="accordion-color-body-2"
-          >
-            <span>Is there a Figma file available?</span>
-            <svg
-              data-accordion-icon
-              class="w-3 h-3 rotate-180 shrink-0"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 10 6"
+          {meal && (
+            <div
+              id="mealCheckbox"
+              className="z-10 w-80% md:w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
             >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5 5 1 1 5"
-              />
-            </svg>
-          </button>
-        </h2>
-        <div
-          id="accordion-color-body-2"
-          class="hidden"
-          aria-labelledby="accordion-color-heading-2"
-        >
-          <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
-            <p class="mb-2 text-gray-500 dark:text-gray-400">
-              Flowbite is first conceptualized and designed using the Figma
-              software so everything you see in the library has a design
-              equivalent in our Figma file.
-            </p>
-            <p class="text-gray-500 dark:text-gray-400">
-              Check out the{" "}
-              <a
-                href="https://flowbite.com/figma/"
-                class="text-blue-600 dark:text-blue-500 hover:underline"
-              >
-                Figma design system
-              </a>{" "}
-              based on the utility classes from Tailwind CSS and components from
-              Flowbite.
-            </p>
-          </div>
-        </div>
-        <h2 id="accordion-color-heading-3">
-          <button
-            type="button"
-            class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-gray-200 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800"
-            data-accordion-target="#accordion-color-body-3"
-            aria-expanded="false"
-            aria-controls="accordion-color-body-3"
-          >
-            <span>
-              What are the differences between Flowbite and Tailwind UI?
-            </span>
-            <svg
-              data-accordion-icon
-              class="w-3 h-3 rotate-180 shrink-0"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 10 6"
+              <ul
+              className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200"
             >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5 5 1 1 5"
-              />
-            </svg>
-          </button>
-        </h2>
-        <div
-          id="accordion-color-body-3"
-          class="hidden"
-          aria-labelledby="accordion-color-heading-3"
-        >
-          <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
-            <p class="mb-2 text-gray-500 dark:text-gray-400">
-              The main difference is that the core components from Flowbite are
-              open source under the MIT license, whereas Tailwind UI is a paid
-              product. Another difference is that Flowbite relies on smaller and
-              standalone components, whereas Tailwind UI offers sections of
-              pages.
-            </p>
-            <p class="mb-2 text-gray-500 dark:text-gray-400">
-              However, we actually recommend using both Flowbite, Flowbite Pro,
-              and even Tailwind UI as there is no technical reason stopping you
-              from using the best of two worlds.
-            </p>
-            <p class="mb-2 text-gray-500 dark:text-gray-400">
-              Learn more about these technologies:
-            </p>
-            <ul class="pl-5 text-gray-500 list-disc dark:text-gray-400">
               <li>
-                <a
-                  href="https://flowbite.com/pro/"
-                  class="text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  Flowbite Pro
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://tailwindui.com/"
-                  rel="nofollow"
-                  class="text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  Tailwind UI
-                </a>
+                <div className="flex items-center">
+                  <input
+                    id="checkbox-item-1"
+                    type="checkbox"
+                    value=""
+                    className="w-4 h-4 text-orange-600 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                  />
+                  <label
+                    htmlFor="checkbox-item-1"
+                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    Default checkbox
+                  </label>
+                </div>
               </li>
             </ul>
-          </div>
+            </div>
+          )}
+        </div>
+        <div className="flex flex-col">
+          <button
+            id="dropdownCheckboxButton"
+            className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+            type="button"
+            onClick={() => {
+              setDietary(!dietary);
+            }}
+          >
+            Dietary {dietary ? <UpCaret /> : <DownCaret />}
+          </button>
+          {dietary && (
+            <div
+              id="mealCheckbox"
+              className="z-10  w-80% md:w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+            >
+              <ul
+              className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200"
+            >
+              <li>
+                <div className="flex items-center">
+                  <input
+                    id="checkbox-item-1"
+                    type="checkbox"
+                    value=""
+                    className="w-4 h-4 text-orange-600 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                  />
+                  <label
+                    htmlFor="checkbox-item-1"
+                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    Default checkbox
+                  </label>
+                </div>
+              </li>
+            </ul>
+            </div>
+          )}
+        </div>
+        <div className="flex flex-col">
+          <button
+            id="dropdownCheckboxButton"
+            className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+            type="button"
+            onClick={() => {
+              setMethod(!method);
+            }}
+          >
+            Method {method ? <UpCaret /> : <DownCaret />}
+          </button>
+          {method && (
+            <div
+              id="mealCheckbox"
+              className="z-10  w-80% md:w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+            >
+              <ul
+              className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200"
+            >
+              <li>
+                <div className="flex items-center">
+                  <input
+                    id="checkbox-item-1"
+                    type="checkbox"
+                    value=""
+                    className="w-4 h-4 text-orange-600 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                  />
+                  <label
+                    htmlFor="checkbox-item-1"
+                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    Default checkbox
+                  </label>
+                </div>
+              </li>
+            </ul>
+            </div>
+          )}
+        </div>
+        <div className="flex flex-col">
+          <button
+            id="dropdownCheckboxButton"
+            className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+            type="button"
+            onClick={() => {
+              setProtein (!protein);
+            }}
+          >
+            Protein {protein ? <UpCaret /> : <DownCaret />}
+          </button>
+          {protein && (
+            <div
+              id="mealCheckbox"
+              className="z-10  w-80% md:w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+            >
+              <ul
+              className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200"
+            >
+              <li>
+                <div className="flex items-center">
+                  <input
+                    id="checkbox-item-1"
+                    type="checkbox"
+                    value=""
+                    className="w-4 h-4 text-orange-600 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                  />
+                  <label
+                    htmlFor="checkbox-item-1"
+                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    Default checkbox
+                  </label>
+                </div>
+              </li>
+            </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -20,9 +20,9 @@ const PhotoCard = ({ photos }) => {
     setCurrentIndex(slideIndex);
   };
   return (
-    <div className="flex flex-col p-3">
+    <div className="flex flex-col p-3 h-1/2">
       <div>
-        <div className="w-full m-auto py-16 px-4 relative group aspect-video h-1/3">
+        <div className="w-full m-auto py-16 px-4 relative group aspect-video ">
           <div
           style={{ backgroundImage: `url(${photos[currentIndex]?.fields?.file?.url})` }}
           className="absolute top-0 left-0 w-full h-full rounded-2xl bg-center bg-cover duration-500">

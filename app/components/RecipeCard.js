@@ -5,18 +5,21 @@ import { CgTimer } from "react-icons/cg";
 const RecipeCard = ({ recipe }) => {
   const { title, timeToCook, thumbnail, serves, slug } = recipe?.fields;
   return (
-    <Link className="p-2" href={`/recipes/${slug}`} aria-label={title}>
+    <Link className="p-2 md:w-1/4 md:h-1/4" href={`/recipes/${slug}`} aria-label={title}>
       <div className="max-w-sm bg-white border border-stone-200 rounded-lg shadow dark:bg-stone-800 dark:border-stone-700">
-        <ContentfulImage
-          src={thumbnail?.fields?.file?.url}
-          width={thumbnail?.fields?.file?.details?.image?.width}
-          height={thumbnail?.fields?.file?.details?.image?.height}
-          quality="100"
-          alt={title}
-        />
+        <div className="aspect-video">
+          <ContentfulImage
+            src={thumbnail?.fields?.file?.url}
+            width={thumbnail?.fields?.file?.details?.image?.width}
+            height={thumbnail?.fields?.file?.details?.image?.height}
+            quality="100"
+            alt={title}
+            className="aspect-video"
+          />
+        </div>
         <div className="p-5">
           <div>
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-stone-900 dark:text-white truncate">
+            <h5 className="mb-2 text-md font-bold tracking-tight text-stone-900 dark:text-white truncate">
               {title}
             </h5>
           </div>
