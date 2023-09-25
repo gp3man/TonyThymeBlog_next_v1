@@ -12,6 +12,7 @@ export default async function RecipePage({ params, preview = false }) {
     content_type: "recipe",
     "fields.slug": params.slug,
   });
+  console.log(params.slug)
   // if (!response?.items?.length) {
   //   redirect('/');
   // }

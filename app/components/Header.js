@@ -2,7 +2,7 @@ import Link from "next/link";
 import { TfiHome } from "react-icons/tfi";
 const NavBar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 h-[55px] w-screen p-4 z-40 flex flex-row opacity-90 dark:opacity-80 bg-white rounded-lg dark:bg-stone-900 text-stone-300  dark:text-stone-100 shadow">
+    <nav className="fixed top-0 left-0 right-0 h-[55px] w-screen p-4 z-40 flex flex-row opacity-90 dark:opacity-80 bg-white rounded-b-xl dark:bg-stone-900 text-stone-300  dark:text-stone-100 shadow">
       <div className="pl-1">
         <span className="cursor-pointer">Tony🌿Thyme</span>
       </div>
