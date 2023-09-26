@@ -18,6 +18,7 @@ export default async function RecipePage({ params, preview = false }) {
   // }
 
   const recipe = response?.items?.[0];
+  console.log(recipe.fields.procedure)
   const {
     banners,
     procedure,

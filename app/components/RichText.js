@@ -4,38 +4,52 @@ import Link from "next/link";
 import ContentfulImage from "./ContentfulImage";
 
 const options = {
-  renderMark: {
-    [MARKS.CODE]: (text) => {
+  renderNode: {
+    [BLOCKS.QUOTE]: (node, children) => {
       return (
-        <pre>
-          <code>{text}</code>
-        </pre>
+        <span className="font-thin">
+          {children}
+        </span>
       );
     },
-  },
-  renderNode: {
+    [BLOCKS.OL_LIST]: (node, children) => {
+      return (
+        <ul className="bg-stone-900 list-inside list-[decimal-leading-zero] p-2 rounded-lg space-y-4 hover:outline-orange-500 w-full md:w-60% border-orange-500 border border-opacity-50 border-double box-border items-center">
+          {children}
+        </ul>
+      );
+    },
+    [BLOCKS.LIST_ITEM]: (node, children) => {
+      return (
+        <li className="flex-col items-center p-4 even:bg-stone-700 rounded-lg">
+          <div className="space-x-4">{children}</div>
+        </li>
+      );
+    },
     [BLOCKS.PARAGRAPH]: (node, children) => {
-      if (
-        node.content.find((item) =>
-          item.marks?.find((mark) => mark.type === "code")
-        )
-      ) {
-        return (
-          <div>
-            <pre>
-              <code>{children}</code>
-            </pre>
-          </div>
-        );
-      }
+      return <p className="text-base text-stone-400">{children}</p>;
+    },
+    [BLOCKS.HEADING_1]: (node, children) => {
 
-      return <p>{children}</p>;
+      return <h1 className="text-3xl font-black text-stone-50">{children}</h1>;
+    },
+    [BLOCKS.HEADING_2]: (node, children) => {
+
+      return <h1 className="text-2xl font-bold text-stone-200">{children}</h1>;
+    },
+    [BLOCKS.HEADING_3]: (node, children) => {
+
+      return <h1 className="text-lg font-medium text-stone-300">{children}</h1>;
+    },
+    [BLOCKS.HR]: (node, children) => {
+
+      return <hr className="py-4 my-20 mx-60 text-lg font-medium border-stone-500" />;
     },
 
     [INLINES.ENTRY_HYPERLINK]: (node) => {
-      if (node.data.target.sys.contentType.sys.id === "post") {
+      if (node.data.target.sys.contentType.sys.id === "recipe") {
         return (
-          <Link href={`/posts/${node.data.target.fields.slug}`}>
+          <Link className="text-orange-400 hover:text-orange-600" href={`/recipes/${node.data.target.fields.slug}`}>
             {node.data.target.fields.title}
           </Link>
         );
@@ -50,21 +64,6 @@ const options = {
         </a>
       );
     },
-
-    [BLOCKS.EMBEDDED_ENTRY]: (node) => {
-      if (node.data.target.sys.contentType.sys.id === "videoEmbed") {
-        return (
-          <iframe
-            height="400"
-            width="100%"
-            src={node.data.target.fields.embedUrl}
-            title={node.data.target.fields.title}
-            allowFullScreen={true}
-          />
-        );
-      }
-    },
-
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       return (
         <ContentfulImage
@@ -72,7 +71,7 @@ const options = {
           height={node.data.target.fields.file.details.image.height}
           width={node.data.target.fields.file.details.image.width}
           alt={node.data.target.fields.title}
-          className="h-20 w-20"
+          className="h-18 w-32 aspect-auto justify-center flex m-6 p-4"
         />
       );
     },
