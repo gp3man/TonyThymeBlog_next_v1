@@ -7,22 +7,31 @@ const options = {
   renderNode: {
     [BLOCKS.QUOTE]: (node, children) => {
       return (
-        <span className="font-thin">
-          {children}
-        </span>
+        <blockquote className="text-xl italic font-semibold text-gray-900 dark:text-white">
+          <svg
+            class="w-8 h-8 text-gray-400 dark:text-gray-600 mb-4"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 18 14"
+          >
+            <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
+          </svg>
+          <p>{children}</p>
+        </blockquote>
       );
     },
     [BLOCKS.OL_LIST]: (node, children) => {
       return (
-        <ul className="bg-stone-900 list-inside list-[decimal-leading-zero] p-2 rounded-lg space-y-4 hover:outline-orange-500 w-full md:w-60% border-orange-500 border border-opacity-50 border-double box-border items-center">
+        <ol className="bg-stone-900 list-inside list-[decimal-leading-zero] m-2 p-2 rounded-lg hover:outline-orange-500 w-full md:w-60vw border-orange-500 border border-opacity-50  items-center align-middle">
           {children}
-        </ul>
+        </ol>
       );
     },
     [BLOCKS.LIST_ITEM]: (node, children) => {
       return (
-        <li className="flex-col items-center p-4 even:bg-stone-700 rounded-lg">
-          <div className="space-x-4">{children}</div>
+        <li className="items-center p-4 even:bg-stone-700 rounded-lg ml-6">
+          {children}
         </li>
       );
     },
@@ -30,26 +39,27 @@ const options = {
       return <p className="text-base text-stone-400">{children}</p>;
     },
     [BLOCKS.HEADING_1]: (node, children) => {
-
       return <h1 className="text-3xl font-black text-stone-50">{children}</h1>;
     },
     [BLOCKS.HEADING_2]: (node, children) => {
-
       return <h1 className="text-2xl font-bold text-stone-200">{children}</h1>;
     },
     [BLOCKS.HEADING_3]: (node, children) => {
-
       return <h1 className="text-lg font-medium text-stone-300">{children}</h1>;
     },
     [BLOCKS.HR]: (node, children) => {
-
-      return <hr className="py-4 my-20 mx-60 text-lg font-medium border-stone-500" />;
+      return (
+        <hr className="py-4 my-20 mx-60 text-lg font-medium border-stone-500" />
+      );
     },
 
     [INLINES.ENTRY_HYPERLINK]: (node) => {
       if (node.data.target.sys.contentType.sys.id === "recipe") {
         return (
-          <Link className="text-orange-400 hover:text-orange-600" href={`/recipes/${node.data.target.fields.slug}`}>
+          <Link
+            className="text-orange-400 hover:text-orange-600"
+            href={`/recipes/${node.data.target.fields.slug}`}
+          >
             {node.data.target.fields.title}
           </Link>
         );
@@ -66,13 +76,15 @@ const options = {
     },
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       return (
-        <ContentfulImage
-          src={node.data.target.fields.file.url}
-          height={node.data.target.fields.file.details.image.height}
-          width={node.data.target.fields.file.details.image.width}
-          alt={node.data.target.fields.title}
-          className="h-18 w-32 aspect-auto justify-center flex m-6 p-4"
-        />
+        <div className="flex justify-center bg-stone-900 border border-orange-500 border-opacity-50 rounded-lg ">
+          <ContentfulImage
+            src={node.data.target.fields.file.url}
+            height={node.data.target.fields.file.details.image.height}
+            width={node.data.target.fields.file.details.image.width}
+            alt={node.data.target.fields.title}
+            className="h-18 w-32 aspect-auto justify-center m-6 rounded-md"
+          />
+        </div>
       );
     },
   },

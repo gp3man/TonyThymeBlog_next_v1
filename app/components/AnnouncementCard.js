@@ -2,6 +2,7 @@ import ContentfulImage from "./ContentfulImage";
 
 const Announcement = ({ data }) => {
   const { headline, details, location, thumbnail } = data?.fields;
+  console.log(headline)
   return (
       <div
         id="staticModal"

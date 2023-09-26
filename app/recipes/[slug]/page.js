@@ -30,7 +30,7 @@ export default async function RecipePage({ params, preview = false }) {
     authorsNotes,
   } = recipe?.fields;
   return (
-    <section className="flex min-h-screen m-4 pt-16 pb-14 overflow-y-scroll scrollbar-hide justify-center">
+    <section className="flex min-h-screen m-4 pt-16 overflow-y-scroll scrollbar-hide justify-center">
       {preview && (
         <>
           You're in preview mode!!!
