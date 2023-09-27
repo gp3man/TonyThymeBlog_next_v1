@@ -6,9 +6,12 @@ import Link from "next/link";
 
 const Center = ({ recipes, announcement }) => {
   return (
+    <>
+      {announcement &&(
+        <Announcement data={announcement} />
+        )}
     <div className="flex-grow min-h-screen m-4 pt-10 pb-10 overflow-y-scroll scrollbar-hide">
       <Hero />
-      {announcement ? <Announcement data={announcement} /> : null}
       <div id="hotRecipes" className="flex justify-center">
         {recipes ? (
           <div className="flex flex-wrap py-4 justify-center">
@@ -33,6 +36,7 @@ const Center = ({ recipes, announcement }) => {
         )}
       </div>
     </div>
+    </>
   );
 };
 
