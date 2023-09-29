@@ -1,11 +1,16 @@
 import Link from "next/link";
 import ContentfulImage from "./ContentfulImage";
-import { CgTimer } from "react-icons/cg";
+import { GiExtraTime, GiSandsOfTime } from "react-icons/gi";
 
 const RecipeCard = ({ recipe }) => {
-  const { title, timeToCook, thumbnail, serves, slug } = recipe?.fields;
+  const { title, timeToCook, thumbnail, serves, slug, timeToPrep } =
+    recipe?.fields;
   return (
-    <Link className="p-2 md:w-1/4 md:h-1/4" href={`/recipes/${slug}`} aria-label={title}>
+    <Link
+      className="p-2 md:w-1/4 md:h-1/4"
+      href={`/recipes/${slug}`}
+      aria-label={title}
+    >
       <div className="max-w-sm bg-white border border-stone-200 rounded-lg shadow dark:bg-stone-800 dark:border-stone-700">
         <div className="aspect-video">
           <ContentfulImage
@@ -23,11 +28,18 @@ const RecipeCard = ({ recipe }) => {
               {title}
             </h5>
           </div>
-          <p className="mb-3 font-normal text-stone-700 dark:text-stone-400">
-            Serves {serves}
-          </p>
-          <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-orange-700 rounded-lg hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
-            <CgTimer size={20} className="pr-1" /> {timeToCook}
+          <div className="grid grid-flow-row grid-cols-4">
+            <p className="font-normal text-stone-700 dark:text-stone-400">
+              Serves {serves}
+            </p>
+            {timeToPrep && (
+              <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-orange-700 rounded-lg hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800 col-start-3">
+                <GiExtraTime size={20} className="pr-1" /> {timeToPrep}
+              </div>
+            )}
+            <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-orange-700 rounded-lg hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800 col-start-4">
+              <GiSandsOfTime size={20} className="pr-1" /> {timeToCook}
+            </div>
           </div>
         </div>
       </div>
