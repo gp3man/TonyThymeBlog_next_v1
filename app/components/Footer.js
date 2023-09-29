@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { RiTwitterXLine, RiInstagramLine, RiTiktokLine } from "react-icons/ri";
 import logo from "@/public/logo.png"
-import Image from "next/image";
 import ContentfulImage from "./ContentfulImage";
 const Footer = () => {
   return (
