@@ -20,7 +20,6 @@
     @apply text-opacity-100 line-through;
     animation: check-animate 0.5s 1;
   }
-
 }
 body {
   color: rgb(var(--foreground-rgb));

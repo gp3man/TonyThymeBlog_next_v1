@@ -12,13 +12,10 @@ export default async function RecipePage({ params, preview = false }) {
     content_type: "recipe",
     "fields.slug": params.slug,
   });
-  console.log(params.slug);
   // if (!response?.items?.length) {
   //   redirect('/');
   // }
-
   const recipe = response?.items?.[0];
-  console.log(recipe.fields.procedure);
   const {
     banners,
     procedure,
@@ -28,7 +25,7 @@ export default async function RecipePage({ params, preview = false }) {
     title,
     timeToCook,
     authorsNotes,
-    timeToPrep
+    timeToPrep,
   } = recipe?.fields;
   return (
     <section className="flex min-h-screen m-4 pt-16 overflow-y-scroll scrollbar-hide justify-center">
@@ -80,10 +77,10 @@ export default async function RecipePage({ params, preview = false }) {
         <div className="bg-orange-900 px-6 mx-4 ">
           <div className="grid col-span-2 grid-flow-col">
             {timeToPrep && (
-            <div>
-              <h2 className="font-bold ">Prep-Time</h2>
-              <p className="text-gray-300 cursor-pointer">{timeToPrep} hrs</p>
-            </div>
+              <div>
+                <h2 className="font-bold ">Prep-Time</h2>
+                <p className="text-gray-300 cursor-pointer">{timeToPrep} hrs</p>
+              </div>
             )}
             <div>
               <h2 className="font-bold ">Cook-Time</h2>

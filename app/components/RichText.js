@@ -23,14 +23,14 @@ const options = {
     },
     [BLOCKS.OL_LIST]: (node, children) => {
       return (
-        <ol className="bg-stone-900 list-inside list-[decimal-leading-zero] m-2 p-2 rounded-lg hover:outline-orange-500 w-full md:w-60vw border-orange-500 border border-opacity-50  items-center align-middle">
+        <ol className="bg-stone-900 list-inside list-[decimal-leading-zero] m-2 p-2 rounded-lg hover:outline-orange-500 w-full md:w-60vw border-orange-500 border border-opacity-50 items-center align-middle">
           {children}
         </ol>
       );
     },
     [BLOCKS.LIST_ITEM]: (node, children) => {
       return (
-        <li className="items-center p-4 even:bg-stone-700 rounded-lg ml-6">
+        <li className="p-4 even:bg-stone-700 rounded-lg items-baseline">
           {children}
         </li>
       );
