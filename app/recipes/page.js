@@ -5,7 +5,6 @@ import Filter from "../components/FilterSection";
 import filterData from "@/lib/filterOptions";
 export default async function Recipes({ searchParams }) {
   const items = await getRecipes(searchParams);
-  filterData(items)
   return (
     <div className="min-h-screen m-4 pt-10 pb-14 overflow-y-scroll scrollbar-hide justify-center ">
       <header className="flex flex-col p-3 m-3 justify-center">

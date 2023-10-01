@@ -3,7 +3,6 @@
 import { useState } from "react";
 import DownCaret from "./DownCaret";
 import UpCaret from "./UpCaret";
-import { filterDietaryData, filterMealData, filterMethodData, filterProteinData } from "@/lib/getRecipes";
 
 const Filter = ({ selection }) => {
   const [meal, setMeal] = useState(false);
@@ -15,6 +14,54 @@ const Filter = ({ selection }) => {
   const [dietaryData, setDietaryData] = useState([]);
   const [methodData, setMethodData] = useState([]);
   const [proteinData, setProteinData] = useState([]);
+
+  const mealList = [
+    "Appetizers",
+    "Breakfast",
+    "Condiments",
+    "Desserts",
+    "Drinks & Smoothies",
+    "Lunch & Dinner",
+    "Salads & Sides",
+    "Snacks",
+    "Soups & Chilis",
+  ];
+
+  const dietaryList = [
+    "Dairy-Free",
+    "Egg-Free",
+    "Gluten-free",
+    "Grain-Free",
+    "Nut-free",
+    "Paleo",
+    "Vegan",
+    "Vegetarian",
+    "Whole30",
+  ];
+
+  const methodList = [
+    "Air Fryer",
+    "Blender",
+    "Grill",
+    "Instant Pot",
+    "Meal Prep Recipes",
+    "No-Bake",
+    "Oven",
+    "Slow Cooker",
+    "Smoker",
+    "Stovetop",
+  ];
+
+  const proteinList = [
+    "Beef",
+    "Chicken",
+    "Eggs",
+    "Fish & Seafood",
+    "Meatless",
+    "Pork",
+    "Turkey",
+  ];
+
   return (
     <div className="bg-stone-900 rounded-lg p-1 w-80%">
       Filter By:
@@ -36,7 +83,7 @@ const Filter = ({ selection }) => {
               className="z-10 w-80% md:w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
             >
               <ul className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200">
-                {filterMealData.map((field) => (
+                {mealList?.map((field) => (
                   <li>
                     <div className="flex items-center">
                       <input
@@ -75,7 +122,7 @@ const Filter = ({ selection }) => {
               className="z-10  w-80% md:w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
             >
               <ul className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200">
-                {filterDietaryData.map((field) => (
+                {dietaryList.map((field) => (
                   <li>
                     <div className="flex items-center">
                       <input
@@ -114,7 +161,7 @@ const Filter = ({ selection }) => {
               className="z-10  w-80% md:w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
             >
               <ul className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200">
-                {filterMethodData.map((field) => (
+                {methodList.map((field) => (
                   <li>
                     <div className="flex items-center">
                       <input
@@ -153,7 +200,7 @@ const Filter = ({ selection }) => {
               className="z-10  w-80% md:w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
             >
               <ul className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200">
-                {filterProteinData.map((field) => (
+                {proteinList.map((field) => (
                   <li>
                     <div className="flex items-center">
                       <input
