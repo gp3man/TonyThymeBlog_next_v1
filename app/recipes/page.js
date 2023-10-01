@@ -2,8 +2,14 @@ import SearchBar from "../components/SearchBar";
 import RecipeCard from "../components/RecipeCard";
 import { getRecipes } from "@/lib/getRecipes";
 import Filter from "../components/FilterSection";
-import filterData from "@/lib/filterOptions";
+import Link from "next/link";
+
 export default async function Recipes({ searchParams }) {
+  const page =
+    typeof searchParams?.page === "string" ? Number(searchParams.page) : 1;
+  const limit =
+    typeof searchParams?.limit === "string" ? Number(searchParams.limit) : 12;
+
   const items = await getRecipes(searchParams);
   return (
     <div className="min-h-screen m-4 pt-10 pb-14 overflow-y-scroll scrollbar-hide justify-center ">
@@ -11,12 +17,29 @@ export default async function Recipes({ searchParams }) {
         <p className="font-bold text-3xl text-center">Recipes</p>
         <div>
           <SearchBar />
-          <Filter selection={items}/>
+          <Filter selection={items} />
           {/* <Link></Link> */}
         </div>
       </header>
 
-      <section id="AllRecipes" className="flex justify-center">
+      <section id="AllRecipes" className="flex flex-col justify-center">
+      <div className="flex justify-center">
+          <Link
+            href={`/recipes?page=${page > 1 ? page - 1 : 1}`}
+            className={
+              ("rounded border bg-stone-500 px-3 py-1 text-sm text-stone-50" +
+              (page <= 1 && "pointer-events-none opacity-50"))
+            }
+          >
+            Prev
+          </Link>
+          <Link
+            href={`/recipes?page=${page + 1}`}
+            className="rounded border bg-stone-500 px-3 py-1 text-sm text-stone-50"
+          >
+            Next
+          </Link>
+        </div>
         {items ? (
           <div className="flex flex-wrap py-4 justify-center w-screen">
             {items?.map((recipe, i) => (
@@ -25,13 +48,30 @@ export default async function Recipes({ searchParams }) {
           </div>
         ) : (
           <div className="text-center text-4xl py-6 font-bold content-center h-1/2">
-            Come Back Soon!
+            Hmm...No recipes with these scopes.
             <br />
             <span className="font-normal text-lg text-gray-400">
-              No Recipes Posted Yet
+              Try Again!
             </span>
           </div>
         )}
+        <div className="flex justify-center">
+          <Link
+            href={`/recipes?page=${page > 1 ? page - 1 : 1}`}
+            className={
+              ("rounded border bg-stone-500 px-3 py-1 text-sm text-stone-50" +
+              (page <= 1 && "pointer-events-none opacity-50"))
+            }
+          >
+            Prev
+          </Link>
+          <Link
+            href={`/recipes?page=${page + 1}`}
+            className="rounded border bg-stone-500 px-3 py-1 text-sm text-stone-50"
+          >
+            Next
+          </Link>
+        </div>
       </section>
     </div>
   );

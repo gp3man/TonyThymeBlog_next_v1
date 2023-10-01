@@ -9,12 +9,6 @@ const Filter = ({ selection }) => {
   const [dietary, setDietary] = useState(false);
   const [method, setMethod] = useState(false);
   const [protein, setProtein] = useState(false);
-
-  const [mealData, setMealData] = useState([]);
-  const [dietaryData, setDietaryData] = useState([]);
-  const [methodData, setMethodData] = useState([]);
-  const [proteinData, setProteinData] = useState([]);
-
   const mealList = [
     "Appetizers",
     "Breakfast",
