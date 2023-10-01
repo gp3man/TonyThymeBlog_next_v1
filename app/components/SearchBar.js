@@ -11,11 +11,11 @@ const SearchBar = () => {
   const router = useRouter();
   const [name, setName] = useState("");
   useEffect(() => {
-    if (name.length) {
-      debouncedSearch(name);
-    }
-    if (name === "") {
+    if (!name) {
       router.push("/recipes");
+    }
+    else{
+      debouncedSearch(name);
     }
   }, [name, router]);
 

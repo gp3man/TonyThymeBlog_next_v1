@@ -9,8 +9,10 @@ export default async function Recipes({ searchParams }) {
     typeof searchParams?.page === "string" ? Number(searchParams.page) : 1;
   const limit =
     typeof searchParams?.limit === "string" ? Number(searchParams.limit) : 12;
+  const search =
+    typeof searchParams?.limit === "string" ? searchParams.search : undefined;
 
-  const items = await getRecipes(searchParams);
+  const items = await getRecipes({ page, limit, query: search });
   return (
     <div className="min-h-screen m-4 pt-10 pb-14 overflow-y-scroll scrollbar-hide justify-center ">
       <header className="flex flex-col p-3 m-3 justify-center">
@@ -23,12 +25,12 @@ export default async function Recipes({ searchParams }) {
       </header>
 
       <section id="AllRecipes" className="flex flex-col justify-center">
-      <div className="flex justify-center">
+        <div className="flex justify-center">
           <Link
             href={`/recipes?page=${page > 1 ? page - 1 : 1}`}
             className={
-              ("rounded border bg-stone-500 px-3 py-1 text-sm text-stone-50" +
-              (page <= 1 && "pointer-events-none opacity-50"))
+              "rounded border bg-stone-500 px-3 py-1 text-sm text-stone-50" +
+              (page <= 1 && "pointer-events-none opacity-50")
             }
           >
             Prev
@@ -59,8 +61,8 @@ export default async function Recipes({ searchParams }) {
           <Link
             href={`/recipes?page=${page > 1 ? page - 1 : 1}`}
             className={
-              ("rounded border bg-stone-500 px-3 py-1 text-sm text-stone-50" +
-              (page <= 1 && "pointer-events-none opacity-50"))
+              "rounded border bg-stone-500 px-3 py-1 text-sm text-stone-50" +
+              (page <= 1 && "pointer-events-none opacity-50")
             }
           >
             Prev
