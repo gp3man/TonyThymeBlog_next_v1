@@ -6,6 +6,7 @@ import RichText from "../../components/RichText";
 import Link from "next/link";
 import PhotoCard from "../../components/PhotoCard";
 import Checkbox from "@/app/components/CheckBox";
+
 export default async function RecipePage({ params, preview = false }) {
   const currentClient = preview ? previewClient : client;
   const response = await currentClient.getEntries({

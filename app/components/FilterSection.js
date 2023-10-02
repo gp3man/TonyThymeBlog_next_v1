@@ -4,7 +4,7 @@ import { useState } from "react";
 import DownCaret from "./DownCaret";
 import UpCaret from "./UpCaret";
 
-const Filter = ({ selection }) => {
+const Filter = () => {
   const [meal, setMeal] = useState(false);
   const [dietary, setDietary] = useState(false);
   const [method, setMethod] = useState(false);

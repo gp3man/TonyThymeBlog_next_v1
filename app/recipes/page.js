@@ -1,7 +1,6 @@
 import SearchBar from "../components/SearchBar";
 import RecipeCard from "../components/RecipeCard";
 import { getRecipes } from "@/lib/getRecipes";
-import Filter from "../components/FilterSection";
 import Link from "next/link";
 
 export default async function Recipes({ searchParams }) {
@@ -19,11 +18,8 @@ export default async function Recipes({ searchParams }) {
         <p className="font-bold text-3xl text-center">Recipes</p>
         <div>
           <SearchBar />
-          <Filter selection={items} />
-          {/* <Link></Link> */}
         </div>
       </header>
-
       <section id="AllRecipes" className="flex flex-col justify-center">
         <div className="flex justify-center">
           <Link
