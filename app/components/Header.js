@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TfiHome } from "react-icons/tfi";
+import { TfiHome, TfiInstagram } from "react-icons/tfi";
 import ContentfulImage from "./ContentfulImage";
 import logo from "@/public/logo.png";
 
@@ -15,7 +15,7 @@ const NavBar = () => {
           <p>{<TfiHome size={20} />}</p>
         </Link>
       </div>
-      <div className="absolute flex  pr-4 end-4">
+      <div className="absolute flex pr-4 end-4">
         <Link
           href={"/recipes"}
           className="border-orange-700 hover:text-orange-400 dark:border-orange-500 border-opacity-30 px-3 cursor-pointer sm:text-base active:font-bold"
@@ -27,6 +27,12 @@ const NavBar = () => {
           className="border-orange-700 hover:text-orange-400 dark:border-orange-500 border-opacity-30 px-3 cursor-pointer sm:text-base active:font-bold "
         >
           <p>About</p>
+        </Link>
+        <Link
+          href={"https://www.instagram.com/tony_thyme/"}
+          className="border-orange-700 hover:text-orange-400 dark:border-orange-500 border-opacity-30 px-3 cursor-pointer sm:text-base active:font-bold "
+        >
+          <p>{<TfiInstagram size={20} />}</p>
         </Link>
       </div>
     </nav>

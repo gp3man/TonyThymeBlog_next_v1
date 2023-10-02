@@ -31,12 +31,6 @@ const Hero = () => {
               />
             </svg>
           </Link>
-          <Link
-            href="/about"
-            className="inline-flex justify-center hover:text-stone-900 items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-stone-100 focus:ring-4 focus:ring-stone-400"
-          >
-            Tony Thyme?
-          </Link>
         </div>
       </div>
     </section>
