@@ -118,7 +118,7 @@ export default async function RecipePage({ params, preview = false }) {
             <h2 className="text-base md:text-2xl font-black text-stone-300 py-3">
               Directions
             </h2>
-            <hr className="opacity-50 border-orange-800 py-3" />
+            <hr className="opacity-50 border-orange-800 py-3"/>
             <RichText className="text-gray-300" content={procedure} />
           </div>
         </div>

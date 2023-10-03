@@ -2,6 +2,8 @@ import SearchBar from "../components/SearchBar";
 import RecipeCard from "../components/RecipeCard";
 import { getRecipes } from "@/lib/getRecipes";
 import Link from "next/link";
+import CatCircles from "../components/CatLinks";
+import { getCategories } from "@/lib/getRecipes";
 
 export default async function Recipes({ searchParams }) {
   const page =
@@ -10,34 +12,19 @@ export default async function Recipes({ searchParams }) {
     typeof searchParams?.limit === "string" ? Number(searchParams.limit) : 12;
   const search =
     typeof searchParams?.limit === "string" ? searchParams.search : undefined;
-
   const items = await getRecipes({ page, limit, query: search });
+  const categories = await getCategories({view: true})
+
   return (
     <div className="min-h-screen m-4 pt-10 pb-14 overflow-y-scroll scrollbar-hide justify-center ">
       <header className="flex flex-col p-3 m-3 justify-center">
         <p className="font-bold text-3xl text-center">Recipes</p>
         <div>
           <SearchBar />
+          <CatCircles categories={categories} />
         </div>
       </header>
       <section id="AllRecipes" className="flex flex-col justify-center">
-        <div className="flex justify-center">
-          <Link
-            href={`/recipes?page=${page > 1 ? page - 1 : 1}`}
-            className={
-              "rounded border bg-stone-500 px-3 py-1 text-sm text-stone-50" +
-              (page <= 1 && "pointer-events-none opacity-50")
-            }
-          >
-            Prev
-          </Link>
-          <Link
-            href={`/recipes?page=${page + 1}`}
-            className="rounded border bg-stone-500 px-3 py-1 text-sm text-stone-50"
-          >
-            Next
-          </Link>
-        </div>
         {items ? (
           <div className="flex flex-wrap py-4 justify-center w-screen">
             {items?.map((recipe, i) => (

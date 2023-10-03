@@ -3,7 +3,7 @@ import ContentfulImage from "./ContentfulImage";
 import { MdTimelapse } from "react-icons/md";
 
 const RecipeCard = ({ recipe }) => {
-  const { title, timeToCook, thumbnail, serves, slug, timeToPrep } =
+  const { title, timeToCook, thumbnail, serves, slug } =
     recipe?.fields;
   return (
     <Link
