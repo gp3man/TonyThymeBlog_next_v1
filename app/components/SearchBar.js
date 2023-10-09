@@ -22,7 +22,7 @@ const SearchBar = () => {
   const debouncedSearch = useCallback(
     debounce((lookUp) => {
       router.push(`/recipes?search=${name}`);
-    }, 500),
+    }, 800),
     [name, router]
   );
   return (
