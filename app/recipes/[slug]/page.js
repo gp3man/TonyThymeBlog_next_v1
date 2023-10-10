@@ -7,9 +7,9 @@ import Checkbox from "@/app/components/CheckBox";
 import Image from "next/image";
 // import { redirect } from "next/dist/server/api-utils";
 
-export default async function RecipePage({ params, preview = false }) {
-  const currentClient = preview ? previewClient : client;
-  const response = await currentClient.getEntries({
+export default async function RecipePage({params}) {
+  // const currentClient = preview ? previewClient : client;
+  const response = await client.getEntries({
     content_type: "recipe",
     "fields.slug": params.slug,
   });
@@ -30,12 +30,12 @@ export default async function RecipePage({ params, preview = false }) {
   } = recipe?.fields;
   return (
     <section className="flex min-h-screen m-4 pt-16 overflow-y-scroll scrollbar-hide justify-center">
-      {preview && (
+      {/* {preview && (
         <>
           You're in preview mode!!!
           <Link href="/api/exit-preview">Exit preview</Link>
         </>
-      )}
+      )} */}
       <RecipeDetail>
         <header>
           <h1 className="text-lg md:text-4xl font-black text-stone-50 py-1">

@@ -1,6 +1,6 @@
 import SearchBar from "../components/SearchBar";
 import RecipeCard from "../components/RecipeCard";
-import { getRecipes } from "@/lib/getRecipes";
+import { getRecipes, getRecipesG } from "@/lib/getRecipes";
 import Link from "next/link";
 import CatCircles from "../components/CatLinks";
 import { getCategories } from "@/lib/getRecipes";
@@ -13,22 +13,26 @@ export default async function Recipes({ searchParams }) {
   const search =
     typeof searchParams?.search === "string" ? searchParams.search : undefined;
   const items = await getRecipes({ page, limit, query: search });
-  const categories = await getCategories({ view: true });
+  // const cat = await getRecipesG({ page, limit, search });
+  const view = true
+  const categories = await getCategories({ view });
+  console.log(items)
   return (
     <div className="min-h-screen m-4 pt-10 pb-14 overflow-y-scroll scrollbar-hide justify-center ">
       <header className="flex flex-col p-3 m-3 justify-center">
         <p className="font-bold text-3xl text-center">Recipes</p>
         <div>
           <SearchBar />
-          <CatCircles categories={categories} />
+          {/* <CatCircles categories={categories} /> */}
         </div>
       </header>
       <section id="AllRecipes" className="flex flex-col justify-center">
         {items ? (
           <div className="flex flex-wrap py-4 justify-center w-screen">
-            {items?.map((recipe, i) => (
+            {/* {items?.map((recipe, i) => (
               <RecipeCard key={recipe?.fields.slug || i} recipe={recipe} />
-            ))}
+            ))} */}
+            hi
           </div>
         ) : (
           <div className="text-center text-4xl py-6 font-bold content-center h-1/2">
