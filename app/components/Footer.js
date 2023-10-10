@@ -1,16 +1,16 @@
 import Link from "next/link";
-import Image from "next/image";
 import logo from "@/public/logo.png";
+import LogoImage from "./LogoImage";
 const Footer = () => {
   return (
     <footer className="bg-white rounded-lg shadow dark:bg-stone-900 m-4">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <Link href="/recipes" className="flex items-center mb-4 sm:mb-0">
-            <Image
+            <LogoImage
               src={logo}
               className="w-32 self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-              alt="Logo"
+              alt="Tony Thyme"
             />
           </Link>
           <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-stone-500 sm:mb-0 dark:text-stone-400">
