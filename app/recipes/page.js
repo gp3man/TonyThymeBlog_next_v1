@@ -12,22 +12,23 @@ export default async function Recipes({ searchParams }) {
     typeof searchParams?.limit === "string" ? Number(searchParams.limit) : 12;
   const search =
     typeof searchParams?.search === "string" ? searchParams.search : undefined;
-  const items = await getRecipes({ page, limit, query: search });
-  // const cat = await getRecipesG({ page, limit, search });
+  // const items = await getRecipes({ page, limit, query: search });
+  const {recipeCollection, categoryCollection, searchedCollection} = await getRecipesG({ page, limit, search });
   const view = true
-  const categories = await getCategories({ view });
-  console.log(items)
+  const categories = categoryCollection?.items;
+  const recipes = searchedCollection ? searchedCollection?.items : recipeCollection?.items
   return (
+    // <div>Hi</div>
     <div className="min-h-screen m-4 pt-10 pb-14 overflow-y-scroll scrollbar-hide justify-center ">
       <header className="flex flex-col p-3 m-3 justify-center">
         <p className="font-bold text-3xl text-center">Recipes</p>
         <div>
           <SearchBar />
-          {/* <CatCircles categories={categories} /> */}
+          <CatCircles categories={categories} />
         </div>
       </header>
       <section id="AllRecipes" className="flex flex-col justify-center">
-        {items ? (
+        {recipes ? (
           <div className="flex flex-wrap py-4 justify-center w-screen">
             {/* {items?.map((recipe, i) => (
               <RecipeCard key={recipe?.fields.slug || i} recipe={recipe} />

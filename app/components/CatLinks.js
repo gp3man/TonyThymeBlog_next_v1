@@ -4,20 +4,20 @@ const CatCircles = ({ categories }) => {
   return (
     <div className="flex justify-evenly sm:-space-x-32 text-center my-2">
       {categories.map((cat, i) => (
-        <Link href={`/recipes/category/${cat?.fields?.slug}`}>
+        <Link href={`/recipes/category/${cat?.slug}`}>
           <div key={i}>
             <Image
-              alt={cat?.fields?.thumbnail?.fields?.title}
-              src={cat?.fields?.thumbnail?.fields?.file?.url}
+              alt={cat?.title}
+              src={cat?.thumbnail?.url}
               width={
-                cat?.fields?.thumbnail?.fields?.file?.details?.image?.width
+                cat?.thumbnail?.width
               }
               height={
-                cat?.fields?.thumbnail?.fields?.file?.details?.image?.height
+                cat?.thumbnail?.height
               }
               className="w-[30px] h-[30px] sm:w-[60px] sm:h-[60px] rounded-full"
             />
-            <p>{cat.fields.title}</p>
+            <p>{cat?.title}</p>
           </div>
         </Link>
       ))}
