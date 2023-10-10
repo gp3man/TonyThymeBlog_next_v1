@@ -1,5 +1,6 @@
 import Link from "next/link";
-import ContentfulImage from "./ContentfulImage";
+import Image from "next/image";
+// import ContentfulImage from "./ContentfulImage";
 import { MdTimelapse } from "react-icons/md";
 
 const RecipeCard = ({ recipe }) => {
@@ -12,7 +13,7 @@ const RecipeCard = ({ recipe }) => {
     >
       <div className="max-w-sm bg-white border border-stone-200 rounded-lg shadow dark:bg-stone-800 dark:border-stone-700">
         <div className="aspect-video">
-          <ContentfulImage
+          <Image
             src={thumbnail?.url}
             width={thumbnail?.width}
             height={thumbnail?.height}
