@@ -3,10 +3,6 @@ import { useState, useEffect } from "react";
 import { useCallback } from "react";
 import { debounce } from "lodash";
 import { useRouter } from "next/navigation";
-
-// import { useRecoilState } from "recoil";
-// import { SearchName } from "../atoms/searchAtom";
-
 const SearchBar = () => {
   const router = useRouter();
   const [name, setName] = useState("");

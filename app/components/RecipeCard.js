@@ -3,8 +3,7 @@ import ContentfulImage from "./ContentfulImage";
 import { MdTimelapse } from "react-icons/md";
 
 const RecipeCard = ({ recipe }) => {
-  const { title, timeToCook, thumbnail, serves, slug } =
-    recipe?.fields;
+  const { title, timeToCook, thumbnail, serves, slug } = recipe;
   return (
     <Link
       className="p-2 md:w-1/4 md:h-1/4"
@@ -14,9 +13,9 @@ const RecipeCard = ({ recipe }) => {
       <div className="max-w-sm bg-white border border-stone-200 rounded-lg shadow dark:bg-stone-800 dark:border-stone-700">
         <div className="aspect-video">
           <ContentfulImage
-            src={thumbnail?.fields?.file?.url}
-            width={thumbnail?.fields?.file?.details?.image?.width}
-            height={thumbnail?.fields?.file?.details?.image?.height}
+            src={thumbnail?.url}
+            width={thumbnail?.width}
+            height={thumbnail?.height}
             quality="100"
             alt={title}
             className="aspect-video"
