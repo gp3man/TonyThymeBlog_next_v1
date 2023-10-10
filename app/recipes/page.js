@@ -1,9 +1,8 @@
 import SearchBar from "../components/SearchBar";
 import RecipeCard from "../components/RecipeCard";
-import { getRecipes, getRecipesG } from "@/lib/getRecipes";
+import { getRecipes } from "@/lib/getRecipes";
 import Link from "next/link";
 import CatCircles from "../components/CatLinks";
-import { getCategories } from "@/lib/getRecipes";
 
 export default async function Recipes({ searchParams }) {
   const page =
@@ -12,13 +11,13 @@ export default async function Recipes({ searchParams }) {
     typeof searchParams?.limit === "string" ? Number(searchParams.limit) : 12;
   const search =
     typeof searchParams?.search === "string" ? searchParams.search : undefined;
-  // const items = await getRecipes({ page, limit, query: search });
-  const {recipeCollection, categoryCollection, searchedCollection} = await getRecipesG({ page, limit, search });
-  const view = true
+  const { recipeCollection, categoryCollection, searchedCollection } =
+    await getRecipes({ page, limit, search });
   const categories = categoryCollection?.items;
-  const recipes = searchedCollection ? searchedCollection?.items : recipeCollection?.items
+  const recipes = typeof searchParams?.search === "string"
+    ? searchedCollection?.items
+    : recipeCollection?.items;
   return (
-    // <div>Hi</div>
     <div className="min-h-screen m-4 pt-10 pb-14 overflow-y-scroll scrollbar-hide justify-center ">
       <header className="flex flex-col p-3 m-3 justify-center">
         <p className="font-bold text-3xl text-center">Recipes</p>
@@ -30,10 +29,9 @@ export default async function Recipes({ searchParams }) {
       <section id="AllRecipes" className="flex flex-col justify-center">
         {recipes ? (
           <div className="flex flex-wrap py-4 justify-center w-screen">
-            {/* {items?.map((recipe, i) => (
-              <RecipeCard key={recipe?.fields.slug || i} recipe={recipe} />
-            ))} */}
-            hi
+            {recipes?.map((recipe, i) => (
+              <RecipeCard key={recipe?.slug || i} recipe={recipe} />
+            ))}
           </div>
         ) : (
           <div className="text-center text-4xl py-6 font-bold content-center h-1/2">
