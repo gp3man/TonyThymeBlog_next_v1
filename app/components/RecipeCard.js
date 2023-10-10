@@ -18,7 +18,7 @@ const RecipeCard = ({ recipe }) => {
             height={thumbnail?.height}
             quality="100"
             alt={title}
-            className="aspect-video"
+            className="aspect-video rounded-lg"
           />
         </div>
         <div className="p-5">

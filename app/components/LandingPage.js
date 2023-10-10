@@ -3,21 +3,20 @@ import Hero from "./Hero";
 import RecipeCard from "./RecipeCard";
 import Announcement from "./AnnouncementCard";
 import Link from "next/link";
-import { data } from "autoprefixer";
 
 const LandingPage = ({ data }) => {
-  const {recipeCollection} = data
+  const {recipeCollection, landingPageContentCollection} = data
   // const announcement = announcementCollection?.items;
   const recipes = recipeCollection?.items;
-  // const content = landingPageContentCollection?.items;
-  console.log("++++ " + data);
+  const content = landingPageContentCollection?.items[0];
+  console.log(data);
   return (
     <>
       {/* {announcement &&(
         <Announcement data={announcement} />
         )} */}
       <div className="flex-grow min-h-screen m-4 pt-10 pb-10 overflow-y-scroll scrollbar-hide">
-        <Hero />
+        <Hero content={content}/>
         <div id="hotRecipes" className="flex justify-center">
           {recipes ? (
             <div className="flex flex-wrap py-4 justify-center">
