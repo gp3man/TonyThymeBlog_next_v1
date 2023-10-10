@@ -12,8 +12,8 @@ export default async function Recipes({ searchParams }) {
     typeof searchParams?.limit === "string" ? Number(searchParams.limit) : 12;
   const search =
     typeof searchParams?.search === "string" ? searchParams.search : undefined;
-  const items = await getRecipes({ page, limit, query: search});
-  const categories = await getCategories({view:true})
+  const items = await getRecipes({ page, limit, query: search });
+  const categories = await getCategories({ view: true });
   return (
     <div className="min-h-screen m-4 pt-10 pb-14 overflow-y-scroll scrollbar-hide justify-center ">
       <header className="flex flex-col p-3 m-3 justify-center">

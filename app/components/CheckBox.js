@@ -27,7 +27,9 @@ const Checkbox = ({ text, id }) => {
       {isChecked && (
         <FaCheckCircle className="text-green-500 h-4 w-4 absolute bottom-4 left-4 text-opacity-100 check-custom transition" />
       )}
-      <span className="pl-3 peer-checked:line-through peer-checked:text-green-500">{text}</span>
+      <span className="pl-3 peer-checked:line-through peer-checked:text-green-500">
+        {text}
+      </span>
     </label>
   );
 };

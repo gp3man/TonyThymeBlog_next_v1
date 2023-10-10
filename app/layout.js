@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className + "overflow-y-scroll scrollbar-hide"}>
         <Header />
-          <RecoilProvider>{children}</RecoilProvider>
+        <RecoilProvider>{children}</RecoilProvider>
         <Footer />
       </body>
     </html>

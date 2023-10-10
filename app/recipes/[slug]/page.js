@@ -1,11 +1,11 @@
 import { client, previewClient } from "@/lib/contentful.js";
-// import { redirect } from "next/dist/server/api-utils";
-import ContentfulImage from "../../components/ContentfulImage";
 import RecipeDetail from "../../components/RecipeDetail";
 import RichText from "../../components/RichText";
 import Link from "next/link";
 import PhotoCard from "../../components/PhotoCard";
 import Checkbox from "@/app/components/CheckBox";
+import Image from "next/image";
+// import { redirect } from "next/dist/server/api-utils";
 
 export default async function RecipePage({ params, preview = false }) {
   const currentClient = preview ? previewClient : client;
@@ -48,7 +48,7 @@ export default async function RecipePage({ params, preview = false }) {
             </p>
             {recipeBy?.fields?.image && (
               <div className="flex justify-center pb-4">
-                <ContentfulImage
+                <Image
                   alt={recipeBy?.fields?.image?.fields?.title}
                   src={recipeBy?.fields?.image?.fields?.file?.url}
                   width={
@@ -118,7 +118,7 @@ export default async function RecipePage({ params, preview = false }) {
             <h2 className="text-base md:text-2xl font-black text-stone-300 py-3">
               Directions
             </h2>
-            <hr className="opacity-50 border-orange-800 py-3"/>
+            <hr className="opacity-50 border-orange-800 py-3" />
             <RichText className="text-gray-300" content={procedure} />
           </div>
         </div>

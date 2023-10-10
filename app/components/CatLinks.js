@@ -1,12 +1,12 @@
 import Link from "next/link";
-import ContentfulImage from "./ContentfulImage";
+import Image from "next/image";
 const CatCircles = ({ categories }) => {
   return (
     <div className="flex justify-evenly sm:-space-x-32 text-center my-2">
       {categories.map((cat, i) => (
         <Link href={`/recipes/category/${cat?.fields?.slug}`}>
           <div key={i}>
-            <ContentfulImage
+            <Image
               alt={cat?.fields?.thumbnail?.fields?.title}
               src={cat?.fields?.thumbnail?.fields?.file?.url}
               width={

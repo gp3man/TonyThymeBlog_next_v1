@@ -1,14 +1,13 @@
 import Link from "next/link";
-import { RiTwitterXLine, RiInstagramLine, RiTiktokLine } from "react-icons/ri";
-import logo from "@/public/logo.png"
-import ContentfulImage from "./ContentfulImage";
+import Image from "next/image";
+import logo from "@/public/logo.png";
 const Footer = () => {
   return (
     <footer className="bg-white rounded-lg shadow dark:bg-stone-900 m-4">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <Link href="/recipes" className="flex items-center mb-4 sm:mb-0">
-            <ContentfulImage
+            <Image
               src={logo}
               className="w-32 self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
               alt="Logo"

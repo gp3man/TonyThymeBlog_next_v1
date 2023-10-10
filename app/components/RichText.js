@@ -1,7 +1,7 @@
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Link from "next/link";
-import ContentfulImage from "./ContentfulImage";
+import Image from "next/image";
 
 const options = {
   renderNode: {
@@ -77,7 +77,7 @@ const options = {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       return (
         <div className="flex justify-center bg-stone-900 border border-orange-500 border-opacity-50 rounded-lg ">
-          <ContentfulImage
+          <Image
             src={node.data.target.fields.file.url}
             height={node.data.target.fields.file.details.image.height}
             width={node.data.target.fields.file.details.image.width}

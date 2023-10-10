@@ -9,8 +9,7 @@ const SearchBar = () => {
   useEffect(() => {
     if (!name) {
       router.push("/recipes");
-    }
-    else{
+    } else {
       debouncedSearch(name);
     }
   }, [name, router]);

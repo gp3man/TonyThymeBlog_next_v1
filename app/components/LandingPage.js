@@ -5,18 +5,19 @@ import Announcement from "./AnnouncementCard";
 import Link from "next/link";
 
 const LandingPage = ({ data }) => {
-  const {recipeCollection, landingPageContentCollection} = data
-  // const announcement = announcementCollection?.items;
+  const {
+    recipeCollection,
+    landingPageContentCollection,
+    announcementCollection,
+  } = data;
+  const announcement = announcementCollection?.items[0];
   const recipes = recipeCollection?.items;
   const content = landingPageContentCollection?.items[0];
-  console.log(data);
   return (
     <>
-      {/* {announcement &&(
-        <Announcement data={announcement} />
-        )} */}
+      {announcement && <Announcement data={announcement} />}
       <div className="flex-grow min-h-screen m-4 pt-10 pb-10 overflow-y-scroll scrollbar-hide">
-        <Hero content={content}/>
+        <Hero content={content} />
         <div id="hotRecipes" className="flex justify-center">
           {recipes ? (
             <div className="flex flex-wrap py-4 justify-center">
