@@ -4,12 +4,12 @@ import LogoImage from "./LogoImage";
 const Footer = () => {
   return (
     <>
-      <footer className="footer items-center p-4 bg-neutral text-neutral-content">
+      <footer className="footer items-center p-4 bg-base-300 text-base-content">
         <aside className="items-center grid-flow-col">
           <Link href="/recipes" className="flex items-center mb-4 sm:mb-0">
             <LogoImage
               src={logo}
-              className="w-32 self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+              className="w-32 self-center text-2xl font-semibold whitespace-nowrap"
               alt="Tony Thyme"
             />
           </Link>

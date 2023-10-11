@@ -4,7 +4,7 @@ import LogoImage from "./LogoImage";
 import logo from "@/public/logo.png";
 const NavBar = () => {
   return (
-    <nav className="fixed navbar bg-base-100 text-accent rounded-b-lg">
+    <nav className="fixed top-0 navbar bg-base-300 text-base-content rounded-b-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -25,7 +25,7 @@ const NavBar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-300 rounded-box w-52"
           >
             <li>
               <Link
