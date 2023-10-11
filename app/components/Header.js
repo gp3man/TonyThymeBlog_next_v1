@@ -4,34 +4,91 @@ import LogoImage from "./LogoImage";
 import logo from "@/public/logo.png";
 const NavBar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 h-[55px] w-screen p-4 z-40 flex flex-row opacity-90 dark:opacity-80 bg-white rounded-b-xl dark:bg-stone-900 text-stone-300  dark:text-stone-100 shadow">
-      <div className="flex ml-1 top-0">
-        <LogoImage src={logo} className="w-32 mx-3" alt="Tony Thyme" />
-        <Link
-          href={"/"}
-          className="border-orange-700 hover:text-orange-400 dark:border-orange-500 border-opacity-10 px-3 cursor-pointer sm:text-base border-l-2 active:text-xl"
-        >
-          <p>{<TfiHome size={20} />}</p>
+    <nav className="fixed navbar bg-base-100 text-accent rounded-b-lg">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <Link
+                href={"/recipes"}
+                className="px-3 cursor-pointer active:font-bold"
+              >
+                <p>Recipes</p>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={"/about"}
+                className="px-3 cursor-pointer active:font-bold "
+              >
+                <p>About</p>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={"https://www.instagram.com/tony_thyme/"}
+                className="px-3 cursor-pointer sm:text-base active:font-bold "
+              >
+                <p>{<TfiInstagram size={20} />}</p>
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <Link className="btn btn-ghost normal-case text-xl" href={"/"}>
+          <LogoImage src={logo} className="w-32 mx-3" alt="Tony Thyme" />
         </Link>
       </div>
-      <div className="absolute flex pr-4 end-4">
-        <Link
-          href={"/recipes"}
-          className="border-orange-700 hover:text-orange-400 dark:border-orange-500 border-opacity-30 px-3 cursor-pointer sm:text-base active:font-bold"
-        >
-          <p>Recipes</p>
-        </Link>
-        <Link
-          href={"/about"}
-          className="border-orange-700 hover:text-orange-400 dark:border-orange-500 border-opacity-30 px-3 cursor-pointer sm:text-base active:font-bold "
-        >
-          <p>About</p>
-        </Link>
-        <Link
-          href={"https://www.instagram.com/tony_thyme/"}
-          className="border-orange-700 hover:text-orange-400 dark:border-orange-500 border-opacity-30 px-3 cursor-pointer sm:text-base active:font-bold "
-        >
-          <p>{<TfiInstagram size={20} />}</p>
+
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <Link
+              href={"/recipes"}
+              className="px-3 cursor-pointer active:font-bold"
+            >
+              <p>Recipes</p>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={"/about"}
+              className="cursor-pointer active:font-bold "
+            >
+              <p>About</p>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={"https://www.instagram.com/tony_thyme/"}
+              className="cursor-pointer active:font-bold "
+            >
+              <p>{<TfiInstagram size={20} />}</p>
+            </Link>
+          </li>
+        </ul>
+      </div>
+      <div className="navbar-end mr-7">
+        <Link href={"/"} className="cursor-pointer sm:text-base">
+          <p>{<TfiHome size={20} />}</p>
         </Link>
       </div>
     </nav>

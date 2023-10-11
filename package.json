@@ -25,5 +25,8 @@
     "spotify-web-api-node": "^5.0.2",
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss": "3.3.3"
+  },
+  "devDependencies": {
+    "daisyui": "^3.9.2"
   }
 }

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -15,7 +16,11 @@ module.exports = {
       },
     },
   },
+  daisyui: {
+    themes: ["cupcake"],
+  },
   plugins: [
     require('tailwind-scrollbar-hide'),
+    require("daisyui"),
   ],
 }

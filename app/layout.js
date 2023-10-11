@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className + "overflow-y-scroll scrollbar-hide"}>
+      <body className={inter.className + "overflow-y-scroll scrollbar-hide text-base-100"}>
         <Header />
         <RecoilProvider>{children}</RecoilProvider>
         <Footer />
