@@ -1,6 +1,7 @@
 import { client, previewClient } from "@/lib/contentful.js";
 import RecipeDetail from "../../components/RecipeDetail";
 import RichText from "../../components/RichText";
+import LogoImage from "@/app/components/LogoImage";
 import Link from "next/link";
 import PhotoCard from "../../components/PhotoCard";
 import Checkbox from "@/app/components/CheckBox";
@@ -38,17 +39,17 @@ export default async function RecipePage({params}) {
       )} */}
       <RecipeDetail>
         <header>
-          <h1 className="text-lg md:text-4xl font-black text-stone-50 py-1">
+          <h1 className="text-lg md:text-4xl font-black text-base-content py-1">
             {title}
           </h1>
           <div className="flex flex-col justify-center content-center">
-            <p className="text-sm font-thin text-gray-400 ">
+            <p className="text-sm font-thin">
               By:
               <span className=""> {recipeBy?.fields?.name}</span>
             </p>
             {recipeBy?.fields?.image && (
               <div className="flex justify-center pb-4">
-                <Image
+                <LogoImage
                   alt={recipeBy?.fields?.image?.fields?.title}
                   src={recipeBy?.fields?.image?.fields?.file?.url}
                   width={
@@ -66,33 +67,33 @@ export default async function RecipePage({params}) {
           {/* Notes */}
         </header>
         <div className="py-2 m-2 text-left">
-          <h2 className="text-base md:text-2xl font-black text-stone-300 py-3">
+          <h2 className="text-base md:text-2xl font-black py-3">
             Author Notes
           </h2>
-          <hr className="opacity-50 border-orange-800 py-3" />
+          <hr className="opacity-50 border-primary py-3" />
           <p className="pb-1 text-gray-300">{authorsNotes}</p>
         </div>
         {/* Photo */}
         <PhotoCard photos={banners} />
         {/* DishTimes */}
-        <div className="bg-orange-900 px-6 mx-4 ">
+        <div className="bg-primary px-6 mx-4 ">
           <div className="grid col-span-2 grid-flow-col">
             {timeToPrep && (
               <div>
                 <h2 className="font-bold ">Prep-Time</h2>
-                <p className="text-gray-300 cursor-pointer">{timeToPrep} hrs</p>
+                <p className="text-primary-content cursor-pointer">{timeToPrep} hrs</p>
               </div>
             )}
             <div>
               <h2 className="font-bold ">Cook-Time</h2>
-              <p className="text-gray-300 cursor-pointer">{timeToCook} mins</p>
+              <p className="text-primary-content cursor-pointer">{timeToCook} mins</p>
             </div>
           </div>
 
           <div>
             <hr className="opacity-5" />
             <h2 className="font-bold ">Serves</h2>
-            <p className="text-gray-300 cursor-pointer">{serves}</p>
+            <p className="text-primary-content cursor-pointer">{serves}</p>
           </div>
         </div>
         {/* Method Block */}
@@ -101,11 +102,11 @@ export default async function RecipePage({params}) {
             <span className="text-base md:text-2xl font-black text-stone-300 py-3">
               Ingredients
             </span>
-            <hr className="opacity-50 border-orange-800 py-3" />
+            <hr className="opacity-50 border-primary py-3" />
             <ul className="grid-cols-1 md:grid-cols-2 grid-flow-row grid">
               {ingredients.map((ingredient, i) => (
                 <li
-                  className="py-1 text-gray-300 accent-orange-500"
+                  className="py-1  accent-accent"
                   key={ingredient + i}
                 >
                   {/* <input type="checkbox" /> */}
@@ -118,7 +119,7 @@ export default async function RecipePage({params}) {
             <h2 className="text-base md:text-2xl font-black text-stone-300 py-3">
               Directions
             </h2>
-            <hr className="opacity-50 border-orange-800 py-3" />
+            <hr className="opacity-50 border-primary py-3" />
             <RichText className="text-gray-300" content={procedure} />
           </div>
         </div>

@@ -7,7 +7,7 @@ const options = {
   renderNode: {
     [BLOCKS.QUOTE]: (node, children) => {
       return (
-        <blockquote className="text-xl italic font-semibold text-gray-900 dark:text-white">
+        <blockquote className="text-xl italic font-semibold text-base-content">
           <svg
             className="w-8 h-8 text-gray-400 dark:text-gray-600 mb-4"
             aria-hidden="true"
@@ -23,33 +23,33 @@ const options = {
     },
     [BLOCKS.OL_LIST]: (node, children) => {
       return (
-        <ol className="bg-stone-900 list-inside list-[decimal-leading-zero] m-2 p-2 rounded-lg hover:outline-orange-500 w-full md:w-60vw border-orange-500 border border-opacity-50 items-center align-middle">
+        <ol className="bg-base-300 text-base-content list-inside list-[decimal-leading-zero] m-2 p-2 rounded-lg hover:outline-accent- w-full md:w-60vw border-primary border border-opacity-50 items-center align-middle">
           {children}
         </ol>
       );
     },
     [BLOCKS.LIST_ITEM]: (node, children) => {
       return (
-        <li className="p-4 even:bg-stone-700 rounded-lg items-baseline">
+        <li className="p-4 even:bg-secondary even:text-secondary-content rounded-lg items-baseline">
           {children}
         </li>
       );
     },
     [BLOCKS.PARAGRAPH]: (node, children) => {
-      return <p className="text-base text-stone-400">{children}</p>;
+      return <p className="text-base ">{children}</p>;
     },
     [BLOCKS.HEADING_1]: (node, children) => {
-      return <h1 className="text-3xl font-black text-stone-50">{children}</h1>;
+      return <h1 className="text-3xl font-black">{children}</h1>;
     },
     [BLOCKS.HEADING_2]: (node, children) => {
-      return <h1 className="text-2xl font-bold text-stone-200">{children}</h1>;
+      return <h2 className="text-2xl font-bold">{children}</h2>;
     },
     [BLOCKS.HEADING_3]: (node, children) => {
-      return <h1 className="text-lg font-medium text-stone-300">{children}</h1>;
+      return <h3 className="text-lg font-medium">{children}</h3>;
     },
     [BLOCKS.HR]: (node, children) => {
       return (
-        <hr className="py-4 my-20 mx-60 text-lg font-medium border-stone-500" />
+        <hr className="py-4 my-20 mx-60 text-lg font-medium border-primary" />
       );
     },
 
@@ -57,7 +57,7 @@ const options = {
       if (node.data.target.sys.contentType.sys.id === "recipe") {
         return (
           <Link
-            className="text-orange-400 hover:text-orange-600"
+            className="text-accent hover:text-accent-focus"
             href={`/recipes/${node.data.target.fields.slug}`}
           >
             {node.data.target.fields.title}

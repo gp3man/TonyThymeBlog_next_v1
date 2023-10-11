@@ -4,7 +4,7 @@ import LogoImage from "./LogoImage";
 import logo from "@/public/logo.png";
 const NavBar = () => {
   return (
-    <nav className="fixed top-0 navbar bg-base-300 text-base-content rounded-b-lg">
+    <nav className="fixed top-0 z-20 navbar bg-base-300 text-base-content rounded-b-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
