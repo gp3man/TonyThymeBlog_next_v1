@@ -70,8 +70,8 @@ export default async function RecipePage({params}) {
           <h2 className="text-base md:text-2xl font-black py-3">
             Author Notes
           </h2>
-          <hr className="opacity-50 border-primary py-3" />
-          <p className="pb-1 text-gray-300">{authorsNotes}</p>
+          <hr className="opacity-50 border-accent py-3" />
+          <p className="pb-1">{authorsNotes}</p>
         </div>
         {/* Photo */}
         <PhotoCard photos={banners} />
@@ -89,9 +89,8 @@ export default async function RecipePage({params}) {
               <p className="text-primary-content cursor-pointer">{timeToCook} mins</p>
             </div>
           </div>
-
+            <hr className="opacity-50 border-accent" />
           <div>
-            <hr className="opacity-5" />
             <h2 className="font-bold ">Serves</h2>
             <p className="text-primary-content cursor-pointer">{serves}</p>
           </div>
@@ -99,14 +98,14 @@ export default async function RecipePage({params}) {
         {/* Method Block */}
         <div className="text-left m-4">
           <div className="flex flex-col py-3 ">
-            <span className="text-base md:text-2xl font-black text-stone-300 py-3">
+            <span className="text-base md:text-2xl font-black py-3">
               Ingredients
             </span>
-            <hr className="opacity-50 border-primary py-3" />
+            <hr className="opacity-50 border-accent py-3" />
             <ul className="grid-cols-1 md:grid-cols-2 grid-flow-row grid">
               {ingredients.map((ingredient, i) => (
                 <li
-                  className="py-1  accent-accent"
+                  className="py-1 accent-accent"
                   key={ingredient + i}
                 >
                   {/* <input type="checkbox" /> */}
@@ -116,10 +115,10 @@ export default async function RecipePage({params}) {
             </ul>
           </div>
           <div className="py-3">
-            <h2 className="text-base md:text-2xl font-black text-stone-300 py-3">
+            <h2 className="text-base md:text-2xl font-black py-3">
               Directions
             </h2>
-            <hr className="opacity-50 border-primary py-3" />
+            <hr className="opacity-50 border-accent py-3" />
             <RichText className="text-gray-300" content={procedure} />
           </div>
         </div>

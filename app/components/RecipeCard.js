@@ -10,8 +10,8 @@ const RecipeCard = ({ recipe }) => {
       href={`/recipes/${slug}`}
       aria-label={title}
     >
-      <div className="max-w-sm bg-primary border border-accent rounded-lg shadow">
-        <div className="aspect-video">
+      <div className="max-w-sm bg-secondary border border-accent rounded-lg shadow">
+        <div className="aspect-square">
           <Image
             src={thumbnail?.url}
             width={thumbnail?.width}

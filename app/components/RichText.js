@@ -23,7 +23,7 @@ const options = {
     },
     [BLOCKS.OL_LIST]: (node, children) => {
       return (
-        <ol className="bg-base-300 text-base-content list-inside list-[decimal-leading-zero] m-2 p-2 rounded-lg hover:outline-accent- w-full md:w-60vw border-primary border border-opacity-50 items-center align-middle">
+        <ol className="bg-base-300 text-base-content list-inside list-[decimal-leading-zero] m-2 p-2 rounded-lg hover:outline-accent- w-full md:w-60vw border-accent border border-opacity-50 items-center align-middle stepList">
           {children}
         </ol>
       );
@@ -49,7 +49,7 @@ const options = {
     },
     [BLOCKS.HR]: (node, children) => {
       return (
-        <hr className="py-4 my-20 mx-60 text-lg font-medium border-primary" />
+        <hr className="py-4 my-20 mx-60 text-lg font-medium border-accent" />
       );
     },
 
