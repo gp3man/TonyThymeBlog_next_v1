@@ -69,10 +69,7 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
-            <Link
-              href={"/about"}
-              className="cursor-pointer active:font-bold "
-            >
+            <Link href={"/about"} className="cursor-pointer active:font-bold ">
               <p>About</p>
             </Link>
           </li>
@@ -86,9 +83,14 @@ const NavBar = () => {
           </li>
         </ul>
       </div>
-      <div className="navbar-end mr-7">
+      <div className="navbar-end mr-7 space-x-3">
         <Link href={"/"} className="cursor-pointer sm:text-base">
           <p>{<TfiHome size={20} />}</p>
+        </Link>
+        <Link href={"/login"} className="avatar">
+          <div className="w-6 md:w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <img src="/public/emptyProfile.jpg" />
+          </div>
         </Link>
       </div>
     </nav>
