@@ -38,10 +38,10 @@ const NavBar = ({session}) => {
             </li>
             <li>
               <Link
-                href={"/about"}
+                href={"/categories"}
                 className="px-3 cursor-pointer active:font-bold "
               >
-                <p>About</p>
+                <p>Categories</p>
               </Link>
             </li>
             <li>
@@ -70,8 +70,8 @@ const NavBar = ({session}) => {
             </Link>
           </li>
           <li>
-            <Link href={"/about"} className="cursor-pointer active:font-bold ">
-              <p>About</p>
+            <Link href={"/categories"} className="cursor-pointer active:font-bold ">
+              <p>Categories</p>
             </Link>
           </li>
           <li>
