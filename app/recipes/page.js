@@ -27,7 +27,7 @@ export default async function Recipes({ searchParams }) {
         </div>
       </header>
       <section id="AllRecipes" className="flex flex-col justify-center">
-        {recipes ? (
+        {recipes.length ? (
           <div className="flex flex-wrap py-4 justify-center w-screen">
             {recipes?.map((recipe, i) => (
               <RecipeCard key={recipe?.slug || i} recipe={recipe} />
@@ -35,18 +35,18 @@ export default async function Recipes({ searchParams }) {
           </div>
         ) : (
           <div className="text-center text-4xl py-6 font-bold content-center h-1/2">
-            Hmm...No recipes with these scopes.
+            Hmm... No recipes with this search.
             <br />
             <span className="font-normal text-lg text-gray-400">
               Try Again!
             </span>
           </div>
         )}
-        <div className="flex justify-center">
+        <div className="flex justify-center space-x-4">
           <Link
             href={`/recipes?page=${page > 1 ? page - 1 : 1}`}
             className={
-              "rounded border bg-stone-500 px-3 py-1 text-sm text-stone-50" +
+              "rounded border bg-secondary px-3 py-1 text-sm text-secondary-content" +
               (page <= 1 && "pointer-events-none opacity-50")
             }
           >
@@ -54,7 +54,7 @@ export default async function Recipes({ searchParams }) {
           </Link>
           <Link
             href={`/recipes?page=${page + 1}`}
-            className="rounded border bg-stone-500 px-3 py-1 text-sm text-stone-50"
+            className={"rounded border bg-secondary px-3 py-1 text-sm text-secondary-content" + (!recipes.length && "pointer-events-none opacity-50")}
           >
             Next
           </Link>
