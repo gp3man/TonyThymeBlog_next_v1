@@ -34,8 +34,11 @@ export async function POST(req) {
         password: hashedPW
       },
     });
-    return NextResponse.json({user: newUser, message: "User created successfully!"}, {status: 201});
+    const {password: newUserPW, ...rest } = newUser;
+
+    return NextResponse.json({user: rest, message: "User created successfully!"}, {status: 201});
   } catch (error) {
-    return NextResponse.json({user: null, message: error.stack}, {status: error.status});
+    console.log(error)
+    return NextResponse.json({message: "Something Wrong!"}, {status: 505});
   }
 }
