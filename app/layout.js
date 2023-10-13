@@ -6,7 +6,6 @@ import RecoilProvider from "./providers/recoilProvider";
 import NextAuthSessionProvider from "./providers/sessionProvider.js";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/options";
-import supabase from "@/lib/supabase";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
