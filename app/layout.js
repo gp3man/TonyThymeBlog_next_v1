@@ -6,6 +6,7 @@ import RecoilProvider from "./providers/recoilProvider";
 import NextAuthSessionProvider from "./providers/sessionProvider.js";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/options";
+import supabase from "@/lib/supabase";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -14,8 +15,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const session = await getServerSession(authOptions)
-  console.log(session)
+  const session = await getServerSession(authOptions);
   return (
     <html lang="en">
       <body
