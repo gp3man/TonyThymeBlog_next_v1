@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import RecoilProvider from "./providers/recoilProvider";
 import NextAuthSessionProvider from "./providers/sessionProvider.js";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/options";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -11,7 +13,9 @@ export const metadata = {
   description: "Recipe Blog",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await getServerSession(authOptions)
+  console.log(session)
   return (
     <html lang="en">
       <body
@@ -22,7 +26,7 @@ export default function RootLayout({ children }) {
       >
         <NextAuthSessionProvider>
           <RecoilProvider>
-            <Header />
+            <Header session={session} />
             {children}
             <Footer />
           </RecoilProvider>

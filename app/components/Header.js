@@ -2,7 +2,8 @@ import Link from "next/link";
 import { TfiHome, TfiInstagram } from "react-icons/tfi";
 import LogoImage from "./LogoImage";
 import logo from "@/public/logo.png";
-const NavBar = () => {
+import ProfileMenu from "./ProfileMenu";
+const NavBar = ({session}) => {
   return (
     <nav className="fixed top-0 z-20 navbar bg-base-300 text-base-content rounded-b-lg">
       <div className="navbar-start">
@@ -87,11 +88,7 @@ const NavBar = () => {
         <Link href={"/"} className="cursor-pointer sm:text-base">
           <p>{<TfiHome size={20} />}</p>
         </Link>
-        <Link href={"/login"} className="avatar">
-          <div className="w-6 md:w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src="/public/emptyProfile.jpg" />
-          </div>
-        </Link>
+        <ProfileMenu session={session} />
       </div>
     </nav>
   );
