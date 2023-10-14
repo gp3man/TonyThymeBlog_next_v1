@@ -1,12 +1,13 @@
 // "use client"
 
 import SignIn from "../../components/form/SignIn";
-
-const page = () => {
+import {getProviders} from "next-auth/react"
+const page = async() => {
+  const providers = await getProviders()
 
   return (
     <div className="w-full h-full">
-      <SignIn />
+      <SignIn providers={providers}/>
     </div>
   );
 };

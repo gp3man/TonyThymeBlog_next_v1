@@ -1,10 +1,10 @@
-import getProviders from "next-auth/react"
-const AuthLayout = async({children}) => {
-  const providers = await getProviders()
+const AuthLayout = async ({ children }) => {
 
-  return ( <section className="my-14 py-3 flex flex-col align-center w-full h-screen">
-    {children, providers}
-  </section> );
-}
+  return (
+    <section className="my-14 py-3 flex flex-col align-center w-full h-screen">
+      {children}
+    </section>
+  );
+};
 
 export default AuthLayout;

@@ -15,9 +15,6 @@ export const authOptions = {
   },
   providers: [
     GoogleProvider({
-      profile(profile) {
-        console.log(profile);
-      },
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
@@ -40,7 +37,7 @@ export const authOptions = {
           return null;
         }
         const existingUser = await db.user.findUnique({
-          where: { email: `${credentials?.email}` },
+          where: { email: credentials?.email },
         });
         if (!existingUser) {
           console.log("bug");
@@ -54,9 +51,10 @@ export const authOptions = {
           if (!passwordMatch) {
             return null;
           }
+          console.log("got creds +++++++++++++++++++++++++++++++++",credentials)
         }
         return {
-          id: existingUser?.id,
+          id: `${existingUser?.id}`,
           username: existingUser?.username,
           email: existingUser?.email,
         };

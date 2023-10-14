@@ -4,7 +4,6 @@ import { authOptions } from "../api/auth/[...nextauth]/options";
 const ProfileMenu = async () => {
   const session = await getServerSession(authOptions);
   const user = session?.user;
-  console.log("nav session", session);
   return (
     <>
       {user ? (
@@ -26,7 +25,7 @@ const ProfileMenu = async () => {
             className="dropdown-content z-[1] menu p-2 shadow bg-base-300 rounded-box w-52"
           >
             <li>
-              <a>{"Signed In As: " + user?.username}</a>
+              <a>Signed In As: {user?.username || user?.name}</a>
             </li>
             <li>
               <Link href={"/api/auth/signout"}>Log Out</Link>

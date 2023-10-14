@@ -1,9 +1,11 @@
 import SignUp from "../../components/form/SignUp";
+import {getProviders} from "next-auth/react"
+const page = async() => {
+  const providers = await getProviders()
 
-const page = () => {
   return (
     <div className="w-full h-full">
-      <SignUp />
+      <SignUp providers={providers} />
     </div>
   );
 };

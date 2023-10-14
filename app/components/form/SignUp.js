@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import ProviderBtn from "./ProviderBtn";
 
-const SignUp = () => {
+const SignUp = ({providers}) => {
   const router = useRouter();
   const formSchema = z
     .object({
@@ -127,8 +127,6 @@ const SignUp = () => {
         <button className="btn btn-outline btn-accent mt-4" type="submit">
           Sign Up
         </button>
-        <div className="divider">OR</div>
-        <ProviderBtn>Sign Up With Google</ProviderBtn>
       </form>
     </div>
   );
