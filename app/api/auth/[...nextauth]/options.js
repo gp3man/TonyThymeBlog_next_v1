@@ -56,13 +56,32 @@ export const authOptions = {
         }
         return {
           id: `${existingUser.id}`,
-          name: existingUser.username,
+          username: existingUser.username,
           email: existingUser.email,
         };
       },
     }),
-    // ...add more providers here
   ],
+  callbacks: {
+    async session({ session, user, token }) {
+      return{
+        ...session,
+        user: {
+          ...session.user,
+          username:token.username
+        }
+      }
+    },
+    async jwt({ token, user, account, profile, isNewUser }) {
+      if (user){
+        return{
+          ...token,
+          username: user.username
+        }
+      }
+      return token
+    }
+  },
 };
 
 export default NextAuth(authOptions);
