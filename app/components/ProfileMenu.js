@@ -1,14 +1,24 @@
+import { getServerSession } from "next-auth";
 import Link from "next/link";
-const ProfileMenu = ({ session }) => {
-  const  user  = session?.user;
-  console.log("nav ", user)
+import { authOptions } from "../api/auth/[...nextauth]/options";
+const ProfileMenu = async () => {
+  const session = await getServerSession(authOptions);
+  const user = session?.user;
+  console.log("nav session", session);
   return (
     <>
       {user ? (
         <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
-          <label tabIndex={0} className="btn bg-base-300 border-base-300 hover:border-accent-focus m-1">
+          <label
+            tabIndex={0}
+            className="btn bg-base-300 border-base-300 hover:border-accent-focus m-1"
+          >
             <div className="w-6 md:w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img className="rounded-full" src={user?.image} />
+              {user?.image ? (
+                <img className="rounded-full" src={user?.image} />
+              ) : (
+                <img className="rounded-full" src="emptyProfile.jpg" />
+              )}
             </div>
           </label>
           <ul
@@ -25,7 +35,10 @@ const ProfileMenu = ({ session }) => {
         </div>
       ) : (
         <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
-          <label tabIndex={0} className="btn bg-base-300 border-base-300 hover:border-accent-focus  m-1">
+          <label
+            tabIndex={0}
+            className="btn bg-base-300 border-base-300 hover:border-accent-focus  m-1"
+          >
             <div className="w-6 md:w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img className="rounded-full" src="emptyProfile.jpg" />
             </div>

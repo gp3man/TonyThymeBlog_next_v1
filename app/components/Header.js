@@ -3,7 +3,11 @@ import { TfiHome, TfiInstagram } from "react-icons/tfi";
 import LogoImage from "./LogoImage";
 import logo from "@/public/logo.png";
 import ProfileMenu from "./ProfileMenu";
-const NavBar = ({session}) => {
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/options";
+
+const NavBar = async() => {
+  const session = await getServerSession(authOptions)
   return (
     <nav className="fixed top-0 z-20 navbar bg-base-300 text-base-content rounded-b-lg">
       <div className="navbar-start">

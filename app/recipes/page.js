@@ -7,7 +7,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/options";
 export default async function Recipes({ searchParams }) {
   const session = await getServerSession(authOptions)
-  console.log("recipes", session.user)
+  console.log("recipes", session?.user)
   const page =
     typeof searchParams?.page === "string" ? Number(searchParams.page) : 1;
   const limit =
@@ -38,7 +38,7 @@ export default async function Recipes({ searchParams }) {
           </div>
         ) : (
           <div className="text-center text-4xl py-6 font-bold content-center h-1/2">
-            Hmm... No recipes with this search.
+            Hmm... No recipes down this path.
             <br />
             <span className="font-normal text-lg text-gray-400">
               Try Again!

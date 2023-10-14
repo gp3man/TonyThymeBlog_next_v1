@@ -6,6 +6,10 @@ import { db } from "@/lib/db";
 import { compare } from "bcrypt";
 export const authOptions = {
   adapter: PrismaAdapter(db),
+  secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+  },
   pages: {
     signIn: "/sign-in",
   },

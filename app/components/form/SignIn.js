@@ -35,6 +35,7 @@ const SignIn = () => {
     if (signInData?.error) {
       console.log(signInData?.error);
     }
+    router.refresh()
     router.push("/recipes");
     // console.log(signInData);
   };
