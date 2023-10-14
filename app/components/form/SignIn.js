@@ -37,7 +37,7 @@ const SignIn = () => {
             {...register("email", { required: true })}
             required
           />
-          {errors.email && <span className="text-error-content bg-error">{errors.email.message}</span>}
+          {errors.email && <p className="text-error-content bg-error rounded-md p-3 mt-2">{errors.email.message}</p>}
         </div>
         <div>
           <label className="label">
@@ -50,7 +50,7 @@ const SignIn = () => {
             {...register("password", { required: true })}
             required
           />
-          {errors.password && <span className="text-error-content bg-error">{errors.password.message}</span>}
+          {errors.password && <p className="text-error-content bg-error rounded-md p-3 mt-2">{errors.password.message}</p>}
         </div>
         <div className="pt-3">
           <button className="btn btn-outline btn-accent center" type="submit">
