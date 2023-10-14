@@ -4,23 +4,39 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ProviderBtn from "./ProviderBtn";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 const SignIn = () => {
+  const router = useRouter();
   const formSchema = z.object({
     email: z.string().email(),
-    password: z.string().min(5, "Password must be more than 5 chars").max(20, "Password must at most 20 chars"),
+    password: z
+      .string()
+      .min(5, "Password must be more than 5 chars")
+      .max(20, "Password must at most 20 chars"),
   });
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: zodResolver(formSchema) });
+  } = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
   const onSubmit = async (data) => {
     const signInData = await signIn("credentials", {
       email: data.email,
       password: data.password,
+      redirect: false,
     });
-    console.log(data);
+    if (signInData?.error) {
+      console.log(signInData?.error);
+    }
+    router.push("/recipes");
+    // console.log(signInData);
   };
   return (
     <div className="w-full h-full flex-col flex place-content-center items-center">

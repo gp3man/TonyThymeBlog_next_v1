@@ -47,6 +47,7 @@ const NavBar = ({session}) => {
             <li>
               <Link
                 href={"https://www.instagram.com/tony_thyme/"}
+                target="new"
                 className="px-3 cursor-pointer sm:text-base active:font-bold "
               >
                 <p>{<TfiInstagram size={20} />}</p>
@@ -77,6 +78,7 @@ const NavBar = ({session}) => {
           <li>
             <Link
               href={"https://www.instagram.com/tony_thyme/"}
+              target="new"
               className="cursor-pointer active:font-bold "
             >
               <p>{<TfiInstagram size={20} />}</p>

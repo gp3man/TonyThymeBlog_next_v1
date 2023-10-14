@@ -2,16 +2,19 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 import ProviderBtn from "./ProviderBtn";
 
 const SignUp = () => {
-  const router = useRouter()
+  const router = useRouter();
   const formSchema = z
     .object({
       username: z.string().min(1, "Add your chef name"),
       email: z.string().min(1, "Email required").email("Invalid email"),
-      password: z.string().min(5, "Password must be more than 5 chars").max(20, "Password must at most 20 chars"),
+      password: z
+        .string()
+        .min(5, "Password must be more than 5 chars")
+        .max(20, "Password must at most 20 chars"),
       confirmPassword: z.string().min(5).max(20),
     })
     .refine((data) => data.password === data.confirmPassword, {
@@ -22,7 +25,15 @@ const SignUp = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({resolver: zodResolver(formSchema)});
+  } = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
 
   const onSubmit = async (data) => {
     const res = await fetch("api/user", {
@@ -36,10 +47,10 @@ const SignUp = () => {
         password: data.password,
       }),
     });
-    if (res.ok){
-      router.push('/sign-in')
-    }else{
-      console.error("Registration Failed")
+    if (res.ok) {
+      router.push("/sign-in");
+    } else {
+      console.error("Registration Failed");
     }
   };
   return (
@@ -113,9 +124,9 @@ const SignUp = () => {
             </p>
           )}
         </div>
-          <button className="btn btn-outline btn-accent mt-4" type="submit">
-            Sign Up
-          </button>
+        <button className="btn btn-outline btn-accent mt-4" type="submit">
+          Sign Up
+        </button>
         <div className="divider">OR</div>
         <ProviderBtn>Sign Up With Google</ProviderBtn>
       </form>

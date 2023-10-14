@@ -1,7 +1,7 @@
 const AuthLayout = ({children}) => {
-  return ( <page className="my-14 py-3 flex flex-col align-center w-full h-screen">
+  return ( <section className="my-14 py-3 flex flex-col align-center w-full h-screen">
     {children}
-  </page> );
+  </section> );
 }
 
 export default AuthLayout;

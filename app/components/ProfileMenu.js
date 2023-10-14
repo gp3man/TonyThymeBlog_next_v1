@@ -1,6 +1,7 @@
 import Link from "next/link";
 const ProfileMenu = ({ session }) => {
   const  user  = session?.user;
+  console.log("nav ", user)
   return (
     <>
       {user ? (

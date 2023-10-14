@@ -36,9 +36,10 @@ export const authOptions = {
           return null;
         }
         const existingUser = await db.user.findUnique({
-          where: { email: credentials?.email },
+          where: { email: `${credentials?.email}` },
         });
         if (!existingUser) {
+          console.log('bug')
           return null;
         }
         const passwordMatch = await compare(
@@ -50,8 +51,8 @@ export const authOptions = {
           return null;
         }
         return {
-          id: existingUser.id + "",
-          username: existingUser.username,
+          id: `${existingUser.id}`,
+          name: existingUser.username,
           email: existingUser.email,
         };
       },

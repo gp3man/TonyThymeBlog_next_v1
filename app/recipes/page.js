@@ -3,8 +3,11 @@ import RecipeCard from "../components/RecipeCard";
 import { getRecipes } from "@/lib/getRecipes";
 import Link from "next/link";
 import CatCircles from "../components/CatLinks";
-
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/options";
 export default async function Recipes({ searchParams }) {
+  const session = await getServerSession(authOptions)
+  console.log("recipes", session.user)
   const page =
     typeof searchParams?.page === "string" ? Number(searchParams.page) : 1;
   const limit =
