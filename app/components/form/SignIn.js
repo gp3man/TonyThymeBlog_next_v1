@@ -54,6 +54,7 @@ const SignIn = ({providers}) => {
             type="text"
             placeholder="tony@thyme.com"
             className="input input-bordered input-primary w-full max-w-xs"
+            autoComplete="email"
             {...register("email", { required: true })}
             required
           />
@@ -72,6 +73,7 @@ const SignIn = ({providers}) => {
             placeholder="Password"
             className="input input-bordered input-primary w-full max-w-xs"
             {...register("password", { required: true })}
+            autoComplete="current-password"
             required
           />
           {errors.password && (

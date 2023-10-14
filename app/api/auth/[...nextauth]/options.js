@@ -51,7 +51,6 @@ export const authOptions = {
           if (!passwordMatch) {
             return null;
           }
-          console.log("got creds +++++++++++++++++++++++++++++++++",credentials)
         }
         return {
           id: `${existingUser?.id}`,

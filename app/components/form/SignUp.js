@@ -100,6 +100,7 @@ const SignUp = ({providers}) => {
             type="password"
             placeholder="Password"
             className="input input-bordered input-primary w-full max-w-xs"
+            autoComplete="current-password"
             {...register("password", { required: true })}
           />
           {errors.password && (
@@ -116,6 +117,7 @@ const SignUp = ({providers}) => {
             type="password"
             placeholder="Password"
             className="input input-bordered input-primary w-full max-w-xs"
+            autoComplete="current-password"
             {...register("confirmPassword", { required: true })}
           />
           {errors.confirmPassword && (
