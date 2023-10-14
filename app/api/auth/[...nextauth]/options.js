@@ -8,7 +8,7 @@ export const authOptions = {
   adapter: PrismaAdapter(db),
   secret: process.env.NEXTAUTH_SECRET,
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
   },
   pages: {
     signIn: "/sign-in",
@@ -43,44 +43,45 @@ export const authOptions = {
           where: { email: `${credentials?.email}` },
         });
         if (!existingUser) {
-          console.log('bug')
+          console.log("bug");
           return null;
         }
-        const passwordMatch = await compare(
-          credentials?.password,
-          existingUser.password
-        );
-
-        if (!passwordMatch) {
-          return null;
+        if (existingUser.password) {
+          const passwordMatch = await compare(
+            credentials?.password,
+            existingUser.password
+          );
+          if (!passwordMatch) {
+            return null;
+          }
         }
         return {
-          id: `${existingUser.id}`,
-          username: existingUser.username,
-          email: existingUser.email,
+          id: existingUser?.id,
+          username: existingUser?.username,
+          email: existingUser?.email,
         };
       },
     }),
   ],
   callbacks: {
     async session({ session, user, token }) {
-      return{
+      return {
         ...session,
         user: {
           ...session.user,
-          username:token.username
-        }
-      }
+          username: token.username,
+        },
+      };
     },
     async jwt({ token, user, account, profile, isNewUser }) {
-      if (user){
-        return{
+      if (user) {
+        return {
           ...token,
-          username: user.username
-        }
+          username: user.username,
+        };
       }
-      return token
-    }
+      return token;
+    },
   },
 };
 

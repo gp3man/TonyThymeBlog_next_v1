@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ProviderBtn from "./ProviderBtn";
-import { signIn } from "next-auth/react";
+import { getProviders, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-const SignIn = () => {
+const SignIn = ({providers}) => {
   const router = useRouter();
   const formSchema = z.object({
     email: z.string().email(),
@@ -38,6 +38,7 @@ const SignIn = () => {
     router.refresh()
     router.push("/recipes");
     // console.log(signInData);
+    console.log(providers)
   };
   return (
     <div className="w-full h-full flex-col flex place-content-center items-center">
@@ -87,6 +88,7 @@ const SignIn = () => {
           Sign In
         </button>
         <div className="divider">OR</div>
+
         <ProviderBtn>Sign In With Google</ProviderBtn>
       </form>
     </div>
