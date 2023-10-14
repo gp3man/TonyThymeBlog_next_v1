@@ -2,11 +2,16 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import {useRouter} from "next/navigation";
+import ProviderBtn from "./ProviderBtn";
+
 const SignUp = () => {
+  const router = useRouter()
   const formSchema = z
     .object({
-      email: z.string().email(),
-      password: z.string().min(5).max(20),
+      username: z.string().min(1, "Add your chef name"),
+      email: z.string().min(1, "Email required").email("Invalid email"),
+      password: z.string().min(5, "Password must be more than 5 chars").max(20, "Password must at most 20 chars"),
       confirmPassword: z.string().min(5).max(20),
     })
     .refine((data) => data.password === data.confirmPassword, {
@@ -19,8 +24,23 @@ const SignUp = () => {
     formState: { errors },
   } = useForm({resolver: zodResolver(formSchema)});
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const res = await fetch("api/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      }),
+    });
+    if (res.ok){
+      router.push('/sign-in')
+    }else{
+      console.error("Registration Failed")
+    }
   };
   return (
     <div className="w-full h-full flex-col flex place-content-center items-center">
@@ -31,11 +51,27 @@ const SignUp = () => {
       >
         <div>
           <label className="label">
+            <span className="label-text">Username</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Chef123"
+            className="input input-bordered input-primary w-full max-w-xs"
+            {...register("username", { required: true })}
+          />
+          {errors.username && (
+            <p className="text-error-content bg-error rounded-md p-3 mt-2">
+              {errors.username.message}
+            </p>
+          )}
+        </div>
+        <div>
+          <label className="label">
             <span className="label-text">Email</span>
           </label>
           <input
             type="email"
-            placeholder="Email"
+            placeholder="tony@thyme.com"
             className="input input-bordered input-primary w-full max-w-xs"
             {...register("email", { required: true })}
           />
@@ -63,11 +99,11 @@ const SignUp = () => {
         </div>
         <div>
           <label className="label">
-            <span className="label-text">Confirm Password</span>
+            <span className="label-text">Re-Enter Password</span>
           </label>
           <input
             type="password"
-            placeholder="Confirm Password"
+            placeholder="Password"
             className="input input-bordered input-primary w-full max-w-xs"
             {...register("confirmPassword", { required: true })}
           />
@@ -77,12 +113,11 @@ const SignUp = () => {
             </p>
           )}
         </div>
-        <div className="pt-3">
-          <button className="btn btn-outline btn-accent" type="submit">
+          <button className="btn btn-outline btn-accent mt-4" type="submit">
             Sign Up
           </button>
-        </div>
         <div className="divider">OR</div>
+        <ProviderBtn>Sign Up With Google</ProviderBtn>
       </form>
     </div>
   );

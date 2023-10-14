@@ -2,7 +2,8 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { router } from "next/navigation";
+import ProviderBtn from "./ProviderBtn";
 const SignIn = () => {
   const formSchema = z.object({
     email: z.string().email(),
@@ -11,12 +12,11 @@ const SignIn = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({ resolver: zodResolver(formSchema) });
-  console.log(errors);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+
     console.log(data);
   };
   return (
@@ -32,12 +32,16 @@ const SignIn = () => {
           </label>
           <input
             type="text"
-            placeholder="Email"
+            placeholder="tony@thyme.com"
             className="input input-bordered input-primary w-full max-w-xs"
             {...register("email", { required: true })}
             required
           />
-          {errors.email && <p className="text-error-content bg-error rounded-md p-3 mt-2">{errors.email.message}</p>}
+          {errors.email && (
+            <p className="text-error-content bg-error rounded-md p-3 mt-2">
+              {errors.email.message}
+            </p>
+          )}
         </div>
         <div>
           <label className="label">
@@ -50,14 +54,17 @@ const SignIn = () => {
             {...register("password", { required: true })}
             required
           />
-          {errors.password && <p className="text-error-content bg-error rounded-md p-3 mt-2">{errors.password.message}</p>}
+          {errors.password && (
+            <p className="text-error-content bg-error rounded-md p-3 mt-2">
+              {errors.password.message}
+            </p>
+          )}
         </div>
-        <div className="pt-3">
-          <button className="btn btn-outline btn-accent center" type="submit">
+          <button className="btn btn-outline btn-accent center mt-4" type="submit">
             Sign In
           </button>
-        </div>
         <div className="divider">OR</div>
+        <ProviderBtn>Sign In With Google</ProviderBtn>
       </form>
     </div>
   );

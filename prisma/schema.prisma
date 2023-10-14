@@ -14,7 +14,7 @@ model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique @db.VarChar(255)
   username  String   @unique
-  password  String
+  password  String 
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
 }

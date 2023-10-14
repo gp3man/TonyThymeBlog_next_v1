@@ -4,6 +4,9 @@ import Credentials from "next-auth/providers/credentials";
 
 export const authOptions = {
   // Configure one or more authentication providers
+  pages:{
+    signIn: '/sign-in',
+  },
   providers: [
       GoogleProvider({
         profile(profile){
@@ -27,6 +30,7 @@ export const authOptions = {
           },
         },
         async authorize(credentials){
+          
           //Where you need to retrieve user data to verify with credentials Docs: https://next-auth.js.org/configuration/providers/credentials
           const user = {id: "42", name: "Greg", password: "nextauth"}
 
