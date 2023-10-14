@@ -34,7 +34,10 @@ const ProfileMenu = ({ session }) => {
             className="dropdown-content z-[1] menu p-2 shadow bg-base-300 rounded-box w-52"
           >
             <li>
-              <Link href={"/api/auth/signin"}>Sign In</Link>
+              <Link href={"/sign-in"}>Sign In</Link>
+            </li>
+            <li>
+              <Link href={"/sign-up"}>Sign Up</Link>
             </li>
           </ul>
         </div>
