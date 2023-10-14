@@ -2,12 +2,12 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { router } from "next/navigation";
 import ProviderBtn from "./ProviderBtn";
+import { signIn } from "next-auth/react";
 const SignIn = () => {
   const formSchema = z.object({
     email: z.string().email(),
-    password: z.string().min(5).max(20),
+    password: z.string().min(5, "Password must be more than 5 chars").max(20, "Password must at most 20 chars"),
   });
   const {
     register,
@@ -16,7 +16,10 @@ const SignIn = () => {
   } = useForm({ resolver: zodResolver(formSchema) });
 
   const onSubmit = async (data) => {
-
+    const signInData = await signIn("credentials", {
+      email: data.email,
+      password: data.password,
+    });
     console.log(data);
   };
   return (
@@ -60,9 +63,12 @@ const SignIn = () => {
             </p>
           )}
         </div>
-          <button className="btn btn-outline btn-accent center mt-4" type="submit">
-            Sign In
-          </button>
+        <button
+          className="btn btn-outline btn-accent center mt-4"
+          type="submit"
+        >
+          Sign In
+        </button>
         <div className="divider">OR</div>
         <ProviderBtn>Sign In With Google</ProviderBtn>
       </form>
