@@ -39,8 +39,12 @@ const SignUp = () => {
             placeholder="Email"
             className="input input-bordered input-primary w-full max-w-xs"
             {...register("email", { required: true })}
-            required
           />
+          {errors.email && (
+            <span className="text-error-content bg-error">
+              {errors.email.message}
+            </span>
+          )}
         </div>
         <div>
           <label className="label">
@@ -51,8 +55,12 @@ const SignUp = () => {
             placeholder="Password"
             className="input input-bordered input-primary w-full max-w-xs"
             {...register("password", { required: true })}
-            required
           />
+          {errors.password && (
+            <span className="text-error-content bg-error">
+              {errors.password.message}
+            </span>
+          )}
         </div>
         <div>
           <label className="label">
@@ -63,8 +71,12 @@ const SignUp = () => {
             placeholder="Confirm Password"
             className="input input-bordered input-primary w-full max-w-xs"
             {...register("confirmPassword", { required: true })}
-            required
           />
+          {errors.confirmPassword && (
+            <span className="text-error-content bg-error">
+              {errors.confirmPassword.message}
+            </span>
+          )}
         </div>
         <div className="pt-3">
           <button className="btn btn-outline btn-accent center" type="submit">
