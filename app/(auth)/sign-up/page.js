@@ -5,7 +5,7 @@ const page = async() => {
 
   return (
     <div className="w-full h-full">
-      <SignUp providers={providers} />
+      <SignUp/>
     </div>
   );
 };

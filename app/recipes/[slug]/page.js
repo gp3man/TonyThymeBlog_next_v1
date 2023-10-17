@@ -6,6 +6,8 @@ import Link from "next/link";
 import PhotoCard from "../../components/PhotoCard";
 import Checkbox from "@/app/components/CheckBox";
 import Image from "next/image";
+import ReviewBoard from "@/app/components/ReviewBoard.js"
+
 // import { redirect } from "next/dist/server/api-utils";
 
 export default async function RecipePage({params}) {
@@ -108,7 +110,6 @@ export default async function RecipePage({params}) {
                   className="py-1 accent-accent"
                   key={ingredient + i}
                 >
-                  {/* <input type="checkbox" /> */}
                   <Checkbox text={ingredient} id={i} />
                 </li>
               ))}
@@ -119,8 +120,11 @@ export default async function RecipePage({params}) {
               Directions
             </h2>
             <hr className="opacity-50 border-accent py-3" />
-            <RichText className="text-gray-300" content={procedure} />
+            <RichText content={procedure} />
           </div>
+        </div>
+        <div>
+          <ReviewBoard/>
         </div>
       </RecipeDetail>
     </section>
