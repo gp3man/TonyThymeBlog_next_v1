@@ -40,15 +40,17 @@ model Session {
 model User {
   id            String    @id @default(cuid())
   name          String?
-  username      String?    @unique
+  username      String?   @unique
   password      String?
   createdAt     DateTime  @default(now())
   updateAt      DateTime  @updatedAt
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  isAdmin       Boolean   @default(false)
   accounts      Account[]
   sessions      Session[]
+  reviews       Review[]
 }
 
 model VerificationToken {
@@ -57,4 +59,14 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Review {
+  id       String  @id @default(cuid())
+  recipeId String
+  score    Int
+  title    String
+  review   String
+  userId   String?
+  User     User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

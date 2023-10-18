@@ -1,10 +1,12 @@
-import SingleReview from "@/SingleReview.js"
+import SingleReview from "@/app/components/SingleReview.js";
 const ReviewBoard = () => {
-  return ( <div>
-    <p>Reviews</p>
-    <hr />
-    <SingleReview />
-  </div> );
-}
+  return (
+    <div>
+      <p className="text-base md:text-2xl font-black py-3">Reviews</p>
+      <hr className="opacity-50 border-accent py-3" />
+      <SingleReview />
+    </div>
+  );
+};
 
 export default ReviewBoard;

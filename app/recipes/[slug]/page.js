@@ -6,11 +6,11 @@ import Link from "next/link";
 import PhotoCard from "../../components/PhotoCard";
 import Checkbox from "@/app/components/CheckBox";
 import Image from "next/image";
-import ReviewBoard from "@/app/components/ReviewBoard.js"
+import ReviewBoard from "@/app/components/ReviewBoard.js";
 
 // import { redirect } from "next/dist/server/api-utils";
 
-export default async function RecipePage({params}) {
+export default async function RecipePage({ params }) {
   // const currentClient = preview ? previewClient : client;
   const response = await client.getEntries({
     content_type: "recipe",
@@ -31,8 +31,9 @@ export default async function RecipePage({params}) {
     authorsNotes,
     timeToPrep,
   } = recipe?.fields;
+  console.log(banners);
   return (
-    <section className="flex min-h-screen m-4 pt-16 overflow-y-scroll scrollbar-hide justify-center">
+    <section className="flex min-h-screen w-full m-4 pt-16 overflow-y-scroll scrollbar-hide justify-center">
       {/* {preview && (
         <>
           You're in preview mode!!!
@@ -78,27 +79,31 @@ export default async function RecipePage({params}) {
         {/* Photo */}
         <PhotoCard photos={banners} />
         {/* DishTimes */}
-        <div className="bg-primary px-6 mx-4 ">
+        <div className="bg-primary px-6 mx-4">
           <div className="grid col-span-2 grid-flow-col">
             {timeToPrep && (
               <div>
                 <h2 className="font-bold ">Prep-Time</h2>
-                <p className="text-primary-content cursor-pointer">{timeToPrep} hrs</p>
+                <p className="text-primary-content cursor-pointer">
+                  {timeToPrep} hrs
+                </p>
               </div>
             )}
             <div>
               <h2 className="font-bold ">Cook-Time</h2>
-              <p className="text-primary-content cursor-pointer">{timeToCook} mins</p>
+              <p className="text-primary-content cursor-pointer">
+                {timeToCook} mins
+              </p>
             </div>
           </div>
-            <hr className="opacity-50 border-accent" />
+          <hr className="opacity-50 border-accent" />
           <div>
             <h2 className="font-bold ">Serves</h2>
             <p className="text-primary-content cursor-pointer">{serves}</p>
           </div>
         </div>
         {/* Method Block */}
-        <div className="text-left m-4">
+        <div className="text-left px-6 py-3">
           <div className="flex flex-col py-3 ">
             <span className="text-base md:text-2xl font-black py-3">
               Ingredients
@@ -106,10 +111,7 @@ export default async function RecipePage({params}) {
             <hr className="opacity-50 border-accent py-3" />
             <ul className="grid-cols-1 md:grid-cols-2 grid-flow-row grid">
               {ingredients.map((ingredient, i) => (
-                <li
-                  className="py-1 accent-accent"
-                  key={ingredient + i}
-                >
+                <li className="py-1 accent-accent" key={ingredient + i}>
                   <Checkbox text={ingredient} id={i} />
                 </li>
               ))}
@@ -123,8 +125,8 @@ export default async function RecipePage({params}) {
             <RichText content={procedure} />
           </div>
         </div>
-        <div>
-          <ReviewBoard/>
+        <div className="text-left px-6 py-3">
+          <ReviewBoard />
         </div>
       </RecipeDetail>
     </section>
