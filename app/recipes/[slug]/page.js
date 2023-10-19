@@ -1,11 +1,8 @@
 import { client, previewClient } from "@/lib/contentful.js";
-import RecipeDetail from "../../components/RecipeDetail";
 import RichText from "../../components/RichText";
 import LogoImage from "@/app/components/LogoImage";
-import Link from "next/link";
 import PhotoCard from "../../components/PhotoCard";
 import Checkbox from "@/app/components/CheckBox";
-import Image from "next/image";
 import ReviewBoard from "@/app/components/ReviewBoard.js";
 
 // import { redirect } from "next/dist/server/api-utils";
@@ -33,43 +30,42 @@ export default async function RecipePage({ params }) {
   } = recipe?.fields;
   console.log(banners);
   return (
-    <section className="flex min-h-screen w-full m-4 pt-16 overflow-y-scroll scrollbar-hide justify-center">
+    <section className="flex flex-col min-h-screen w-screen m-0 pt-16 justify-center text-center overflow-y-scroll scrollbar-hide">
       {/* {preview && (
         <>
           You're in preview mode!!!
           <Link href="/api/exit-preview">Exit preview</Link>
         </>
       )} */}
-      <RecipeDetail>
-        <header>
-          <h1 className="text-lg md:text-4xl font-black text-base-content py-1">
-            {title}
-          </h1>
-          <div className="flex flex-col justify-center content-center">
-            <p className="text-sm font-thin">
-              By:
-              <span className=""> {recipeBy?.fields?.name}</span>
-            </p>
-            {recipeBy?.fields?.image && (
-              <div className="flex justify-center pb-4">
-                <LogoImage
-                  alt={recipeBy?.fields?.image?.fields?.title}
-                  src={recipeBy?.fields?.image?.fields?.file?.url}
-                  width={
-                    recipeBy?.fields?.image?.fields?.file?.details?.image?.width
-                  }
-                  height={
-                    recipeBy?.fields?.image?.fields?.file?.details?.image
-                      ?.height
-                  }
-                  className="w-[20px] h-[20px md:w-[40px] md:h-[40px] rounded-full left-1/2"
-                />
-              </div>
-            )}
-          </div>
-          {/* Notes */}
-        </header>
-        <div className="py-2 m-2 text-left">
+      <header className="w-full px-4 md:px-32">
+        <h1 className="text-lg md:text-4xl font-black text-base-content py-1">
+          {title}
+        </h1>
+        <div className="flex flex-col justify-center ">
+          <p className="text-sm font-thin">
+            By:
+            <span className=""> {recipeBy?.fields?.name}</span>
+          </p>
+          {recipeBy?.fields?.image && (
+            <div className="flex justify-center pb-4">
+              <LogoImage
+                alt={recipeBy?.fields?.image?.fields?.title}
+                src={recipeBy?.fields?.image?.fields?.file?.url}
+                width={
+                  recipeBy?.fields?.image?.fields?.file?.details?.image?.width
+                }
+                height={
+                  recipeBy?.fields?.image?.fields?.file?.details?.image?.height
+                }
+                className="w-[20px] h-[20px md:w-[40px] md:h-[40px] rounded-full left-1/2"
+              />
+            </div>
+          )}
+        </div>
+        {/* Notes */}
+      </header>
+      <div className="w-full px-4 md:px-32">
+        <div className="py-2 text-left">
           <h2 className="text-base md:text-2xl font-black py-3">
             Author Notes
           </h2>
@@ -79,7 +75,7 @@ export default async function RecipePage({ params }) {
         {/* Photo */}
         <PhotoCard photos={banners} />
         {/* DishTimes */}
-        <div className="bg-primary px-6 mx-4">
+        <div className="bg-primary py-3">
           <div className="grid col-span-2 grid-flow-col">
             {timeToPrep && (
               <div>
@@ -103,7 +99,7 @@ export default async function RecipePage({ params }) {
           </div>
         </div>
         {/* Method Block */}
-        <div className="text-left px-6 py-3">
+        <div className="text-left py-3">
           <div className="flex flex-col py-3 ">
             <span className="text-base md:text-2xl font-black py-3">
               Ingredients
@@ -117,7 +113,7 @@ export default async function RecipePage({ params }) {
               ))}
             </ul>
           </div>
-          <div className="py-3">
+          <div className="py-3 flex-grow flex-col justify-center">
             <h2 className="text-base md:text-2xl font-black py-3">
               Directions
             </h2>
@@ -125,10 +121,10 @@ export default async function RecipePage({ params }) {
             <RichText content={procedure} />
           </div>
         </div>
-        <div className="text-left px-6 py-3">
+        <div className="text-left py-3">
           <ReviewBoard />
         </div>
-      </RecipeDetail>
+      </div>
     </section>
   );
 }

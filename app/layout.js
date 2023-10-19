@@ -16,16 +16,16 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   const session = await getServerSession(authOptions);
   return (
-    <html lang="en">
+    <html lang="en" className="m-0">
       <body
         className={
           inter.className +
-          "overflow-y-scroll scrollbar-hide bg-base-200 text-base-content"
+          "overflow-y-scroll scrollbar-hide bg-base-200 text-base-content m-0 w-100"
         }
       >
         <NextAuthSessionProvider>
           <RecoilProvider>
-            <Header session={session} />
+            <Header />
             {children}
             <Footer />
           </RecoilProvider>

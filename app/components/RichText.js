@@ -9,7 +9,7 @@ const options = {
       return (
         <blockquote className="text-xl italic font-semibold text-base-content">
           <svg
-            className="w-8 h-8 text-gray-400 dark:text-gray-600 mb-4"
+            className="w-8 h-8 text-secondary-400 mb-4"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -23,14 +23,14 @@ const options = {
     },
     [BLOCKS.OL_LIST]: (node, children) => {
       return (
-        <ol className="bg-base-300 text-base-content list-inside list-[decimal-leading-zero] m-2 p-2 rounded-lg hover:outline-accent- w-full md:w-60vw border-accent border border-opacity-50 items-center align-middle stepList">
+        <ol className="bg-base-300 text-base-content list-inside list-[decimal-leading-zero] rounded-lg hover:outline-accent md:w-60vw border-accent border border-opacity-50 items-center align-middle stepList">
           {children}
         </ol>
       );
     },
     [BLOCKS.LIST_ITEM]: (node, children) => {
       return (
-        <li className="p-4 even:bg-secondary even:text-secondary-content rounded-lg items-baseline">
+        <li className="even:bg-secondary even:text-secondary-content rounded-lg items-baseline p-6">
           {children}
         </li>
       );
