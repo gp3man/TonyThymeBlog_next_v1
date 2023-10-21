@@ -65,6 +65,6 @@ model Review {
   title     String
   review    String
   recommend String
-  userId    String?
+  userId    String
   User      User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

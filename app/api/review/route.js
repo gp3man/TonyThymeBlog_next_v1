@@ -10,7 +10,16 @@ export async function POST(req) {
     });
     if (!existingUserByEmail) {
       return NextResponse.json(
-        { review: null, message: "Need to sign in first" },
+        { review: null, message: "Need to sign in first!" },
+        { status: 409 }
+      );
+    }
+    const existingReviewByUser = await db.review.findFirst({
+      where: {userId: existingUserByEmail.id, recipeId: recipeId},
+    });
+    if (existingReviewByUser) {
+      return NextResponse.json(
+        { review: existingReviewByUser, message: "Review already made!" },
         { status: 409 }
       );
     }
@@ -24,8 +33,11 @@ export async function POST(req) {
         userId: existingUserByEmail.id,
       },
     });
-    if(!newReview){
-      return NextResponse.json({ review: null, message: "Failed to post new review!", }, { status: 404 });
+    if (!newReview) {
+      return NextResponse.json(
+        { review: null, message: "Failed to post new review!" },
+        { status: 404 }
+      );
     }
     return NextResponse.json(
       { review: newReview, message: "Review Successfully sent!" },
@@ -33,6 +45,9 @@ export async function POST(req) {
     );
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ review: null, message: "Something Wrong!" }, { status: 505 });
+    return NextResponse.json(
+      { review: null, message: "Something Wrong!" },
+      { status: 505 }
+    );
   }
 }

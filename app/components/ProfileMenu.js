@@ -5,7 +5,6 @@ import LogOut from "./LogOut";
 const ProfileMenu = async () => {
   const session = await getServerSession(authOptions);
   const user = session?.user;
-  console.log(user)
   return (
     <>
       {user ? (
