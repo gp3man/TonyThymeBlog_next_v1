@@ -4,10 +4,9 @@ import { getLanding } from "@/lib/getRecipes.js";
 export default async function Home() {
   const res = await getLanding();
   return (
-    <div className="min-h-screen text-slate-950 dark:text-slate-50">
-      <main className="flex">
+      <main className="flex min-h-screen">
         <LandingPage data={res} />
       </main>
-    </div>
+
   );
 }

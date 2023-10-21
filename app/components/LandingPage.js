@@ -14,7 +14,6 @@ const LandingPage = ({ data }) => {
   const recipes = recipeCollection?.items;
   const content = landingPageContentCollection?.items[0];
   return (
-    <>
       <div className="min-h-screen w-screen m-0 pt-10 pb-10 overflow-y-scroll scrollbar-hide">
         <Hero content={content} />
         <div id="hotRecipes" className="flex justify-center">
@@ -42,7 +41,6 @@ const LandingPage = ({ data }) => {
         </div>
           {announcement && <Announcement data={announcement} />}
       </div>
-    </>
   );
 };
 

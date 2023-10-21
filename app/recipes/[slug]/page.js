@@ -31,7 +31,7 @@ export default async function RecipePage({ params }) {
     timeToPrep,
   } = recipe?.fields;
   return (
-    <section className="flex flex-col min-h-screen w-screen m-0 pt-16 justify-center text-center overflow-y-scroll scrollbar-hide">
+    <section className="flex flex-col min-h-screen w-screen m-0 pt-20 justify-center text-center overflow-y-scroll scrollbar-hide">
       {/* {preview && (
         <>
           You're in preview mode!!!
@@ -76,17 +76,17 @@ export default async function RecipePage({ params }) {
         {/* Photo */}
         <PhotoCard photos={banners} />
         {/* DishTimes */}
-        <div className="bg-primary py-3">
+        <div className="bg-primary py-3 rounded-xl ">
           <div className="grid col-span-2 grid-flow-col">
             {timeToPrep && (
-              <div>
+              <div className="p-2">
                 <h2 className="font-bold ">Prep-Time</h2>
                 <p className="text-primary-content cursor-pointer">
                   {timeToPrep} hrs
                 </p>
               </div>
             )}
-            <div>
+            <div className="p-2">
               <h2 className="font-bold ">Cook-Time</h2>
               <p className="text-primary-content cursor-pointer">
                 {timeToCook} mins
@@ -94,7 +94,7 @@ export default async function RecipePage({ params }) {
             </div>
           </div>
           <hr className="opacity-50 border-accent" />
-          <div>
+          <div className="p-2">
             <h2 className="font-bold ">Serves</h2>
             <p className="text-primary-content cursor-pointer">{serves}</p>
           </div>
