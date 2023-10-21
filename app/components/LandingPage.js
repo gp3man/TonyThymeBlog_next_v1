@@ -15,7 +15,7 @@ const LandingPage = ({ data }) => {
   const content = landingPageContentCollection?.items[0];
   return (
     <>
-      <div className="min-h-screen m-0 pt-10 pb-10 overflow-y-scroll scrollbar-hide">
+      <div className="min-h-screen w-screen m-0 pt-10 pb-10 overflow-y-scroll scrollbar-hide">
         <Hero content={content} />
         <div id="hotRecipes" className="flex justify-center">
           {recipes ? (
