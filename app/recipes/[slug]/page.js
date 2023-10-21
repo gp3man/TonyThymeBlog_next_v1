@@ -4,6 +4,7 @@ import LogoImage from "@/app/components/LogoImage";
 import PhotoCard from "../../components/PhotoCard";
 import Checkbox from "@/app/components/CheckBox";
 import ReviewBoard from "@/app/components/ReviewBoard.js";
+import NewReview from "@/app/components/form/NewReview";
 
 // import { redirect } from "next/dist/server/api-utils";
 
@@ -13,6 +14,7 @@ export default async function RecipePage({ params }) {
     content_type: "recipe",
     "fields.slug": params.slug,
   });
+  console.log(params.slug)
   // if (!response?.items?.length) {
   //   redirect('/');
   // }
@@ -28,7 +30,6 @@ export default async function RecipePage({ params }) {
     authorsNotes,
     timeToPrep,
   } = recipe?.fields;
-  console.log(banners);
   return (
     <section className="flex flex-col min-h-screen w-screen m-0 pt-16 justify-center text-center overflow-y-scroll scrollbar-hide">
       {/* {preview && (
@@ -121,7 +122,8 @@ export default async function RecipePage({ params }) {
             <RichText content={procedure} />
           </div>
         </div>
-        <div className="text-left py-3">
+        <div className="text-left py-3 text-base-content">
+          <NewReview />
           <ReviewBoard />
         </div>
       </div>

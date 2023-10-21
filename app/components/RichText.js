@@ -7,7 +7,7 @@ const options = {
   renderNode: {
     [BLOCKS.QUOTE]: (node, children) => {
       return (
-        <blockquote className="text-xl italic font-semibold text-base-content">
+        <blockquote className="text-xl italic font-semibold text-base-content py-6">
           <svg
             className="w-8 h-8 text-secondary-400 mb-4"
             aria-hidden="true"
@@ -23,7 +23,7 @@ const options = {
     },
     [BLOCKS.OL_LIST]: (node, children) => {
       return (
-        <ol className="bg-base-300 text-base-content list-inside list-[decimal-leading-zero] rounded-lg hover:outline-accent md:w-60vw border-accent border border-opacity-50 items-center align-middle stepList">
+        <ol className="bg-base-300 text-base-content list-inside list-[decimal-leading-zero] rounded-lg hover:outline-accent md:w-60vw border-accent border border-opacity-50 items-center align-middle stepList my-3">
           {children}
         </ol>
       );
@@ -49,7 +49,7 @@ const options = {
     },
     [BLOCKS.HR]: (node, children) => {
       return (
-        <hr className="py-4 my-20 mx-60 text-lg font-medium border-accent" />
+        <hr className="py-12 text-lg font-medium border-accent" />
       );
     },
 

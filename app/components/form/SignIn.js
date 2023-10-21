@@ -36,8 +36,7 @@ const SignIn = ({providers}) => {
     if (signInData?.error) {
       console.log(signInData?.error);
     }
-    router.refresh()
-    router.push("/recipes");
+    router.back()
   };
   return (
     <div className="w-full h-full flex-col flex place-content-center items-center">

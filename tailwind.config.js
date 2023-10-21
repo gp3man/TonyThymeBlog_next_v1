@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,6 +13,12 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      // aspectRatio: {
+      //   // auto: 'auto',
+      //   // square: '1 / 1',
+      //   // video: '16 / 9',
+      //   '4/6': '4 / 6',
+      // },
     },
   },
   daisyui: {

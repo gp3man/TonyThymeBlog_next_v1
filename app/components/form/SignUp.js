@@ -3,9 +3,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import ProviderBtn from "./ProviderBtn";
 
-const SignUp = ({providers}) => {
+const SignUp = () => {
   const router = useRouter();
   const formSchema = z
     .object({
