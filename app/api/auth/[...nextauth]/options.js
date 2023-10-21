@@ -71,10 +71,12 @@ export const authOptions = {
       };
     },
     async jwt({ token, user, account, profile, isNewUser }) {
+      console.log(token)
       if (user) {
         return {
           ...token,
           username: user.username,
+
         };
       }
       return token;

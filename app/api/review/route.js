@@ -4,30 +4,35 @@ import { NextResponse } from "next/server";
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { recipeId, score, title, review, recommend, userId } = body;
+    const { recipeId, score, title, review, recommend, userEmail } = body;
     //check if email already exist
-    const existingUserById = await db.user.findUnique({
-      where: { id: userId },
+    const existingUserByEmail = await db.user.findUnique({
+      where: { email: userEmail },
     });
-    if (existingUserById) {
+    if (!existingUserByEmail) {
       return NextResponse.json(
         { review: null, message: "Need to sign in first" },
         { status: 409 }
       );
     }
+    console.log(existingUserByEmail);
     const newReview = await db.review.create({
       data: {
         recipeId,
-        score,
+        score: Number(score),
         title,
         review,
         recommend,
-        userId,
+        userId: existingUserByEmail.id,
       },
     });
     return NextResponse.json(
       { review: newReview, message: "Review Successfully sent!" },
       { status: 201 }
+    );
+    return NextResponse.json(
+      { review: null, message: "Need to sign in first" },
+      { status: 409 }
     );
   } catch (error) {
     console.log(error);

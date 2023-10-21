@@ -14,11 +14,11 @@ export default async function RecipePage({ params }) {
     content_type: "recipe",
     "fields.slug": params.slug,
   });
-  console.log(params.slug)
   // if (!response?.items?.length) {
-  //   redirect('/');
-  // }
-  const recipe = response?.items?.[0];
+    //   redirect('/');
+    // }
+    const recipe = response?.items?.[0];
+    const recipeId = recipe.sys.id
   const {
     banners,
     procedure,
@@ -123,7 +123,7 @@ export default async function RecipePage({ params }) {
           </div>
         </div>
         <div className="text-left py-3 text-base-content">
-          <NewReview />
+          <NewReview recipeId={recipeId} />
           <ReviewBoard />
         </div>
       </div>

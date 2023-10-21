@@ -7,12 +7,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 
-const NewReview = () => {
-  const session = useSession()
+const NewReview = ({recipeId}) => {
+  const session = useSession();
   const router = useRouter();
-  console.log(session)
+  console.log(session);
   const formSchema = z.object({
-    score: z.string().min(1).max(5),
+    score: z.string(),
     title: z.string().min(1, "Title required").max(25),
     review: z.string().min(1, "Must write review").max(200, "Review too long"),
     recommend: z.string(),
@@ -24,7 +24,7 @@ const NewReview = () => {
   } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      score: 5,
+      score: "5",
       title: "",
       review: "",
       recommend: "",
@@ -32,43 +32,71 @@ const NewReview = () => {
   });
 
   const onSubmit = async (data) => {
-    // const res = await fetch("api/review", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     userId: userId,
-    //     score: data.score,
-    //     title: data.title,
-    //     review: data.review,
-    //     recommend: toLowercase(data.recommend),
-    //   }),
-    // });
-    // if (res.ok) {
-    //   router.refresh();
-    // } else {
-    //   console.error("Post Failed");
-    // }
-    console.log(data)
+    const res = await fetch("/api/review", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userEmail: session.data.user.email,
+        recipeId: recipeId,
+        score: data.score,
+        title: data.title,
+        review: data.review,
+        recommend: data.recommend,
+      }),
+    });
+    if (res.ok) {
+      router.refresh();
+    } else {
+      console.error("Post Failed");
+    }
+    console.log(data);
   };
   return (
     <div className="w-full h-full flex-col flex place-content-center items-center">
       {session.status === "authenticated" ? (
         <form
           id="reviewForm"
-          className="form-control"
+          className="form-control w-1/2"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="w-full">
             <label className="label">
-              <span className="label-text">Score</span>
+              <span className="label-text"><span className="text-red-500">* </span>Score</span>
             </label>
-            <input
-              type="text"
-              className="input input-bordered input-primary w-full max-w-xs"
-              {...register("score", { required: true })}
-            />
+            <div className="rating">
+              <input
+                type="radio"
+                name="rating-1"
+                className="mask mask-star bg-primary"
+                {...register("score", { required: true })}
+              />
+              <input
+                type="radio"
+                name="rating-1"
+                className="mask mask-star bg-primary"
+                {...register("score", { required: true })}
+              />
+              <input
+                type="radio"
+                name="rating-1"
+                className="mask mask-star bg-primary"
+                {...register("score", { required: true })}
+              />
+              <input
+                type="radio"
+                name="rating-1"
+                className="mask mask-star bg-primary"
+                {...register("score", { required: true })}
+              />
+              <input
+                type="radio"
+                name="rating-1"
+                className="mask mask-star bg-primary"
+                {...register("score", { required: true })}
+              />
+            </div>
             {errors.score && (
               <p className="text-error-content bg-error rounded-md p-3 mt-2">
                 {errors.score.message}
@@ -77,11 +105,11 @@ const NewReview = () => {
           </div>
           <div>
             <label className="label">
-              <span className="label-text">Title</span>
+              <span className="label-text"><span className="text-red-500">* </span>Title</span>
             </label>
             <input
               type="text"
-              className="input input-bordered input-primary w-full max-w-xs"
+              className="input input-bordered input-primary w-full"
               {...register("title", { required: true })}
             />
             {errors.title && (
@@ -92,10 +120,10 @@ const NewReview = () => {
           </div>
           <div>
             <label className="label">
-              <span className="label-text">Review</span>
+              <span className="label-text"><span className="text-red-500">* </span>Review</span>
             </label>
             <textarea
-              className="textarea textarea-bordered textarea-primary w-full max-w-xs"
+              className="textarea textarea-bordered textarea-primary w-full"
               {...register("review", { required: true })}
             />
             {errors.review && (
@@ -106,26 +134,32 @@ const NewReview = () => {
           </div>
           <div>
             <label className="label">
-              <span className="label-text"><span className="text-error">*</span>Would you Recommend?</span>
+              <span className="label-text">
+                <span className="text-red-500">* </span>Would you Recommend?
+              </span>
             </label>
-            <label className="label">
-              <span className="label-text-alt">Yes</span>
-            </label>
-            <input
-              type="radio"
-              className="input-lg input-bordered input-primary w-full max-w-xs"
-              value={"Yes"}
-              {...register("recommend", { required: true })}
-            />
-            <label className="label">
-              <span className="label-text-alt">No</span>
-            </label>
-            <input
-              type="radio"
-              className="input input-bordered input-primary w-full max-w-xs"
-              value={"No"}
-              {...register("recommend", { required: true })}
-            />
+            <div className="flex text-right">
+              <label className="label">
+                <span className="label-text-alt">Yes:</span>
+              </label>
+              <input
+                type="radio"
+                name="recommend"
+                className="input-sm input-bordered input-primary w-full"
+                value={"Yes"}
+                {...register("recommend", { required: true })}
+              />
+              <label className="label">
+                <span className="label-text-alt">No:</span>
+              </label>
+              <input
+                type="radio"
+                name="recommend"
+                className="input-sm input-bordered input-primary w-full"
+                value={"No"}
+                {...register("recommend", { required: true })}
+              />
+            </div>
             {errors.recommend && (
               <p className="text-error-content bg-error rounded-md p-3 mt-2">
                 {errors.recommend.message}
