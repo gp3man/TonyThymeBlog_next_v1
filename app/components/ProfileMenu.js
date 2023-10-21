@@ -1,9 +1,11 @@
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { authOptions } from "../api/auth/[...nextauth]/options";
+import LogOut from "./LogOut";
 const ProfileMenu = async () => {
   const session = await getServerSession(authOptions);
   const user = session?.user;
+  console.log(user)
   return (
     <>
       {user ? (
@@ -28,7 +30,8 @@ const ProfileMenu = async () => {
               <a>Signed In As: {user?.username || user?.name}</a>
             </li>
             <li>
-              <Link href={"/api/auth/signout"}>Log Out</Link>
+              <LogOut></LogOut>
+              {/* <Link href="/api/auth/signout">Log Out</Link> */}
             </li>
           </ul>
         </div>

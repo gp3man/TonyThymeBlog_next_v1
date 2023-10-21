@@ -3,14 +3,12 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 
 const NewReview = ({recipeId}) => {
   const session = useSession();
   const router = useRouter();
-  console.log(session);
   const formSchema = z.object({
     score: z.string(),
     title: z.string().min(1, "Title required").max(25),
@@ -51,7 +49,7 @@ const NewReview = ({recipeId}) => {
     } else {
       console.error("Post Failed");
     }
-    console.log(data);
+    // console.log(data);
   };
   return (
     <div className="w-full h-full flex-col flex place-content-center items-center">
@@ -70,30 +68,35 @@ const NewReview = ({recipeId}) => {
                 type="radio"
                 name="rating-1"
                 className="mask mask-star bg-primary"
+                value={1}
                 {...register("score", { required: true })}
               />
               <input
                 type="radio"
                 name="rating-1"
                 className="mask mask-star bg-primary"
+                value={2}
                 {...register("score", { required: true })}
               />
               <input
                 type="radio"
                 name="rating-1"
                 className="mask mask-star bg-primary"
+                value={3}
                 {...register("score", { required: true })}
               />
               <input
                 type="radio"
                 name="rating-1"
                 className="mask mask-star bg-primary"
+                value={4}
                 {...register("score", { required: true })}
               />
               <input
                 type="radio"
                 name="rating-1"
                 className="mask mask-star bg-primary"
+                value={5}
                 {...register("score", { required: true })}
               />
             </div>

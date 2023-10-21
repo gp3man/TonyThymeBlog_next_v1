@@ -5,7 +5,6 @@ export async function POST(req) {
   try {
     const body = await req.json();
     const { recipeId, score, title, review, recommend, userEmail } = body;
-    //check if email already exist
     const existingUserByEmail = await db.user.findUnique({
       where: { email: userEmail },
     });
@@ -15,27 +14,25 @@ export async function POST(req) {
         { status: 409 }
       );
     }
-    console.log(existingUserByEmail);
     const newReview = await db.review.create({
       data: {
         recipeId,
-        score: Number(score),
+        score: parseInt(score),
         title,
         review,
         recommend,
         userId: existingUserByEmail.id,
       },
     });
+    if(!newReview){
+      return NextResponse.json({ review: null, message: "Failed to post new review!", }, { status: 404 });
+    }
     return NextResponse.json(
       { review: newReview, message: "Review Successfully sent!" },
       { status: 201 }
     );
-    return NextResponse.json(
-      { review: null, message: "Need to sign in first" },
-      { status: 409 }
-    );
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ message: "Something Wrong!" }, { status: 505 });
+    return NextResponse.json({ review: null, message: "Something Wrong!" }, { status: 505 });
   }
 }
