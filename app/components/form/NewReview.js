@@ -6,29 +6,34 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 
-const NewReview = ({recipeId}) => {
+const NewReview = ({recipeId, formLock}) => {
   const session = useSession();
   const router = useRouter();
+  const lock = formLock
   const formSchema = z.object({
     score: z.string(),
     title: z.string().min(1, "Title required").max(25),
-    review: z.string().min(1, "Must write review").max(200, "Review too long"),
-    recommend: z.string(),
+    review: z.string().min(1, "Must write review").max(200, "Review over"),
+    recommend: z.string().min(1, "Do you recommend?"),
   });
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, isDirty,
+    isValid },
   } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       score: "5",
       title: "",
       review: "",
-      recommend: "",
+      recommend: "yes",
     },
   });
 
+  // const check = reviewCheck()
+  // console.log(check)
   const onSubmit = async (data) => {
     const res = await fetch("/api/review", {
       method: "POST",
@@ -45,17 +50,18 @@ const NewReview = ({recipeId}) => {
       }),
     });
     if (res.ok) {
+      reset()
       router.refresh();
     } else {
       console.error("Post Failed");
     }
-    // console.log(data);
   };
   return (
     <div className="w-full h-full flex-col flex place-content-center items-center">
+      {lock === true && (<div className="text-center text-error"> Review Posted </div>)}
       {session.status === "authenticated" ? (
         <form
-          id="reviewForm"
+          id="newReview"
           className="form-control w-1/2"
           onSubmit={handleSubmit(onSubmit)}
         >
@@ -149,7 +155,7 @@ const NewReview = ({recipeId}) => {
                 type="radio"
                 name="recommend"
                 className="input-sm input-bordered input-primary w-full"
-                value={"Yes"}
+                value={"yes"}
                 {...register("recommend", { required: true })}
               />
               <label className="label">
@@ -159,7 +165,7 @@ const NewReview = ({recipeId}) => {
                 type="radio"
                 name="recommend"
                 className="input-sm input-bordered input-primary w-full"
-                value={"No"}
+                value={"no"}
                 {...register("recommend", { required: true })}
               />
             </div>
@@ -169,7 +175,7 @@ const NewReview = ({recipeId}) => {
               </p>
             )}
           </div>
-          <button className="btn btn-outline btn-accent mt-4" type="submit">
+          <button className="btn btn-outline btn-accent mt-4" type="submit" disabled={!isDirty || !isValid}>
             Post
           </button>
         </form>
@@ -179,7 +185,8 @@ const NewReview = ({recipeId}) => {
             Sign-in to write a review{" "}
           </Link>
         </div>
-      )}
+      )
+      }
     </div>
   );
 };

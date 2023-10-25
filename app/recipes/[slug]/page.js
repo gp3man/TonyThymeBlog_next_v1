@@ -5,8 +5,9 @@ import PhotoCard from "../../components/PhotoCard";
 import Checkbox from "@/app/components/CheckBox";
 import ReviewBoard from "@/app/components/ReviewBoard.js";
 import NewReview from "@/app/components/form/NewReview";
+import { authOptions } from "../../api/auth/[...nextauth]/options";
+import { getServerSession } from "next-auth";
 
-// import { redirect } from "next/dist/server/api-utils";
 
 export default async function RecipePage({ params }) {
   // const currentClient = preview ? previewClient : client;
@@ -14,11 +15,22 @@ export default async function RecipePage({ params }) {
     content_type: "recipe",
     "fields.slug": params.slug,
   });
-  // if (!response?.items?.length) {
-    //   redirect('/');
-    // }
-    const recipe = response?.items?.[0];
-    const recipeId = recipe.sys.id
+  const session = getServerSession(authOptions)
+  console.log(session.user)
+  const recipe = response?.items?.[0];
+  const recipeId = recipe.sys.id
+  const userEmail = session?.user?.email
+  const res = await fetch("api/check", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userEmail: userEmail,
+      recipeId: recipeId,
+    }),
+  });
+  console.log(res)
   const {
     banners,
     procedure,

@@ -1,4 +1,5 @@
-const SingleReview = () => {
+const SingleReview = ({review}) => {
+  console.log(review)
   return (
     <div className="flex-col pb-2">
       <div className="flex justify-between">
