@@ -15,7 +15,7 @@ export async function POST(req) {
       );
     }
     const existingReviewByUser = await db.review.findFirst({
-      where: {userId: existingUserByEmail.id, recipeId: recipeId},
+      where: { userId: existingUserByEmail.id, recipeId: recipeId },
     });
     if (existingReviewByUser) {
       return NextResponse.json(
@@ -44,7 +44,6 @@ export async function POST(req) {
       { status: 201 }
     );
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
       { review: null, message: "Something Wrong!" },
       { status: 505 }

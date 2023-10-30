@@ -35,19 +35,20 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String         @id @default(cuid())
   name          String?
-  username      String?   @unique
+  username      String?        @unique
   password      String?
-  createdAt     DateTime  @default(now())
-  updateAt      DateTime  @updatedAt
-  email         String?   @unique
+  createdAt     DateTime       @default(now())
+  updateAt      DateTime       @updatedAt
+  email         String?        @unique
   emailVerified DateTime?
   image         String?
-  isAdmin       Boolean   @default(false)
+  isAdmin       Boolean        @default(false)
   accounts      Account[]
   sessions      Session[]
   reviews       Review[]
+  usefulReview  UsefulReview[]
 }
 
 model VerificationToken {
@@ -59,12 +60,24 @@ model VerificationToken {
 }
 
 model Review {
-  id        Int     @id @default(autoincrement())
-  recipeId  String
-  score     Int
-  title     String
-  review    String
-  recommend String
-  userId    String
-  User      User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id          Int            @id @default(autoincrement())
+  createdAt   DateTime       @default(now())
+  updateAt    DateTime       @updatedAt
+  recipeId    String
+  score       Int
+  title       String
+  review      String
+  recommend   String
+  userId      String
+  author      User?          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  usefulCount UsefulReview[]
+}
+
+model UsefulReview {
+  id       Int     @id @default(autoincrement())
+  readerId String
+  reader   User?   @relation(fields: [readerId], references: [id], onDelete: Cascade)
+  useful   Boolean
+  review   Review? @relation(fields: [reviewId], references: [id])
+  reviewId Int?
 }

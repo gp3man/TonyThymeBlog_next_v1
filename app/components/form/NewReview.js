@@ -162,7 +162,7 @@ const NewReview = ({ recipeId, formLock }) => {
                 type="radio"
                 name="recommend"
                 className="input-sm input-bordered input-primary w-full"
-                value={"yes"}
+                value={"Yes"}
                 {...register("recommend", { required: true })}
               />
               <label className="label">
@@ -172,7 +172,7 @@ const NewReview = ({ recipeId, formLock }) => {
                 type="radio"
                 name="recommend"
                 className="input-sm input-bordered input-primary w-full"
-                value={"no"}
+                value={"No"}
                 {...register("recommend", { required: true })}
               />
             </div>

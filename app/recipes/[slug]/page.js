@@ -21,7 +21,6 @@ export default async function RecipePage({ params }) {
   if (session?.user) {
     const { lock, message } = await reviewCheck({ recipeId, userEmail });
     formLock = lock;
-    console.log("lock ", lock, "message ", message);
   }
   const {
     banners,
@@ -122,7 +121,7 @@ export default async function RecipePage({ params }) {
         </div>
         <div className="text-left py-3 text-base-content">
           <NewReview recipeId={recipeId} formLock={formLock} />
-          <ReviewBoard />
+          <ReviewBoard recipeId={recipeId} />
         </div>
       </div>
     </section>
