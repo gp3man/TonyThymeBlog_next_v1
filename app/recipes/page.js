@@ -26,7 +26,7 @@ export default async function Recipes({ searchParams }) {
         </div>
       </header>
       <section id="AllRecipes" className="flex flex-col justify-center">
-        {recipes.length ? (
+        {recipes ? (
           <div className="flex flex-wrap py-4 justify-center w-screen">
             {recipes?.map((recipe, i) => (
               <RecipeCard key={recipe?.slug || i} recipe={recipe} />
@@ -53,7 +53,7 @@ export default async function Recipes({ searchParams }) {
           </Link>
           <Link
             href={`/recipes?page=${page + 1}`}
-            className={"rounded border bg-secondary px-3 py-1 text-sm text-secondary-content" + (!recipes.length && "pointer-events-none opacity-50")}
+            className={"rounded border bg-secondary px-3 py-1 text-sm text-secondary-content" + (!recipes && "pointer-events-none opacity-50")}
           >
             Next
           </Link>
