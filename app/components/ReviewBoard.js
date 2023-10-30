@@ -6,7 +6,6 @@ const ReviewBoard = async ({ recipeId }) => {
   return (
     <div className="w-full">
       <p className="text-base md:text-2xl font-black py-3">Reviews</p>
-      <hr className="opacity-50 border-accent py-3" />
       {reviews?.length ? (
         <div>
           {reviews.map((review, i) => (
@@ -39,7 +38,6 @@ const getReviews = async ({ recipeId }) => {
     const data = await res.json();
     return data;
   } catch (error) {
-    // return error
     console.log(error);
   }
 };

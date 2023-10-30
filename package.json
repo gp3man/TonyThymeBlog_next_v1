@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "daisyui": "^3.9.2",
+    "dayjs": "^1.11.10",
     "prisma": "^5.4.2"
   }
 }
