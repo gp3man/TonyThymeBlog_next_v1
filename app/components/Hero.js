@@ -16,7 +16,7 @@ const Hero = ({ content }) => {
         <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
           <Link
             href="/recipes"
-            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-accent-content rounded-lg bg-accent hover:bg-accent-focus focus:ring-4 focus:ring-primary-focus"
+            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-accent-content rounded-lg bg-accent hover:bg-accent-focus focus:ring-4 focus:ring-secondary"
           >
             {buttonText}
             <svg

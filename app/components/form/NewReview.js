@@ -6,22 +6,21 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 
-const NewReview = ({recipeId, formLock}) => {
+const NewReview = ({ recipeId, formLock }) => {
   const session = useSession();
   const router = useRouter();
-  const lock = formLock
+  const lock = formLock;
   const formSchema = z.object({
     score: z.string(),
     title: z.string().min(1, "Title required").max(25),
-    review: z.string().min(1, "Must write review").max(200, "Review over"),
+    review: z.string().min(1, "Must write review").max(350, "Review over"),
     recommend: z.string().min(1, "Do you recommend?"),
   });
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isDirty,
-    isValid },
+    formState: { errors, isDirty, isValid },
   } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -31,9 +30,6 @@ const NewReview = ({recipeId, formLock}) => {
       recommend: "yes",
     },
   });
-
-  // const check = reviewCheck()
-  // console.log(check)
   const onSubmit = async (data) => {
     const res = await fetch("/api/review", {
       method: "POST",
@@ -50,7 +46,7 @@ const NewReview = ({recipeId, formLock}) => {
       }),
     });
     if (res.ok) {
-      reset()
+      reset();
       router.refresh();
     } else {
       console.error("Post Failed");
@@ -58,7 +54,12 @@ const NewReview = ({recipeId, formLock}) => {
   };
   return (
     <div className="w-full h-full flex-col flex place-content-center items-center">
-      {lock === true && (<div className="text-center text-error"> Review Posted </div>)}
+      {lock === true && (
+        <div className="text-center bg-warning text-warning-content">
+          {" "}
+          Review Posted{" "}
+        </div>
+      )}
       {session.status === "authenticated" ? (
         <form
           id="newReview"
@@ -67,7 +68,9 @@ const NewReview = ({recipeId, formLock}) => {
         >
           <div className="w-full">
             <label className="label">
-              <span className="label-text"><span className="text-red-500">* </span>Score</span>
+              <span className="label-text">
+                <span className="text-red-500">* </span>Score
+              </span>
             </label>
             <div className="rating">
               <input
@@ -114,7 +117,9 @@ const NewReview = ({recipeId, formLock}) => {
           </div>
           <div>
             <label className="label">
-              <span className="label-text"><span className="text-red-500">* </span>Title</span>
+              <span className="label-text">
+                <span className="text-red-500">* </span>Title
+              </span>
             </label>
             <input
               type="text"
@@ -129,7 +134,9 @@ const NewReview = ({recipeId, formLock}) => {
           </div>
           <div>
             <label className="label">
-              <span className="label-text"><span className="text-red-500">* </span>Review</span>
+              <span className="label-text">
+                <span className="text-red-500">* </span>Review
+              </span>
             </label>
             <textarea
               className="textarea textarea-bordered textarea-primary w-full"
@@ -175,7 +182,11 @@ const NewReview = ({recipeId, formLock}) => {
               </p>
             )}
           </div>
-          <button className="btn btn-outline btn-accent mt-4" type="submit" disabled={!isDirty || !isValid}>
+          <button
+            className="btn btn-outline btn-accent mt-4"
+            type="submit"
+            disabled={!isDirty || !isValid}
+          >
             Post
           </button>
         </form>
@@ -185,8 +196,7 @@ const NewReview = ({recipeId, formLock}) => {
             Sign-in to write a review{" "}
           </Link>
         </div>
-      )
-      }
+      )}
     </div>
   );
 };

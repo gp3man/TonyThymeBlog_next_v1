@@ -1,4 +1,4 @@
-import { client, previewClient } from "@/lib/contentful.js";
+import { client } from "@/lib/contentful.js";
 import RichText from "../../components/RichText";
 import LogoImage from "@/app/components/LogoImage";
 import PhotoCard from "../../components/PhotoCard";
@@ -8,29 +8,21 @@ import NewReview from "@/app/components/form/NewReview";
 import { authOptions } from "../../api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth";
 
-
 export default async function RecipePage({ params }) {
-  // const currentClient = preview ? previewClient : client;
+  const session = await getServerSession(authOptions);
   const response = await client.getEntries({
     content_type: "recipe",
     "fields.slug": params.slug,
   });
-  const session = getServerSession(authOptions)
-  console.log(session.user)
   const recipe = response?.items?.[0];
-  const recipeId = recipe.sys.id
-  const userEmail = session?.user?.email
-  const res = await fetch("api/check", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      userEmail: userEmail,
-      recipeId: recipeId,
-    }),
-  });
-  console.log(res)
+  const recipeId = recipe.sys.id;
+  const userEmail = session?.user?.email;
+  let formLock = false;
+  if (session?.user) {
+    const { lock, message } = await reviewCheck({ recipeId, userEmail });
+    formLock = lock;
+    console.log("lock ", lock, "message ", message);
+  }
   const {
     banners,
     procedure,
@@ -44,12 +36,6 @@ export default async function RecipePage({ params }) {
   } = recipe?.fields;
   return (
     <section className="flex flex-col min-h-screen w-screen m-0 pt-20 justify-center text-center overflow-y-scroll scrollbar-hide">
-      {/* {preview && (
-        <>
-          You're in preview mode!!!
-          <Link href="/api/exit-preview">Exit preview</Link>
-        </>
-      )} */}
       <header className="w-full px-4 md:px-32">
         <h1 className="text-lg md:text-4xl font-black text-base-content py-1">
           {title}
@@ -135,10 +121,38 @@ export default async function RecipePage({ params }) {
           </div>
         </div>
         <div className="text-left py-3 text-base-content">
-          <NewReview recipeId={recipeId} />
+          <NewReview recipeId={recipeId} formLock={formLock} />
           <ReviewBoard />
         </div>
       </div>
     </section>
   );
 }
+{
+  /* {preview && (
+  <>
+    You're in preview mode!!!
+    <Link href="/api/exit-preview">Exit preview</Link>
+  </>
+)} */
+}
+
+const reviewCheck = async ({ recipeId, userEmail }) => {
+  try {
+    const res = await fetch("http://localhost:3000/api/check", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userEmail: userEmail,
+        recipeId: recipeId,
+      }),
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    // return error
+    console.log(error);
+  }
+};

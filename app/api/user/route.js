@@ -26,19 +26,22 @@ export async function POST(req) {
         { status: 409 }
       );
     }
-    const hashedPW = await hash(password, 10)
+    const hashedPW = await hash(password, 10);
     const newUser = await db.user.create({
       data: {
         username,
         email,
-        password: hashedPW
+        password: hashedPW,
       },
     });
-    const {password: newUserPW, ...rest } = newUser;
+    const { password: newUserPW, ...rest } = newUser;
 
-    return NextResponse.json({user: rest, message: "User created successfully!"}, {status: 201});
+    return NextResponse.json(
+      { user: rest, message: "User created successfully!" },
+      { status: 201 }
+    );
   } catch (error) {
-    console.log(error)
-    return NextResponse.json({message: "Something Wrong!"}, {status: 505});
+    console.log(error);
+    return NextResponse.json({ message: "Something Wrong!" }, { status: 505 });
   }
 }
