@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ProviderBtn from "./ProviderBtn";
 import { signIn } from "next-auth/react";
 import {useRouter } from "next/navigation";
+import Link from "next/link";
 const SignIn = ({providers}) => {
   const {credentials, ...otherProviders} = providers
   const router = useRouter();
@@ -92,6 +93,7 @@ const SignIn = ({providers}) => {
         {Object.values(otherProviders).map((provider) => (
           <ProviderBtn key={provider.name} method="sign in" provider={provider}></ProviderBtn>
       ))}
+      <p className="pt-3">Don't have a account? Sign-Up <Link href="/sign-up" className="underline">Here.</Link> </p>
     </div>
   );
 };

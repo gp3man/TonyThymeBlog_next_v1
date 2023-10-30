@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-
+import Link from "next/link";
 const SignUp = () => {
   const router = useRouter();
   const formSchema = z
@@ -129,6 +129,7 @@ const SignUp = () => {
           Sign Up
         </button>
       </form>
+      <p className="pt-3">Have a account? Sign-In <Link href="/sign-in" className="underline">Here.</Link> </p>
     </div>
   );
 };

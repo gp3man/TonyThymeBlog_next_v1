@@ -9,6 +9,27 @@ import { authOptions } from "../../api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth";
 
 export default async function RecipePage({ params }) {
+// const host =
+
+  const reviewCheck = async ({ recipeId, userEmail }) => {
+    try {
+      const res = await fetch(`${process.env.NEXTAUTH_URL}api/post-check`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userEmail: userEmail,
+          recipeId: recipeId,
+        }),
+      });
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      // return error
+      console.log(error);
+    }
+  };
   const session = await getServerSession(authOptions);
   const response = await client.getEntries({
     content_type: "recipe",
@@ -136,22 +157,3 @@ export default async function RecipePage({ params }) {
 )} */
 }
 
-const reviewCheck = async ({ recipeId, userEmail }) => {
-  try {
-    const res = await fetch("http://localhost:3000/api/check", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userEmail: userEmail,
-        recipeId: recipeId,
-      }),
-    });
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    // return error
-    console.log(error);
-  }
-};
