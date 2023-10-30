@@ -103,7 +103,7 @@ export default async function RecipePage({ params }) {
               Ingredients
             </span>
             <hr className="opacity-50 border-accent py-3" />
-            <ul className="grid-cols-1 md:grid-cols-2 grid-flow-row grid">
+            <ul className="grid-cols-1 lg:grid-cols-2 grid-flow-row grid">
               {ingredients.map((ingredient, i) => (
                 <li className="py-1 accent-accent" key={ingredient + i}>
                   <Checkbox text={ingredient} id={i} />
