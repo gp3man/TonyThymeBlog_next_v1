@@ -8,16 +8,34 @@ export async function POST(req) {
     //get all reviews with id
     const allReviews = await db.review.aggregate({
       where: { recipeId: recipeId },
-      _avg:{
-        score: true
+      _avg: {
+        score: true,
       },
-      _count:{
-        review: true
-      }
+      _count: {
+        review: true,
+      },
     });
-    console.log(allReviews)
+    const count = [];
+    for (let i = 1; i <= 5; i++) {
+      const scoreCount = await db.review.aggregate({
+        where: { recipeId: recipeId, score: i },
+        _count: {
+          score: true,
+        },
+      });
+      count.push({ key: i, value:scoreCount._count.score });
+    }
+    const data = {
+      avg: allReviews._avg.score,
+      count: allReviews._count.review,
+      all_1: count[0],
+      all_2: count[1],
+      all_3: count[2],
+      all_4: count[3],
+      all_5: count[4],
+    }
     return NextResponse.json(
-      { message: "Data Received" },
+      { data: data, message: "Data Received" },
       { status: 200 }
     );
   } catch (error) {

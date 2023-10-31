@@ -141,10 +141,10 @@ export default async function RecipePage({ params }) {
           </div>
         </div>
         <div className="text-left py-3 text-base-content">
-          <div className="">
-            <NewReview recipeId={recipeId} formLock={formLock} />
+          {/* <div className="flex"> */}
             <OverallRating recipeId={recipeId} />
-          </div>
+            <NewReview recipeId={recipeId} formLock={formLock} />
+          {/* </div> */}
           <ReviewBoard recipeId={recipeId} />
         </div>
       </div>
