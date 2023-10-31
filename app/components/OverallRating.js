@@ -1,5 +1,4 @@
 const OverallRating = async({recipeId}) => {
-  console.log(recipeId: recipeId)
   const getOverall = async ({ recipeId, userEmail }) => {
     try {
       const res = await fetch(`${process.env.NEXTAUTH_URL}api/overall-rating`, {
@@ -18,8 +17,8 @@ const OverallRating = async({recipeId}) => {
       console.log(error);
     }
   };
-  const data = getOverall({recipeId})
-  console.log(data: data)
+  const data = await getOverall({recipeId})
+  console.log("data: ", data)
   return ( <div>
     OverallRating
   </div> );

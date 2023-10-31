@@ -7,9 +7,9 @@ import ReviewBoard from "@/app/components/ReviewBoard.js";
 import NewReview from "@/app/components/form/NewReview";
 import { authOptions } from "../../api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth";
-
+import OverallRating from "@/app/components/OverallRating";
 export default async function RecipePage({ params }) {
-// const host =
+  // const host =
 
   const reviewCheck = async ({ recipeId, userEmail }) => {
     try {
@@ -142,8 +142,8 @@ export default async function RecipePage({ params }) {
         </div>
         <div className="text-left py-3 text-base-content">
           <div className="">
-          <NewReview recipeId={recipeId} formLock={formLock} />
-          <OverallRating recipeId={recipeId} />
+            <NewReview recipeId={recipeId} formLock={formLock} />
+            <OverallRating recipeId={recipeId} />
           </div>
           <ReviewBoard recipeId={recipeId} />
         </div>
@@ -159,4 +159,3 @@ export default async function RecipePage({ params }) {
   </>
 )} */
 }
-
