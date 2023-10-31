@@ -25,18 +25,13 @@ export async function POST(req) {
         { status: 208 }
       );
     }
-    // return NextResponse.json(
-    //   { formLock: false, message: "Free to make a review" },
-    //   { status: 201 }
-    // );
     return NextResponse.json(
       { lock: false,  message: "Continue" },
       { status: 200 }
     );
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
-      { message: "Something Wrong!" },
+      { message: "Something Wrong!", error: error },
       { status: 500 }
     );
   }

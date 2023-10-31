@@ -55,9 +55,8 @@ const NewReview = ({ recipeId, formLock }) => {
   return (
     <div className="w-full h-full flex-col flex place-content-center items-center">
       {lock === true && (
-        <div className="text-center bg-warning text-warning-content">
-          {" "}
-          Review Posted{" "}
+        <div className="text-center bg-warning text-warning-content p-1 rounded-sm">
+          Review Posted
         </div>
       )}
       {session.status === "authenticated" ? (
