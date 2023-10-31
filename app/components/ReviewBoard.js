@@ -1,8 +1,8 @@
 import SingleReview from "@/app/components/SingleReview.js";
 import Link from "next/link";
 const ReviewBoard = async ({ recipeId }) => {
-  const data = await getReviews({ recipeId })
-  const reviews = data?.reviews
+  const data = await getReviews({ recipeId });
+  const reviews = data?.reviews;
   return (
     <div className="w-full">
       <p className="text-base md:text-2xl font-black py-3">Reviews</p>
@@ -14,9 +14,13 @@ const ReviewBoard = async ({ recipeId }) => {
         </div>
       ) : (
         <div className="text-center">
-          Be the first to{" "}
-          <Link href={"#newReview"} className="underline hover:text-secondary">
-            review.
+          <hr className="opacity-50 border-secondary py-3" />
+          🥺
+          <Link
+            href={"#newReview"}
+            className="underline hover:text-secondary uppercase"
+          >
+            No Reviews Yet
           </Link>
         </div>
       )}

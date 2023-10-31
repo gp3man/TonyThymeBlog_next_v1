@@ -93,7 +93,7 @@ const SignIn = ({providers}) => {
         {Object.values(otherProviders).map((provider) => (
           <ProviderBtn key={provider.name} method="sign in" provider={provider}></ProviderBtn>
       ))}
-      <p className="pt-3">Don't have a account? Sign-Up <Link href="/sign-up" className="underline">Here.</Link> </p>
+      <p className="pt-3">Don't have a account? <Link href="/sign-up" className="underline">Sign-Up</Link> </p>
     </div>
   );
 };

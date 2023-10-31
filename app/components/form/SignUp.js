@@ -129,7 +129,7 @@ const SignUp = () => {
           Sign Up
         </button>
       </form>
-      <p className="pt-3">Have a account? Sign-In <Link href="/sign-in" className="underline">Here.</Link> </p>
+      <p className="pt-3">Have an account? <Link href="/sign-in" className="underline">Sign-In</Link> </p>
     </div>
   );
 };

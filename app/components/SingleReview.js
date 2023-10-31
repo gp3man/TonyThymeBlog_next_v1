@@ -1,5 +1,6 @@
 "use server"
 import dayjs from "dayjs";
+import HelpfulToggle from "./HelpfulToggle";
 
 const SingleReview = ({ review }) => {
   const {
@@ -51,7 +52,7 @@ const SingleReview = ({ review }) => {
       </div>
       <div className="flex pb-2">
         <div className="right-0">
-          Was this Review helpful? <span>Toggle</span>
+          <span>Was this Review helpful? <HelpfulToggle /></span>
         </div>
       </div>
     </div>
