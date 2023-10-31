@@ -1,6 +1,6 @@
 const HelpfulToggle = () => {
   return (
-    <div class="flex items-center mt-3 space-x-5">
+    <div className="flex items-center mt-3 space-x-5">
       <a
         href="#"
         className="inline-flex items-center text-sm font-medium text-accent hover:underline "

@@ -54,15 +54,15 @@ const NewReview = ({ recipeId, formLock }) => {
   };
   return (
     <div className="w-full h-full flex-col flex place-content-center items-center">
-      {lock === true && (
-        <div className="text-center bg-warning text-warning-content p-1 rounded-sm">
-          Review Posted
-        </div>
-      )}
+    {lock === true && (
+  <div className="text-center bg-accent text-accent-content p-2  m-5 rounded-sm">
+    Review Posted
+  </div>
+)}
       {session.status === "authenticated" ? (
         <form
           id="newReview"
-          className="form-control w-1/2"
+          className={"form-control w-1/2 "+ (lock === true ? "hidden": "")}
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="w-full">
