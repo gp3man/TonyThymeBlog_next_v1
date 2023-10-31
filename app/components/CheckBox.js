@@ -22,7 +22,7 @@ const Checkbox = ({ text, id }) => {
         onChange={() => {
           setIsChecked(!isChecked);
         }}
-        className={`peer appearance-none h-6 w-6 border-2 rounded-full border-primary checked:border-success relative  ${customChecked}`}
+        className={`peer appearance-none h-6 w-6 border-2 rounded-full border-primary checked:border-success relative ${customChecked}`}
       />
       {isChecked && (
         <FaCheckCircle className="text-success h-4 w-4 absolute bottom-4 left-4 text-opacity-100 check-custom transition" />

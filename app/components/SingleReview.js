@@ -49,7 +49,7 @@ const SingleReview = ({ review }) => {
           <p>{dayjs(createdAt).format("MM/DD/YYYY")}</p>
         </div>
       </div>
-      <div className="ml-16">
+      <div className="md:ml-16">
         <div className="pb-2">
           <p className="font-semibold">
             Recommend:
