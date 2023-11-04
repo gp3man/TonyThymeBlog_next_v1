@@ -1,16 +1,46 @@
-import error from "../error";
-
-const HelpfulToggle = () => {
-const handleToggle= (grade)=>{
-  // e.preventDefault()
-  console.log(grade);
-  // throw new Error("what are you doing")
-}
+'use client'
+const HelpfulToggle = ({ reviewId, reader }) => {
+  const handleTrue = async () => {
+    const res = await fetch("/api/helpful", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        reviewId: reviewId,
+        reader: reader,
+        grade: true,
+      }),
+    });
+    if (res.ok) {
+      console.log("GOOD TO GO!");
+    } else {
+      console.error("Post Failed");
+    }
+  };
+  const handleFalse = async () => {
+    const res = await fetch("/api/helpful", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        reviewId: reviewId,
+        reader: reader,
+        grade: false,
+      }),
+    });
+    if (res.ok) {
+      console.log("GOOD TO GO!");
+    } else {
+      console.error("Post Failed");
+    }
+  };
   return (
     <div className="flex items-center mt-3 space-x-5">
       <button
         className="inline-flex items-center text-sm font-medium text-accent hover:underline cursor-pointer"
-        // onClick={handleToggle(true)}
+        onClick={handleTrue}
       >
         <svg
           className="w-3.5 h-3.5 mr-2.5"
@@ -25,7 +55,7 @@ const handleToggle= (grade)=>{
       </button>
       <button
         className="inline-flex items-center text-sm font-medium text-accent hover:underline group cursor-pointer"
-        // onClick={handleToggle(false)}
+        onClick={handleFalse}
       >
         <svg
           className="w-3.5 h-3.5 mr-2.5"

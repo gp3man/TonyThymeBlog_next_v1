@@ -1,6 +1,6 @@
 import SingleReview from "@/app/components/SingleReview.js";
 import Link from "next/link";
-const ReviewBoard = async ({ recipeId }) => {
+const ReviewBoard = async ({ recipeId, reader}) => {
   const data = await getReviews({ recipeId });
   const reviews = data?.reviews;
   return (
@@ -9,7 +9,7 @@ const ReviewBoard = async ({ recipeId }) => {
       {reviews?.length ? (
         <div>
           {reviews.map((review, i) => (
-            <SingleReview key={review.id} review={review} />
+            <SingleReview key={review.id} review={review} reader={reader} />
           ))}
         </div>
       ) : (

@@ -145,7 +145,7 @@ export default async function RecipePage({ params }) {
             <OverallRating recipeId={recipeId} />
             <NewReview recipeId={recipeId} formLock={formLock} />
           {/* </div> */}
-          <ReviewBoard recipeId={recipeId} />
+          <ReviewBoard recipeId={recipeId} reader={session?.user} />
         </div>
       </div>
     </section>

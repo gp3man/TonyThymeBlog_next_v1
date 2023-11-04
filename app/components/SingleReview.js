@@ -3,8 +3,9 @@ import dayjs from "dayjs";
 import HelpfulToggle from "./HelpfulToggle";
 import ScoreCount from "./ScoreCount";
 
-const SingleReview = ({ review }) => {
+const SingleReview = ({ review, reader }) => {
   const {
+    id,
     score,
     title,
     review: content,
@@ -63,7 +64,7 @@ const SingleReview = ({ review }) => {
         <div className="flex pb-2">
           <div className="right-0">
             <span>
-              Was this Review helpful? <HelpfulToggle />
+              Was this Review helpful? <HelpfulToggle reviewId={id} reader={reader.email} />
             </span>
           </div>
         </div>
