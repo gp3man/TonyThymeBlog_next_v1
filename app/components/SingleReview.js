@@ -12,11 +12,11 @@ const SingleReview = ({ review }) => {
     author,
     createdAt,
   } = review;
-  const name= author?.name.split(" ")
-  const firstName =name[0]
-  let lastInitial = ""
-  if(name[1]){
-    lastInitial = name[1][0]
+  let name, firstName,lastInitial = ""
+  if (author.name){
+    name = author?.name?.split(" ")
+    firstName = name[0]
+    lastInitial = name[1][0] || ""
   }
   return (
     <div className="flex-col pb-2">
