@@ -1,13 +1,16 @@
+import error from "../error";
+
 const HelpfulToggle = () => {
 const handleToggle= (grade)=>{
   // e.preventDefault()
   console.log(grade);
+  // throw new Error("what are you doing")
 }
   return (
     <div className="flex items-center mt-3 space-x-5">
       <button
         className="inline-flex items-center text-sm font-medium text-accent hover:underline cursor-pointer"
-        onClick={handleToggle(true)}
+        // onClick={handleToggle(true)}
       >
         <svg
           className="w-3.5 h-3.5 mr-2.5"
@@ -22,7 +25,7 @@ const handleToggle= (grade)=>{
       </button>
       <button
         className="inline-flex items-center text-sm font-medium text-accent hover:underline group cursor-pointer"
-        onClick={handleToggle(false)}
+        // onClick={handleToggle(false)}
       >
         <svg
           className="w-3.5 h-3.5 mr-2.5"

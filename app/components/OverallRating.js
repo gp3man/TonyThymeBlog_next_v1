@@ -2,7 +2,7 @@ import PBar from "./PBar";
 import Link from "next/link";
 import ScoreCount from "./ScoreCount"
 const OverallRating = async ({ recipeId }) => {
-  const getOverall = async ({ recipeId, userEmail }) => {
+  const getOverall = async ({ recipeId }) => {
     try {
       const res = await fetch(`${process.env.NEXTAUTH_URL}api/overall-rating`, {
         method: "POST",
@@ -30,7 +30,7 @@ const OverallRating = async ({ recipeId }) => {
         <ScoreCount avg={avg} />
         <p>
           {count}
-          <span> Review<span className={count === 1 &&("hidden")}>s</span></span>
+          <span> Review<span className={count === 1 ?"hidden" : ""}>s</span></span>
         </p>
       </div>) :(<div className="flex-col pr-4 py-16">Be the first to <Link href="#newReview" className="underline">review!</Link> </div>)}
 

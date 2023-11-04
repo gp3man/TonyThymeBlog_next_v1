@@ -84,7 +84,7 @@ export default async function RecipePage({ params }) {
         {/* Notes */}
       </header>
       <div className="w-full px-4 md:px-32">
-        <div className="py-2 text-left">
+        <div id="authorsNotes" className="py-2 text-left">
           <h2 className="text-base md:text-2xl font-black py-3">
             Author Notes
           </h2>
@@ -94,7 +94,7 @@ export default async function RecipePage({ params }) {
         {/* Photo */}
         <PhotoCard photos={banners} />
         {/* DishTimes */}
-        <div className="bg-primary py-3 rounded-xl ">
+        <div id="dishTimes" className="bg-primary py-3 rounded-xl ">
           <div className="grid col-span-2 grid-flow-col">
             {timeToPrep && (
               <div className="p-2">
@@ -118,7 +118,7 @@ export default async function RecipePage({ params }) {
           </div>
         </div>
         {/* Method Block */}
-        <div className="text-left py-3">
+        <div id="methodBlock" className="text-left py-3">
           <div className="flex flex-col py-3 ">
             <span className="text-base md:text-2xl font-black py-3">
               Ingredients
