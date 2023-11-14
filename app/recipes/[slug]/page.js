@@ -26,7 +26,6 @@ export default async function RecipePage({ params }) {
       const data = await res.json();
       return data;
     } catch (error) {
-      // return error
       console.log(error);
     }
   };
@@ -88,6 +87,7 @@ export default async function RecipePage({ params }) {
           <h2 className="text-base md:text-2xl font-black py-3">
             Author Notes
           </h2>
+          <a className=" btn btn-ghost end-0 font-light text-xs" href="#method">Skip To Method</a>
           <hr className="opacity-50 border-accent py-3" />
           <p className="pb-1">{authorsNotes}</p>
         </div>
@@ -118,7 +118,7 @@ export default async function RecipePage({ params }) {
           </div>
         </div>
         {/* Method Block */}
-        <div id="methodBlock" className="text-left py-3">
+        <div id="method" className="text-left py-3">
           <div className="flex flex-col py-3 ">
             <span className="text-base md:text-2xl font-black py-3">
               Ingredients
