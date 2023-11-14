@@ -15,7 +15,7 @@ const CatCircles = ({ categories }) => {
               height={
                 cat?.thumbnail?.height
               }
-              className="w-[30px] h-[30px] sm:w-[60px] sm:h-[60px] rounded-full"
+              className="w-[30px] h-[30px] sm:w-[60px] sm:h-[60px] rounded-full" 
             />
             <p>{cat?.title}</p>
           </div>

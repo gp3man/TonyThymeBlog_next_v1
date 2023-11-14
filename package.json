@@ -20,6 +20,7 @@
     "autoprefixer": "10.4.15",
     "bcrypt": "^5.1.1",
     "contentful": "^10.5.2",
+    "framer-motion": "^10.16.4",
     "lodash": "^4.17.21",
     "next": "^14.0.2",
     "next-auth": "^4.24.4",
