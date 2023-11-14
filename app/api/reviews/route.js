@@ -17,7 +17,6 @@ export async function POST(req) {
         },
       },
     });
-
     return NextResponse.json(
       { reviews: reviews, message: "Reviews" },
       { status: 200 }

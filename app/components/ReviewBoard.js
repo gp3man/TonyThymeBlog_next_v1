@@ -9,7 +9,7 @@ const ReviewBoard = async ({ recipeId, reader}) => {
       {reviews?.length ? (
         <div>
           {reviews.map((review, i) => (
-            <SingleReview key={review.id} review={review} reader={reader} />
+            <SingleReview key={review?.id} review={review} reader={reader} />
           ))}
         </div>
       ) : (

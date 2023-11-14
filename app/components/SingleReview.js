@@ -64,7 +64,7 @@ const SingleReview = ({ review, reader }) => {
         <div className="flex pb-2">
           <div className="right-0">
             <span>
-              Was this Review helpful? <HelpfulToggle reviewId={id} reader={reader.email} />
+              Was this Review helpful? <HelpfulToggle reviewId={id} reader={reader?.email} />
             </span>
           </div>
         </div>
