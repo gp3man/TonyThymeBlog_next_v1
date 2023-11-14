@@ -76,7 +76,7 @@ const HoverCatCard = ({category}) => {
           style={{
             transform: "translateZ(50px)",
           }}
-          className="text-center text-2xl font-bold text-accent-content shadow-xl bg-accent rounded-lg bg-opacity-80"
+          className="text-center text-2xl font-bold text-accent-content shadow-xl bg-accent rounded-lg bg-opacity-80a"
         >
           {category?.title}
         </p>
