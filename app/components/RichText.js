@@ -84,6 +84,7 @@ const options = {
             alt={node.data.target.fields.title}
             className="h-18 w-32 aspect-auto justify-center m-6 rounded-md"
           />
+          {console.log(node.data.target.fields)}
         </div>
       );
     },

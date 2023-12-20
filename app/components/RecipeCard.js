@@ -11,14 +11,14 @@ const RecipeCard = ({ recipe }) => {
       aria-label={title}
     >
       <div className="max-w-sm bg-secondary border border-accent rounded-lg shadow">
-        <div className="aspect-square">
+        <div className="aspect-[4/6]" >
           <Image
             src={thumbnail?.url}
             width={thumbnail?.width}
             height={thumbnail?.height}
             quality="100"
             alt={title}
-            className="aspect-square rounded-lg"
+            className="aspect-[4/6] rounded-lg"
           />
         </div>
         <div className="p-5">
