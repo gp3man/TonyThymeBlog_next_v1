@@ -1,10 +1,11 @@
-const InstagramVideo = (vid) => {
+const InstagramVideo = ({vid}) => {
   return (
-    <video width="220"  height="330" autoPlay muted className="aspect-[4/6]">
+    <video width="220"  height="330" autoPlay className="aspect-[4/6]">
       <source
         src={vid?.fields?.file?.url}
-        type={vid?.fields?.file?.contentType}
+        type="video/mp4"
       />
+      {console.log(vid?.fields)}
     </video>
   );
 };
