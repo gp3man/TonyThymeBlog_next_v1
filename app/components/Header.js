@@ -54,7 +54,7 @@ const NavBar = async() => {
                 target="new"
                 className="px-3 cursor-pointer sm:text-base active:font-bold "
               >
-                <p>{<TfiInstagram size={20} />}</p>
+                <p>{<TfiInstagram size={20} /> }</p>
               </Link>
             </li>
           </ul>

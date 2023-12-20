@@ -8,8 +8,8 @@ import NewReview from "@/app/components/form/NewReview";
 import { authOptions } from "../../api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth";
 import OverallRating from "@/app/components/OverallRating";
+import InstagramVid from "@/app/components/InstagramVideo";
 export default async function RecipePage({ params }) {
-  // const host =
 
   const reviewCheck = async ({ recipeId, userEmail }) => {
     try {
@@ -52,6 +52,7 @@ export default async function RecipePage({ params }) {
     timeToCook,
     authorsNotes,
     timeToPrep,
+    instagramVideo
   } = recipe?.fields;
   return (
     <section className="flex flex-col min-h-screen w-screen m-0 pt-20 justify-center text-center overflow-y-scroll scrollbar-hide">
@@ -125,7 +126,7 @@ export default async function RecipePage({ params }) {
             </span>
             <hr className="opacity-50 border-accent py-3" />
             <ul className="grid-cols-1 lg:grid-cols-2 grid-flow-row grid">
-              {ingredients.map((ingredient, i) => (
+              {ingredients?.map((ingredient, i) => (
                 <li className="py-1 accent-accent" key={ingredient + i}>
                   <Checkbox text={ingredient} id={i} />
                 </li>
@@ -137,6 +138,7 @@ export default async function RecipePage({ params }) {
               Directions
             </h2>
             <hr className="opacity-50 border-accent py-3" />
+            {instagramVideo && (<div className="aspect-[2/3]"><InstagramVid vid={instagramVideo} ></InstagramVid> </div>  )}
             <RichText content={procedure} />
           </div>
         </div>
