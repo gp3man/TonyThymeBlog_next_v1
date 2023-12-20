@@ -138,7 +138,7 @@ export default async function RecipePage({ params }) {
               Directions
             </h2>
             <hr className="opacity-50 border-accent py-3" />
-            {instagramVideo && (<div className="flex justify-center"><InstagramVid vid={instagramVideo} ></InstagramVid> </div>  )}
+            {instagramVideo && (<div className="flex justify-center rounded-lg"><InstagramVid vid={instagramVideo} ></InstagramVid> </div>  )}
             <RichText content={procedure} />
           </div>
         </div>

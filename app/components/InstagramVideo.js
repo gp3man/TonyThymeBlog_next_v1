@@ -5,7 +5,6 @@ const InstagramVideo = ({vid}) => {
         src={vid?.fields?.file?.url}
         type="video/mp4"
       />
-      {console.log(vid?.fields)}
     </video>
   );
 };
