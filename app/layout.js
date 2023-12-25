@@ -1,10 +1,10 @@
 import "./globals.css";
-import { Playpen_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import RecoilProvider from "./providers/recoilProvider";
 import NextAuthSessionProvider from "./providers/sessionProvider.js";
-const playpen_Sans = Playpen_Sans({ subsets: ["latin"] });
+const playpen_Sans = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Tony Thyme",
