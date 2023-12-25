@@ -17,7 +17,7 @@ export default async function Recipes({ searchParams }) {
     ? searchedCollection?.items
     : recipeCollection?.items;
   return (
-    <div className="min-h-screen pt-10 pb-14 overflow-y-scroll scrollbar-hide justify-center">
+    <div className="min-h-screen pt-14 pb-14 overflow-y-scroll scrollbar-hide justify-center">
       <header className="flex flex-col p-3 m-3 justify-center">
         <p className="font-bold text-3xl text-center">Recipes</p>
         <div>

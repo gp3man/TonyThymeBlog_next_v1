@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/gp3man/TonyThymeBlog_next_v1">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="public/logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">TonyThyme</h3>
@@ -103,7 +103,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https:/www.tonythyme.com)_
+_For more examples, please refer to the [Documentation](https://www.tonythyme.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -112,10 +112,11 @@ _For more examples, please refer to the [Documentation](https:/www.tonythyme.com
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Contentful CMS API
-- [ ] Next Authentication
-- [ ] PostgreSQL Database
-    - [ ] User 5-star Rating System
+- [x] Contentful CMS API
+- [x] Next Authentication
+- [x] PostgreSQL Database
+    - [x] User 5-star Rating System
+- [ ] User Profile customazation
 
 See the [open issues](https://github.com/gp3man/TonyThymeBlog_next_v1/issues) for a full list of proposed features (and known issues).
 
@@ -133,7 +134,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Gregory Pounds - [@twitter_handle](https://twitter.com/twitter_handle) - greg.pounds3@outlook.com
+Gregory Pounds - [@LinkedIn](https://www.linkedin.com/in/gregory-pounds/) - greg.pounds3@outlook.com
 
 Project Link: [https://github.com/gp3man/TonyThymeBlog_next_v1](https://github.com/gp3man/TonyThymeBlog_next_v1)
 
@@ -153,7 +154,7 @@ Project Link: [https://github.com/gp3man/TonyThymeBlog_next_v1](https://github.c
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
+[contributors-url]: https://github.com/gp3man/TonyThymeBlog_next_v1/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/gp3man/TonyThymeBlog_next_v1.svg?style=for-the-badge
 [forks-url]: https://github.com/github_username/repo_name/network/members
 [stars-shield]: https://img.shields.io/github/stars/gp3man/TonyThymeBlog_next_v1.svg?style=for-the-badge
@@ -164,7 +165,7 @@ Project Link: [https://github.com/gp3man/TonyThymeBlog_next_v1](https://github.c
 [license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/gregory-pounds/
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: public/screenshot_landing.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB

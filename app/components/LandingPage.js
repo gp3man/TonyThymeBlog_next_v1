@@ -1,7 +1,7 @@
 // "use client";
 import Hero from "./Hero";
 import RecipeCard from "./RecipeCard";
-import Announcement from "./AnnouncementCard";
+import Announcement from "./Dialog";
 import Link from "next/link";
 
 const LandingPage = ({ data }) => {
