@@ -12,8 +12,7 @@ const AllCategories = async () => {
         {categories?.map((cat, i) => (
         <Link key={i} href={`/categories/${cat?.sys?.id}`}>
           <div className="flex flex-wrap items-center justify-center">
-          {/* <HoverCatCard category={cat} /> */}
-          1
+          <HoverCatCard category={cat} />
           </div>
         </Link>
       ))}
