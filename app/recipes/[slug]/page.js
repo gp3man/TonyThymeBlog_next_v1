@@ -97,7 +97,7 @@ export default async function RecipePage({ params }) {
         {/* DishTimes */}
         <div id="dishTimes" className="bg-primary py-3 rounded-xl ">
           <div className="grid col-span-2 grid-flow-col">
-            {(timeToPrep && timeToPrep > 0) && (
+            {(timeToPrep > 0) && (
               <div className="p-2">
                 <h2 className="font-bold ">Prep-Time</h2>
                 <p className="text-primary-content cursor-pointer">
