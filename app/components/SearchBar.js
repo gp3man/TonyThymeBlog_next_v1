@@ -24,17 +24,16 @@ const SearchBar = () => {
     <div className="flex justify-center">
       <div className="relative mt-6 w-[60vw] flex flex-col justify-center">
         <input
-          className="peer relative -top-3.5 m-6 rounded-lg rounded-t border-b-4 border-x-1 border-accent focus: outline-none focus:border-accent-focus placeholder-transparent bg-base-200 h-12  shadow-inner"
+          className="peer relative -top-4 m-6 rounded-lg border-4 border-x-1   border-accent focus: outline-none focus:border-accent-focus placeholder-transparent bg-base-200 h-12  shadow-inner"
           type="text"
           name="Name"
           id="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Name"
-          // required
         />
         <label
-          className="absolute left-5 -top-3 mx-3 text-base-content text-xs transition-all peer-placeholder-shown:text-slate-600 peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-placeholder-shown:uppercase peer-focus:-top-3.5 peer-focus:text-slate-950 peer-focus:text-sm flex"
+          className="absolute left-5 - top-32 mx-3 text-base-content text-xs transition-all peer-placeholder-shown:text-slate-600 peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-placeholder-shown:uppercase peer-focus:-top-3.5 peer-focus:text-slate-950 peer-focus:text-sm flex"
           htmlFor="Name"
         >
           Search

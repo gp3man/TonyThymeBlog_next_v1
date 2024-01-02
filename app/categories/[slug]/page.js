@@ -8,15 +8,15 @@ const SingleCategory = async ({ params }) => {
   const recipes = data?.category?.linkedFrom?.recipeCollection?.items;
   return (
     <div className=" flex-col text-center justify-center mt-16 p-9 min-h-screen">
-      <div>
+      <div className="flex-col">
         <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl pb-6">
           {category?.title}
         </h1>
-        <ul className="flex-col max-w-2xl divide-y divide-primary justify-center ">
+        <ul className="flex-col  divide-y divide-primary justify-center w-full px-2 md:px-24 ">
           {recipes?.length ? (
             <div>
               {recipes?.map((recipe, i) => (
-                <li className="py-3 sm:py-4 shadow-lg px-2" key={i}>
+                <li className="py-3 sm:py-4 shadow-lg px-2 justify-center align-middle" key={i}>
                   <Link
                     className="flex items-center space-x-4 rtl:space-x-reverse"
                     href={`/recipes/${recipe?.slug}`}
