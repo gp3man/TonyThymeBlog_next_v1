@@ -16,6 +16,7 @@ export default async function Recipes({ searchParams }) {
   const recipes = typeof searchParams?.search === "string"
     ? searchedCollection?.items
     : recipeCollection?.items;
+    console.log(categories);
   return (
     <div className="min-h-screen pt-14 pb-14 overflow-y-scroll scrollbar-hide justify-center">
       <header className="flex flex-col p-3 m-3 justify-center">

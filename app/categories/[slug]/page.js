@@ -13,7 +13,7 @@ const SingleCategory = async ({ params }) => {
           {category?.title}
         </h1>
         <ul className="flex-col max-w-2xl divide-y divide-primary justify-center ">
-          {recipes.length ? (
+          {recipes?.length ? (
             <div>
               {recipes?.map((recipe, i) => (
                 <li className="py-3 sm:py-4 shadow-lg px-2" key={i}>

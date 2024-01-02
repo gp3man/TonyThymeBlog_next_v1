@@ -4,7 +4,7 @@ const CatCircles = ({ categories }) => {
   return (
     <div className="flex justify-evenly sm:-space-x-32 text-center my-2">
       {categories.map((cat, i) => (
-        <Link key={i} href={`/categories/${cat?.slug}`}>
+        <Link key={i} href={`/categories/${cat?.sys?.id}`}>
           <div>
             <Image
               alt={cat?.title}

@@ -35,7 +35,7 @@ export default async function RecipePage({ params }) {
     "fields.slug": params.slug,
   });
   const recipe = response?.items?.[0];
-  const recipeId = recipe.sys.id;
+  const recipeId = recipe?.sys.id;
   const userEmail = session?.user?.email;
   let formLock = false;
   if (session?.user) {
