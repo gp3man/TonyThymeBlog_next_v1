@@ -33,7 +33,7 @@ const SearchBar = () => {
           placeholder="Name"
         />
         <label
-          className="absolute left-5 - top-32 mx-3 text-base-content text-xs transition-all peer-placeholder-shown:text-slate-600 peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-placeholder-shown:uppercase peer-focus:-top-3.5 peer-focus:text-slate-950 peer-focus:text-sm flex"
+          className="absolute left-5 -top-3.5 mx-3 text-base-content text-xs transition-all peer-placeholder-shown:text-slate-600 peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-placeholder-shown:uppercase peer-focus:-top-3.5 peer-focus:text-slate-950 peer-focus:text-sm flex"
           htmlFor="Name"
         >
           Search

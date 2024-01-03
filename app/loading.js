@@ -1,20 +1,18 @@
-'use client'
 const Loading = () => {
   return (
-    // <main className="skeleton h-screen w-screen text-base-content">
-      <div>
-        <CutoutTextLoader
+    <main className="flex flex-col skeleton bg-base-300 min-h-screen pt-14 pb-14 overflow-y-scroll scrollbar-hide justify-center text-base-content">
+      <div className="justify-center text-3xl text-center ">
+        Loading ...
+        {/* <CutoutTextLoader
           height="450px"
           background="white"
           imgUrl="/public/bgL.jpg"
-        />
+        /> */}
       </div>
-    // </main>
+        <p className=" flex loading loading-lg loading-spinner text-primary self-center"></p>
+    </main>
   );
 };
-
-export default Loading;
-
 const CutoutTextLoader = ({ height, background, imgUrl }) => {
   return (
     <div className="relative" style={{ height }}>
@@ -45,3 +43,5 @@ const CutoutTextLoader = ({ height, background, imgUrl }) => {
     </div>
   );
 };
+
+export default Loading;

@@ -4,11 +4,11 @@ import { getRecipes } from "@/lib/getRecipes";
 import Link from "next/link";
 import CatCircles from "../components/CatLinks";
 export default async function Recipes({ searchParams }) {
-  await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("Hi");
-    }, 5000);
-  });
+  // await new Promise((resolve) => {
+  //   setTimeout(() => {
+  //     resolve("Hi");
+  //   }, 5000);
+  // });
   const page =
     typeof searchParams?.page === "string" ? Number(searchParams.page) : 1;
   const limit =
