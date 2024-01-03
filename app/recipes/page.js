@@ -1,27 +1,20 @@
 import SearchBar from "../components/SearchBar";
-import RecipeCard from "../components/RecipeCard";
-import { getRecipes } from "@/lib/getRecipes";
-import Link from "next/link";
 import CatCircles from "../components/CatLinks";
+import { fetchRecipes } from "./actions";
+import InfiniteScrollRecipes from "./infinite-scroll-recipes";
+import { v4 as uuidv4 } from 'uuid';
 export default async function Recipes({ searchParams }) {
   // await new Promise((resolve) => {
   //   setTimeout(() => {
   //     resolve("Hi");
   //   }, 5000);
   // });
-  const page =
-    typeof searchParams?.page === "string" ? Number(searchParams.page) : 1;
-  const limit =
-    typeof searchParams?.limit === "string" ? Number(searchParams.limit) : 12;
   const search =
     typeof searchParams?.search === "string" ? searchParams.search : undefined;
-  const { recipeCollection, categoryCollection, searchedCollection } =
-    await getRecipes({ page, limit, search });
+  const { recipeCollection, categoryCollection} =
+    await fetchRecipes({ search });
   const categories = categoryCollection?.items;
-  const recipes =
-    typeof searchParams?.search === "string"
-      ? searchedCollection?.items
-      : recipeCollection?.items;
+  const recipes = recipeCollection?.items;
   return (
     <div className="min-h-screen pt-14 pb-14 overflow-y-scroll scrollbar-hide justify-center">
       <header className="flex flex-col p-3 m-3 justify-center">
@@ -31,43 +24,9 @@ export default async function Recipes({ searchParams }) {
           <CatCircles categories={categories} />
         </div>
       </header>
-      <section id="AllRecipes" className="flex flex-col justify-center">
-        {recipes ? (
-          <div className="flex flex-wrap py-4 justify-center w-screen">
-            {recipes?.map((recipe, i) => (
-              <RecipeCard key={recipe?.slug || i} recipe={recipe} />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center text-4xl py-6 font-bold content-center h-1/2">
-            Hmm... No recipes down this path.
-            <br />
-            <span className="font-normal text-lg text-gray-400">
-              Try Again!
-            </span>
-          </div>
-        )}
-        <div className="flex justify-center space-x-4">
-          <Link
-            href={`/recipes?page=${page > 1 ? page - 1 : 1}`}
-            className={
-              "rounded border bg-secondary px-3 py-1 text-sm text-secondary-content" +
-              (page <= 1 && "pointer-events-none opacity-50")
-            }
-          >
-            Prev
-          </Link>
-          <Link
-            href={`/recipes?page=${page + 1}`}
-            className={
-              "rounded border bg-secondary px-3 py-1 text-sm text-secondary-content" +
-              (!recipes && "pointer-events-none opacity-50")
-            }
-          >
-            Next
-          </Link>
-        </div>
-      </section>
+      <ul key={uuidv4()} id="AllRecipes" className="flex flex-col justify-center">
+        <InfiniteScrollRecipes initialRecipes={recipes} search={search}/>
+      </ul>
     </div>
   );
 }
