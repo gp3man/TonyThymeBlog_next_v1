@@ -41,7 +41,9 @@ const SingleReview = ({ review, reader }) => {
               <img
                 className="rounded-full"
                 src="/emptyProfile.jpg"
-                srcSet="" alt="JaneDoe" sizes="128px"
+                srcSet=""
+                alt="JaneDoe"
+                sizes="128px"
                 height={40}
                 width={40}
               />

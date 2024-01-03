@@ -41,7 +41,12 @@ const PhotoCard = ({ photos }) => {
           {photos.map((shot, slideIndex) => (
             <div
               key={slideIndex}
-              className={"text-2xl text-accent cursor-pointer p-2 border-separate border rounded-full bg-primary "+ (currentIndex === slideIndex ? "bg-primary-focus text-accent-focus bg-opacity-80" : " bg-opacity-10" )}
+              className={
+                "text-2xl text-accent cursor-pointer p-2 border-separate border rounded-full bg-primary " +
+                (currentIndex === slideIndex
+                  ? "bg-primary-focus text-accent-focus bg-opacity-80"
+                  : " bg-opacity-10")
+              }
               onClick={() => gotToSlide(slideIndex)}
             >
               <GiKnifeFork />

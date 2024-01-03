@@ -10,7 +10,6 @@ import OverallRating from "@/app/components/OverallRating";
 import InstagramVid from "@/app/components/InstagramVideo";
 import RecipeImage from "@/app/components/RecipeImage";
 export default async function RecipePage({ params }) {
-
   const reviewCheck = async ({ recipeId, userEmail }) => {
     try {
       const res = await fetch(`${process.env.NEXTAUTH_URL}api/post-check`, {
@@ -52,7 +51,7 @@ export default async function RecipePage({ params }) {
     timeToCook,
     authorsNotes,
     timeToPrep,
-    instagramVideo
+    instagramVideo,
   } = recipe?.fields;
   return (
     <section className="flex flex-col min-h-screen w-screen m-0 pt-20 justify-center text-center overflow-y-scroll scrollbar-hide">
@@ -88,7 +87,9 @@ export default async function RecipePage({ params }) {
           <h2 className="text-base md:text-2xl font-black py-3">
             Author Notes
           </h2>
-          <a className=" btn btn-ghost end-0 font-light text-xs" href="#method">Skip To Method</a>
+          <a className=" btn btn-ghost end-0 font-light text-xs" href="#method">
+            Skip To Method
+          </a>
           <hr className="opacity-50 border-accent py-3" />
           <p className="pb-1">{authorsNotes}</p>
         </div>
@@ -97,7 +98,7 @@ export default async function RecipePage({ params }) {
         {/* DishTimes */}
         <div id="dishTimes" className="bg-primary py-3 rounded-xl ">
           <div className="grid col-span-2 grid-flow-col">
-            {(timeToPrep > 0) && (
+            {timeToPrep > 0 && (
               <div className="p-2">
                 <h2 className="font-bold ">Prep-Time</h2>
                 <p className="text-primary-content cursor-pointer">
@@ -138,14 +139,18 @@ export default async function RecipePage({ params }) {
               Directions
             </h2>
             <hr className="opacity-50 border-accent py-3" />
-            {instagramVideo && (<div className="flex justify-center rounded-lg"><InstagramVid vid={instagramVideo} ></InstagramVid> </div>  )}
+            {instagramVideo && (
+              <div className="flex justify-center rounded-lg">
+                <InstagramVid vid={instagramVideo}></InstagramVid>{" "}
+              </div>
+            )}
             <RichText content={procedure} />
           </div>
         </div>
         <div className="text-left py-3 text-base-content">
           {/* <div className="flex"> */}
-            <OverallRating recipeId={recipeId} />
-            <NewReview recipeId={recipeId} formLock={formLock} />
+          <OverallRating recipeId={recipeId} />
+          <NewReview recipeId={recipeId} formLock={formLock} />
           {/* </div> */}
           <ReviewBoard recipeId={recipeId} reader={session?.user} />
         </div>

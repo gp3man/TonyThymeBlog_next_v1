@@ -6,8 +6,8 @@ import ProfileMenu from "./ProfileMenu";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/options";
 
-const NavBar = async() => {
-  const session = await getServerSession(authOptions)
+const NavBar = async () => {
+  const session = await getServerSession(authOptions);
   return (
     <nav className="fixed top-0 z-20 navbar bg-base-300 text-base-content rounded-b-lg">
       <div className="navbar-start">
@@ -54,7 +54,7 @@ const NavBar = async() => {
                 target="new"
                 className="px-3 cursor-pointer sm:text-base active:font-bold "
               >
-                <p>{<TfiInstagram size={20} /> }</p>
+                <p>{<TfiInstagram size={20} />}</p>
               </Link>
             </li>
           </ul>
@@ -75,7 +75,10 @@ const NavBar = async() => {
             </Link>
           </li>
           <li>
-            <Link href={"/categories"} className="cursor-pointer active:font-bold ">
+            <Link
+              href={"/categories"}
+              className="cursor-pointer active:font-bold "
+            >
               <p>Categories</p>
             </Link>
           </li>

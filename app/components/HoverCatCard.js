@@ -2,7 +2,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 
-const HoverCatCard = ({category}) => {
+const HoverCatCard = ({ category }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -49,10 +49,9 @@ const HoverCatCard = ({category}) => {
         rotateY,
         rotateX,
         transformStyle: "preserve-3d",
-        width:category?.thumbnail?.width/2,
-        height:category?.thumbnail?.height/2,
-      }
-    }
+        width: category?.thumbnail?.width / 2,
+        height: category?.thumbnail?.height / 2,
+      }}
       className="relative rounded-xl bg-gradient-to-br from-primary to-secondary m-4 p-4"
     >
       <div

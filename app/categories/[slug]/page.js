@@ -16,7 +16,10 @@ const SingleCategory = async ({ params }) => {
           {recipes?.length ? (
             <div>
               {recipes?.map((recipe, i) => (
-                <li className="py-3 sm:py-4 shadow-lg px-2 justify-center align-middle" key={i}>
+                <li
+                  className="py-3 sm:py-4 shadow-lg px-2 justify-center align-middle"
+                  key={i}
+                >
                   <Link
                     className="flex items-center space-x-4 rtl:space-x-reverse"
                     href={`/recipes/${recipe?.slug}`}

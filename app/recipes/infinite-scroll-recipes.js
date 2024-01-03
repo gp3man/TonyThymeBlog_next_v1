@@ -41,11 +41,9 @@ const InfiniteScrollRecipes = ({ search, initialRecipes }) => {
           <span className="font-normal text-lg text-gray-400">Try Again!</span>
         </li>
       )}
-      <li ref={ref} className="flex flex-col justify-center self-center mt-6" >
-      <p className=" text-center">
-        Load More
-      </p>
-      <p className="loading loading-infinity loading-lg text-success self-center duration-1000"></p>
+      <li ref={ref} className="flex flex-col justify-center self-center mt-6">
+        <p className=" text-center">Load More</p>
+        <p className="loading loading-infinity loading-lg text-success self-center duration-1000"></p>
       </li>
     </>
   );
