@@ -4,6 +4,11 @@ import { getRecipes } from "@/lib/getRecipes";
 import Link from "next/link";
 import CatCircles from "../components/CatLinks";
 export default async function Recipes({ searchParams }) {
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Hi");
+    }, 5000);
+  });
   const page =
     typeof searchParams?.page === "string" ? Number(searchParams.page) : 1;
   const limit =
@@ -13,9 +18,10 @@ export default async function Recipes({ searchParams }) {
   const { recipeCollection, categoryCollection, searchedCollection } =
     await getRecipes({ page, limit, search });
   const categories = categoryCollection?.items;
-  const recipes = typeof searchParams?.search === "string"
-    ? searchedCollection?.items
-    : recipeCollection?.items;
+  const recipes =
+    typeof searchParams?.search === "string"
+      ? searchedCollection?.items
+      : recipeCollection?.items;
   return (
     <div className="min-h-screen pt-14 pb-14 overflow-y-scroll scrollbar-hide justify-center">
       <header className="flex flex-col p-3 m-3 justify-center">
@@ -53,7 +59,10 @@ export default async function Recipes({ searchParams }) {
           </Link>
           <Link
             href={`/recipes?page=${page + 1}`}
-            className={"rounded border bg-secondary px-3 py-1 text-sm text-secondary-content" + (!recipes && "pointer-events-none opacity-50")}
+            className={
+              "rounded border bg-secondary px-3 py-1 text-sm text-secondary-content" +
+              (!recipes && "pointer-events-none opacity-50")
+            }
           >
             Next
           </Link>
