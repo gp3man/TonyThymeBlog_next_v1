@@ -9,6 +9,7 @@ const Footer = () => {
           <Link href="/recipes" className="flex items-center mb-4 sm:mb-0">
             <LogoImage
               src={logo}
+              sizes="(min-width: 400px) 128px, calc(47.5vw - 53px)"
               className="w-32 self-center text-2xl font-semibold whitespace-nowrap"
               alt="Tony Thyme"
             />

@@ -15,9 +15,9 @@ const ProfileMenu = async () => {
           >
             <div className="w-6 md:w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               {user?.image ? (
-                <img className="rounded-full" src={user?.image} />
+                <img className="rounded-full" src={user?.image} srcSet=""alt="GoogleProfilePic"  sizes="(min-width: 780px) 32px, 24px"/>
               ) : (
-                <img className="rounded-full" src="/emptyProfile.jpg" />
+                <img className="rounded-full" src="/emptyProfile.jpg" srcSet="" alt="JaneDoe" sizes="(min-width: 780px) 32px, 24px" />
               )}
             </div>
           </label>
@@ -41,7 +41,7 @@ const ProfileMenu = async () => {
             className="btn bg-base-300 border-base-300 hover:border-accent-focus  m-1"
           >
             <div className="w-6 md:w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img className="rounded-full" src="/emptyProfile.jpg" />
+              <img className="rounded-full" src="/emptyProfile.jpg" srcSet="" alt="JaneDoe" sizes="(min-width: 780px) 32px, 24px"/>
             </div>
           </label>
           <ul

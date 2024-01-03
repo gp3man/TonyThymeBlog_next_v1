@@ -1,6 +1,5 @@
 import { client } from "@/lib/contentful.js";
 import RichText from "../../components/RichText";
-import LogoImage from "@/app/components/LogoImage";
 import PhotoCard from "../../components/PhotoCard";
 import Checkbox from "@/app/components/CheckBox";
 import ReviewBoard from "@/app/components/ReviewBoard.js";
@@ -9,6 +8,7 @@ import { authOptions } from "../../api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth";
 import OverallRating from "@/app/components/OverallRating";
 import InstagramVid from "@/app/components/InstagramVideo";
+import RecipeImage from "@/app/components/RecipeImage";
 export default async function RecipePage({ params }) {
 
   const reviewCheck = async ({ recipeId, userEmail }) => {
@@ -67,7 +67,7 @@ export default async function RecipePage({ params }) {
           </p>
           {recipeBy?.fields?.image && (
             <div className="flex justify-center pb-4">
-              <LogoImage
+              <RecipeImage
                 alt={recipeBy?.fields?.image?.fields?.title}
                 src={recipeBy?.fields?.image?.fields?.file?.url}
                 width={

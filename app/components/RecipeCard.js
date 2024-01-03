@@ -11,7 +11,7 @@ const RecipeCard = ({ recipe }) => {
       aria-label={title}
     >
       <div className="max-w-sm bg-secondary border border-accent rounded-lg shadow">
-        <div className="aspect-[4/6]" >
+        <div className="aspect-[4/6]">
           <Image
             loading="lazy"
             fetchPriority="high"
@@ -20,6 +20,7 @@ const RecipeCard = ({ recipe }) => {
             width={thumbnail?.width}
             height={thumbnail?.height}
             quality="100"
+            sizes="(min-width: 1700px) 382px, (min-width: 780px) 22.78vw, (min-width: 440px) 382px, calc(83.33vw + 32px)"
             alt={title}
             className="aspect-[4/6] rounded-lg w-full"
           />
@@ -31,9 +32,7 @@ const RecipeCard = ({ recipe }) => {
             </h5>
           </div>
           <div className="grid grid-flow-row grid-cols-2">
-            <p className="font-normal text-primary-content">
-              Serves {serves}
-            </p>
+            <p className="font-normal text-primary-content">Serves {serves}</p>
             <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-secondary-content bg-accent rounded-lg hover:bg-accent-focus focus:ring-4 focus:outline-none focus:ring-accent-content col-start-2">
               <CgTimer size={20} className="pr-1" /> {timeToCook}
             </div>

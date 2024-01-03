@@ -9,13 +9,10 @@ const CatCircles = ({ categories }) => {
             <Image
               alt={cat?.title}
               src={cat?.thumbnail?.url}
-              width={
-                cat?.thumbnail?.width
-              }
-              height={
-                cat?.thumbnail?.height
-              }
-              className="w-[30px] h-[30px] sm:w-[60px] sm:h-[60px] rounded-full self-center" 
+              width={cat?.thumbnail?.width}
+              height={cat?.thumbnail?.height}
+              sizes="(min-width: 640px) 60px, 30px"
+              className="w-[30px] h-[30px] sm:w-[60px] sm:h-[60px] rounded-full self-center"
             />
             <p className="">{cat?.title}</p>
           </div>

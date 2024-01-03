@@ -25,6 +25,7 @@ const SingleCategory = async ({ params }) => {
                       <Image
                         className="w-20 h-20 rounded-full"
                         src={recipe?.thumbnail?.url}
+                        sizes="80px"
                         width={recipe?.thumbnail?.width}
                         height={recipe?.thumbnail?.height}
                         alt={recipe?.title}

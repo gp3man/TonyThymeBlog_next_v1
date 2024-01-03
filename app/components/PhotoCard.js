@@ -26,7 +26,7 @@ const PhotoCard = ({ photos }) => {
             style={{
               backgroundImage: `url(${photos[currentIndex]?.fields?.file?.url})`,
             }}
-            className="absolute top-0 left-0 w-full h-full rounded-2xl bg-center bg-contain duration-500"
+            className="absolute top-0 left-0 w-full h-full rounded-2xl bg-center bg-contain duration-800"
           ></div>
           <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-accent cursor-pointer">
             {" "}
@@ -41,7 +41,7 @@ const PhotoCard = ({ photos }) => {
           {photos.map((shot, slideIndex) => (
             <div
               key={slideIndex}
-              className={"text-2xl text-accent cursor-pointer p-2 border-separate border rounded-full "+ (currentIndex === slideIndex ? "bg-accent-focus text-accent-content" : "" )}
+              className={"text-2xl text-accent cursor-pointer p-2 border-separate border rounded-full bg-primary "+ (currentIndex === slideIndex ? "bg-primary-focus text-accent-focus bg-opacity-80" : " bg-opacity-10" )}
               onClick={() => gotToSlide(slideIndex)}
             >
               <GiKnifeFork />
