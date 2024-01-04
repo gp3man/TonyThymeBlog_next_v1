@@ -16,7 +16,7 @@ const Footer = () => {
           </Link>
           <p>
             <span>
-              © 2023{" "}
+              © 2024{" "}
               <Link href="/" className="hover:underline">
                 TonyThyme
               </Link>
