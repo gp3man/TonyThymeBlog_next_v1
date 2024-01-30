@@ -49,7 +49,7 @@ const options = {
     },
     [BLOCKS.HR]: (node, children) => {
       return (
-        <hr className="py-12 text-lg font-medium border-accent" />
+        <hr className="py-6 mt-6 text-lg font-medium border-accent" />
       );
     },
 
