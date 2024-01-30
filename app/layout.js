@@ -10,7 +10,7 @@ export const metadata = {
   title: "Tony Thyme",
   description: "Recipe Blog",
 };
-
+export const revalidate = 1800;
 export default async function RootLayout({ children }) {
   return (
     <html lang="en" className="m-0">
