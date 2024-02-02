@@ -21,6 +21,9 @@ const OverallRating = async ({ recipeId }) => {
     }
   };
   const { data } = await getOverall({ recipeId });
+  // if (data === undefined){
+  //   return <div className="flex w-full p-3 justify-center text-center">Preview: Has no reviews.</div>
+  // }
   const { avg, count, all_1, all_2, all_3, all_4, all_5 } = data;
   const bar = [all_5, all_4, all_3, all_2, all_1]
   return (

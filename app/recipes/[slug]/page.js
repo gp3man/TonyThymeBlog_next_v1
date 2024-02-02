@@ -1,4 +1,4 @@
-import { client } from "@/lib/contentful.js";
+import { client, previewClient } from "@/lib/contentful.js";
 import RichText from "../../components/RichText";
 import PhotoCard from "../../components/PhotoCard";
 import Checkbox from "@/app/components/CheckBox";
@@ -9,7 +9,14 @@ import { getServerSession } from "next-auth";
 import OverallRating from "@/app/components/OverallRating";
 import InstagramVid from "@/app/components/InstagramVideo";
 import RecipeImage from "@/app/components/RecipeImage";
+import { draftMode } from "next/headers";
+import Link from "next/link";
+import ExitPreviewBtn from "@/app/components/ExitPreviewBtn";
 export default async function RecipePage({ params }) {
+  const {isEnabled} = draftMode();
+  const preview = isEnabled;
+  // console.log('Draft Mode', isEnabled);
+  // console.log('preview: ', preview)
   const reviewCheck = async ({ recipeId, userEmail }) => {
     try {
       const res = await fetch(`${process.env.NEXTAUTH_URL}api/post-check`, {
@@ -29,10 +36,13 @@ export default async function RecipePage({ params }) {
     }
   };
   const session = await getServerSession(authOptions);
+  const currentClient = preview == true ? previewClient : client;
+  // console.log('client: ', currentClient);
   const response = await client.getEntries({
     content_type: "recipe",
     "fields.slug": params.slug,
   });
+  // console.log(response);
   const recipe = response?.items?.[0];
   const recipeId = recipe?.sys.id;
   const userEmail = session?.user?.email;
@@ -56,6 +66,12 @@ export default async function RecipePage({ params }) {
   return (
     <section className="flex flex-col min-h-screen w-screen m-0 pt-20 justify-center text-center overflow-y-scroll scrollbar-hide">
       <header className="w-full px-4 md:px-32">
+        {preview == true && (
+          <p className=" bg-warning text-warning-content w-full rounded-lg sticky ">
+            You're in preview mode!!!
+            <ExitPreviewBtn />
+          </p>
+        )}
         <h1 className="text-lg md:text-4xl font-black text-base-content py-1">
           {title}
         </h1>
@@ -79,6 +95,12 @@ export default async function RecipePage({ params }) {
               />
             </div>
           )}
+          <a
+            className="btn btn-xs btn-ghost end-0 font-light text-xs w-1/8 self-center"
+            href="#method"
+          >
+            Skip To Method
+          </a>
         </div>
         {/* Notes */}
       </header>
@@ -87,9 +109,6 @@ export default async function RecipePage({ params }) {
           <h2 className="text-base md:text-2xl font-black py-3">
             Author Notes
           </h2>
-          <a className=" btn btn-ghost end-0 font-light text-xs" href="#method">
-            Skip To Method
-          </a>
           <hr className="opacity-50 border-accent py-3" />
           <p className="pb-1">{authorsNotes}</p>
         </div>
@@ -149,7 +168,7 @@ export default async function RecipePage({ params }) {
         </div>
         <div className="text-left py-3 text-base-content">
           {/* <div className="flex"> */}
-          <OverallRating recipeId={recipeId} />
+          {/* <OverallRating recipeId={recipeId} /> */}
           <NewReview recipeId={recipeId} formLock={formLock} />
           {/* </div> */}
           <ReviewBoard recipeId={recipeId} reader={session?.user} />
@@ -157,12 +176,4 @@ export default async function RecipePage({ params }) {
       </div>
     </section>
   );
-}
-{
-  /* {preview && (
-  <>
-    You're in preview mode!!!
-    <Link href="/api/exit-preview">Exit preview</Link>
-  </>
-)} */
 }

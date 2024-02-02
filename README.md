@@ -18,7 +18,7 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
+<!-- [![Contributors][contributors-shield]][contributors-url] -->
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
@@ -95,6 +95,9 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
+* [![Supabase][Supabase.com]][Supabase-url]
+* [![Prisma][Prisma.io]][Prisma-url]
+* [![Contentful][Contentful.com]][Contentful-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -170,3 +173,9 @@ Project Link: [https://github.com/gp3man/TonyThymeBlog_next_v1](https://github.c
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
+[Supabase.com]: https://img.shields.io/badge/Supabase.com-2024?style=for-the-badge&logo=supabase&color=444444
+[Supabase-url]: https://supabase.com/
+[Prisma.io]: https://img.shields.io/badge/prisma.io-2024?style=for-the-badge&logo=prisma&color=636363
+[Prisma-url]: https://www.prisma.io/
+[Contentful.com]:https://img.shields.io/badge/Contentful-2024?style=for-the-badge&logo=contentful&color=A0A0A0
+[Contentful-url]: https://www.contentful.com/

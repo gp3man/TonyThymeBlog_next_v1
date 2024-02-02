@@ -4,11 +4,6 @@ import { fetchRecipes } from "./actions";
 import InfiniteScrollRecipes from "./infinite-scroll-recipes";
 import { v4 as uuidv4 } from "uuid";
 export default async function Recipes({ searchParams }) {
-  // await new Promise((resolve) => {
-  //   setTimeout(() => {
-  //     resolve("Hi");
-  //   }, 5000);
-  // });
   const search =
     typeof searchParams?.search === "string" ? searchParams.search : undefined;
   const { recipeCollection, categoryCollection } = await fetchRecipes({
