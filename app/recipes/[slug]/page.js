@@ -36,13 +36,12 @@ export default async function RecipePage({ params }) {
     }
   };
   const session = await getServerSession(authOptions);
-  const currentClient = preview == true ? previewClient : client;
+  const currentClient = preview === true ? previewClient : client;
   // console.log('client: ', currentClient);
-  const response = await client.getEntries({
+  const response = await currentClient.getEntries({
     content_type: "recipe",
     "fields.slug": params.slug,
   });
-  // console.log(response);
   const recipe = response?.items?.[0];
   const recipeId = recipe?.sys.id;
   const userEmail = session?.user?.email;
