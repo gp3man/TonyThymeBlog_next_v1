@@ -1,6 +1,6 @@
 const InstagramVideo = ({vid}) => {
   return (
-    <video width="220"  height="330" autoPlay className="aspect-[4/6]">
+    <video width="220"  height="330" autoPlay loop controls playsInline muted  className="aspect-[4/6]">
       <source
         src={vid?.fields?.file?.url}
         type="video/mp4"
