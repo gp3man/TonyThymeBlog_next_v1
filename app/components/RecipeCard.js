@@ -6,11 +6,11 @@ const RecipeCard = ({ recipe }) => {
   const { title, timeToCook, thumbnail, serves, slug } = recipe;
   return (
     <Link
-      className="p-2 md:w-1/4 md:h-1/4"
+      className="p-0 rounded-lg  hoverglow m-3"
       href={`/recipes/${slug}`}
       aria-label={title}
     >
-      <div className="max-w-sm bg-secondary border border-accent rounded-lg shadow">
+      <div className="max-w-sm bg-secondary border border-accent rounded-lg shadow ">
         <div className="aspect-[4/6]">
           <Image
             loading="lazy"
@@ -22,7 +22,7 @@ const RecipeCard = ({ recipe }) => {
             quality="100"
             sizes="(min-width: 1700px) 382px, (min-width: 780px) 22.78vw, (min-width: 440px) 382px, calc(83.33vw + 32px)"
             alt={title}
-            className="aspect-[4/6] rounded-lg w-full"
+            className="aspect-[4/6] rounded-t-lg shadow-2xl"
           />
         </div>
         <div className="p-5">
@@ -31,11 +31,17 @@ const RecipeCard = ({ recipe }) => {
               {title}
             </h5>
           </div>
-          <div className="grid grid-flow-row grid-cols-2">
-            <p className="font-normal text-primary-content">Serves {serves}</p>
-            <div className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-secondary-content bg-accent rounded-lg hover:bg-accent-focus focus:ring-4 focus:outline-none focus:ring-accent-content col-start-2">
-              <CgTimer size={20} className="pr-1" /> {timeToCook}
-            </div>
+          <div className="flex justify-between mx-3">
+            {/* <div className="inline-flex content-between items-center px-4 py-2 text-sm  rounded-lg"> */}
+              <div className="inline-flex p-1 px-2 font-medium text-center text-secondary-content bg-accent rounded-lg shadow-xl">
+                <CgTimer size={22} className="pr-1" /> {timeToCook} mins
+              </div>
+              <div className="self-center p-1 px-2 font-medium text-center text-primary-content bg-primary rounded-lg shadow-xl">
+                <p className="self-center">
+                  Serves {serves}
+                </p>
+              </div>
+            {/* </div> */}
           </div>
         </div>
       </div>
