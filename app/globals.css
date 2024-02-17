@@ -22,8 +22,9 @@
 
   .empty-stars:before,
   .full-stars:before {
-    content: "\2605\2605\2605\2605\2605";
+    content: "\1F37D\1F37D\1F37D\1F37D\1F37D";
     font-size: 14pt;
+    letter-spacing: .3rem;
   }
 
   .empty-stars:before {
