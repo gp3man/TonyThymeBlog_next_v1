@@ -22,7 +22,7 @@
     "contentful": "^10.5.2",
     "framer-motion": "^10.16.4",
     "lodash": "^4.17.21",
-    "next": "^14.0.4",
+    "next": "^14.1.0",
     "next-auth": "^4.24.4",
     "postcss": "8.4.28",
     "react": "^18.2.0",

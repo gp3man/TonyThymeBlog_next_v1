@@ -9,14 +9,18 @@ import { getServerSession } from "next-auth";
 import OverallRating from "@/app/components/OverallRating";
 import InstagramVid from "@/app/components/InstagramVideo";
 import RecipeImage from "@/app/components/RecipeImage";
-import { draftMode } from "next/headers";
-import Link from "next/link";
+import { cookies, draftMode } from "next/headers";
+
 import ExitPreviewBtn from "@/app/components/ExitPreviewBtn";
+import { revalidate } from "@/app/layout";
+
 export default async function RecipePage({ params }) {
-  const {isEnabled} = draftMode();
+  const { isEnabled } = draftMode();
+  const cookieStore = cookies();
+  // console.log(cookies);
   const preview = isEnabled;
   // console.log('Draft Mode', isEnabled);
-  // console.log('preview: ', preview)
+  // console.log("preview: ");
   const reviewCheck = async ({ recipeId, userEmail }) => {
     try {
       const res = await fetch(`${process.env.NEXTAUTH_URL}api/post-check`, {
@@ -36,12 +40,13 @@ export default async function RecipePage({ params }) {
     }
   };
   const session = await getServerSession(authOptions);
-  const currentClient = preview === true ? previewClient : client;
+  const currentClient = preview ? client : client;
   // console.log('client: ', currentClient);
   const response = await currentClient.getEntries({
     content_type: "recipe",
     "fields.slug": params.slug,
-  });
+  })
+  revalidate;
   const recipe = response?.items?.[0];
   const recipeId = recipe?.sys.id;
   const userEmail = session?.user?.email;
@@ -65,7 +70,7 @@ export default async function RecipePage({ params }) {
   return (
     <section className="flex flex-col min-h-screen w-screen m-0 pt-20 justify-center text-center overflow-y-scroll scrollbar-hide">
       <header className="w-full px-4 md:px-32">
-        {preview == true && (
+        {preview && (
           <p className=" bg-warning text-warning-content w-full rounded-lg sticky ">
             You're in preview mode!!!
             <ExitPreviewBtn />
@@ -176,3 +181,9 @@ export default async function RecipePage({ params }) {
     </section>
   );
 }
+// {cookieStore.getAll().map((cookie) => (
+//   <div key={cookie.name}>
+//     <p>Name: {cookie.name}</p>
+//     <p>Value: {cookie.value}</p>
+//   </div>
+// ))}
