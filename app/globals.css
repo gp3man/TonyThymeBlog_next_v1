@@ -12,6 +12,22 @@
     0 0 50px #EA6704,
     0 0 100px;
   }
+  .hoverCircle{
+    box-shadow: none;
+  }
+  .hoverCircle:hover{
+    /* box-shadow: inset 10px 5px #EA6704,
+    0 0 5px #EA6704,
+    0 0 5px #EA6704,
+    0 0 100px; */
+    border-radius: 50%;
+    transform:scale(1.1);
+    transition: 1s, ease-out 1s  ;
+  }
+  .imgCircle:hover{
+    box-shadow:  0 10px 10px 8px #EA6704;
+  }
+  
   .ratings {
     position: relative;
     vertical-align: middle;
