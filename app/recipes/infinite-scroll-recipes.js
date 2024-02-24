@@ -7,18 +7,22 @@ import { fetchRecipes } from "./actions";
 
 const InfiniteScrollRecipes = ({ search, initialRecipes }) => {
   const [recipes, setRecipes] = useState(initialRecipes);
+  const [spinAnimation, setSpinAnimation] = useState(true);
   const [page, setPage] = useState(1);
   const [ref, inView] = useInView();
-
   async function loadMoreRecipes() {
     const next = page + 1;
     const data = await fetchRecipes({ search, page: next });
     if (data?.recipeCollection?.items?.length) {
+      setSpinAnimation(true);
       setPage(next);
       setRecipes((prev) => [
         ...(prev?.length ? prev : []),
         ...data?.recipeCollection?.items,
       ]);
+    } else {
+      setSpinAnimation(false);
+      console.log("done last load");
     }
   }
   useEffect(() => {
@@ -29,7 +33,7 @@ const InfiniteScrollRecipes = ({ search, initialRecipes }) => {
   return (
     <>
       {recipes.length ? (
-        <li className="flex flex-wrap py-4 justify-center w-screen">
+        <li className="flex flex-wrap py-4 justify-center w-screen overflow-y-visible">
           {recipes?.map((recipe, i) => (
             <RecipeCard key={recipe?.slug || i} recipe={recipe} />
           ))}
@@ -41,9 +45,14 @@ const InfiniteScrollRecipes = ({ search, initialRecipes }) => {
           <span className="font-normal text-lg text-gray-400">Try Again!</span>
         </li>
       )}
-      <li ref={ref} className="flex flex-col justify-center self-center mt-6">
-        <p className=" text-center">Load More</p>
-        <p className="loading loading-infinity loading-lg text-success self-center duration-1000"></p>
+      <li
+        ref={ref}
+        className="flex flex-col justify-center self-center mt-6 "
+      >
+        {spinAnimation &&
+        (
+            <p className="loading loading-ring loading-lg text-success self-center"></p>
+        )}
       </li>
     </>
   );
