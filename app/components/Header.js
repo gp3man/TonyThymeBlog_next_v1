@@ -12,6 +12,7 @@ const NavBar = async () => {
     <nav className="fixed top-0 z-20 navbar bg-base-300 text-base-content rounded-b-lg">
       <div className="navbar-start">
         <div className="dropdown">
+          {/* Small screen */}
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -34,10 +35,10 @@ const NavBar = async () => {
           >
             <li>
               <Link
-                href={"/recipes"}
+                href={"/aboutme"}
                 className="px-3 cursor-pointer active:font-bold"
               >
-                <p>Recipes</p>
+                <p>About</p>
               </Link>
             </li>
             <li>
@@ -59,19 +60,25 @@ const NavBar = async () => {
             </li>
           </ul>
         </div>
+        <Link href={"/"} className="cursor-pointer sm:text-base">
+          <p>{<TfiHome size={20} />}</p>
+        </Link>
+        <ProfileMenu session={session} />
+      </div>
+
+      <div className=" navbar-center">
         <Link className="btn btn-ghost normal-case text-xl" href={"/"}>
           <LogoImage src={logo} className="w-32 mx-3" alt="Tony Thyme" />
         </Link>
       </div>
-
-      <div className="navbar-center hidden lg:flex">
+      <div className="lg:navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
             <Link
-              href={"/recipes"}
+              href={"/aboutme"}
               className="px-3 cursor-pointer active:font-bold"
             >
-              <p>Recipes</p>
+              <p>About</p>
             </Link>
           </li>
           <li>
@@ -92,12 +99,6 @@ const NavBar = async () => {
             </Link>
           </li>
         </ul>
-      </div>
-      <div className="navbar-end mr-7 space-x-3">
-        <Link href={"/"} className="cursor-pointer sm:text-base">
-          <p>{<TfiHome size={20} />}</p>
-        </Link>
-        <ProfileMenu session={session} />
       </div>
     </nav>
   );

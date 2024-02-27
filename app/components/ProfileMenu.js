@@ -8,7 +8,7 @@ const ProfileMenu = async () => {
   return (
     <>
       {user ? (
-        <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+        <div className="dropdown dropdown-hover dropdown-bottom">
           <label
             tabIndex={0}
             className="btn bg-base-300 border-base-300 hover:border-accent-focus m-1"
@@ -35,7 +35,7 @@ const ProfileMenu = async () => {
           </ul>
         </div>
       ) : (
-        <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+        <div className="dropdown dropdown-hover dropdown-bottom ">
           <label
             tabIndex={0}
             className="btn bg-base-300 border-base-300 hover:border-accent-focus  m-1"
