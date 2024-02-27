@@ -49,10 +49,10 @@ const InfiniteScrollRecipes = ({ search, initialRecipes }) => {
         ref={ref}
         className="flex flex-col justify-center self-center mt-6 "
       >
-        {spinAnimation &&
+        {/* {spinAnimation &&
         (
             <p className="loading loading-ring loading-lg text-success self-center"></p>
-        )}
+        )} */}
       </li>
     </>
   );
