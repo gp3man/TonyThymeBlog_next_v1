@@ -16,8 +16,8 @@ export default async function Recipes({ searchParams }) {
       <header className="flex flex-col p-3 m-3 justify-center">
         <p className="font-bold text-3xl text-center">Recipes</p>
         <div>
-          <SearchBar />
           <CatCircles categories={categories} />
+          <SearchBar />
         </div>
       </header>
       <ul

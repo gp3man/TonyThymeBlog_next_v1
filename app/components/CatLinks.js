@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 const CatCircles = ({ categories }) => {
   return (
-    <div className="flex flex-wrap w-full justify-evenly sm:-space-x-32 text-center pb-3 my-3 shadow-md">
+    <div className="flex flex-wrap w-full justify-evenly sm:-space-x-32 text-center py-4 my-3 shadow-md">
       {categories.map((cat, i) => (
         <Link key={i} href={`/categories/${cat?.sys?.id}`}>
           <div className="flex flex-col min-w-[85px] hoverCircle ">

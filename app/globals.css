@@ -47,6 +47,11 @@
     font-size: 14pt;
     letter-spacing: .2rem;
   }
+  .searchBar::before {
+    content: "\1F50E";
+    font-size: 16pt;
+    letter-spacing: .1rem;
+  }
 
   .empty-stars:before {
     @apply text-gray-400;
