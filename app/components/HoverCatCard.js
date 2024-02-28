@@ -51,8 +51,9 @@ const HoverCatCard = ({ category }) => {
         transformStyle: "preserve-3d",
         width: category?.thumbnail?.width / 2,
         height: category?.thumbnail?.height / 2,
+        borderRadius: 100
       }}
-      className="relative rounded-xl bg-gradient-to-br from-primary to-secondary m-4 p-4"
+      className="relative  bg-gradient-to-br from-secondary to-accent m-4 p-4"
     >
       <div
         style={{
@@ -66,16 +67,18 @@ const HoverCatCard = ({ category }) => {
           src={category?.thumbnail?.url}
           width={category?.thumbnail?.width}
           height={category?.thumbnail?.height}
-          // style={{
-          //   transform: "translateZ(75px)",
-          // }}
+          style={{
+            transform: "translateZ(75px) translateX(-15px)",
+            borderRadius: 100
+          }}
           className="absolute inset-4 grid place-content-center rounded-xl"
         />
         <p
           style={{
-            transform: "translateZ(50px)",
+            transform: "translateZ(76px)",
+            borderRadius: 100
           }}
-          className="text-center text-2xl font-bold text-accent-content shadow-xl bg-accent rounded-lg bg-opacity-80a"
+          className="text-center text-2xl font-bold text-secondary-content shadow-xl bg-secondary rounded-lg bg-opacity-80a"
         >
           {category?.title}
         </p>

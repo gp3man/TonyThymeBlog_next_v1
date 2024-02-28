@@ -2,7 +2,6 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
 const Newsletter = () => {
   const formSchema = z.object({
     email: z.string().email(),
@@ -10,7 +9,8 @@ const Newsletter = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, isDirty, isValid },
   } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -18,17 +18,24 @@ const Newsletter = () => {
     },
   });
 
-  // const onSubmit = async (data) => {
-  // const signInData = await signIn("credentials", {
-  //   email: data.email,
-  //   password: data.password,
-  //   redirect: false,
-  // });
-  //   if (signInData?.error) {
-  //     console.log(signInData?.error);
-  //   }
-  //   router.back()
-  // };
+  const sub = async (data) => {
+    const res = await fetch("/api/addSubscription", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: data.email,
+      }),
+    });
+    const Data = await res.json();
+    console.log(Data);
+    if (res.ok) {
+      reset();
+    } else {
+      console.error("Post Failed: ", Data.error);
+    }
+  };
   return (
     <section className="w-full h-full flex-col flex place-content-center items-center m-0">
       <div className="bg-accent w-screen">
@@ -40,12 +47,14 @@ const Newsletter = () => {
             Stay in the loop for when I post more fantastic food that will get
             your taste buds going again.
           </p>
-          <form className="w-full max-w-md mx-auto">
+          <form
+            id="signInForm"
+            onSubmit={handleSubmit(sub)}
+            className="w-full max-w-md mx-auto"
+          >
             <label
-              for="default-email"
+              htmlFor="email"
               className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-              id="signInForm"
-              onSubmit={handleSubmit(console.log())}
             >
               Email sign-up
             </label>
@@ -64,26 +73,31 @@ const Newsletter = () => {
               </div>
               <input
                 type="email"
-                id="default-email"
+                id="email"
                 className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter your email here..."
                 autoComplete="email"
                 {...register("email", { required: true })}
                 required
               />
-
               <button
                 type="submit"
+                disabled={!isDirty || !isValid}
                 className="text-white absolute end-2.5 bottom-2.5 bg-primary hover:bg-primary focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2"
               >
                 Sign up
               </button>
-              {errors.email && (
-            <p className="text-error-content bg-error rounded-md p-3 mt-2">
-              {errors.email.message}
-            </p>
-          )}
             </div>
+            {errors.email && (
+              <p className="text-error-content bg-error rounded-md p-3 mt-2 font-bold text-lg">
+                {errors.email.message}
+              </p>
+            )}
+            {/* {Data.error && (
+            <p className="text-error-content bg-error rounded-md p-3 mt-2 font-thin text-xs">
+              {errors.message}
+            </p>
+          )} */}
           </form>
         </div>
       </div>
