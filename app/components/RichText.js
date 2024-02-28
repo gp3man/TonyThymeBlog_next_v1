@@ -36,7 +36,7 @@ const options = {
       );
     },
     [BLOCKS.PARAGRAPH]: (node, children) => {
-      return <p className="text-base ">{children}</p>;
+      return <p className="text-base clear-right ">{children}</p>;
     },
     [BLOCKS.HEADING_1]: (node, children) => {
       return <h1 className="text-3xl font-black">{children}</h1>;

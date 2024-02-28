@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-const nextImageLoader = ({ src, width, quality }) => {
+export const nextImageLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;
 };
 

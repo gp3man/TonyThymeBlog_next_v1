@@ -35,7 +35,7 @@ const NavBar = async () => {
           >
             <li>
               <Link
-                href={"/aboutme"}
+                href={"/about"}
                 className="px-3 cursor-pointer active:font-bold"
               >
                 <p>About</p>
@@ -60,10 +60,10 @@ const NavBar = async () => {
             </li>
           </ul>
         </div>
+        <ProfileMenu session={session} />
         <Link href={"/"} className="cursor-pointer sm:text-base">
           <p>{<TfiHome size={20} />}</p>
         </Link>
-        <ProfileMenu session={session} />
       </div>
 
       <div className=" navbar-center">
@@ -75,7 +75,7 @@ const NavBar = async () => {
         <ul className="menu menu-horizontal px-1">
           <li>
             <Link
-              href={"/aboutme"}
+              href={"/about"}
               className="px-3 cursor-pointer active:font-bold"
             >
               <p>About</p>
