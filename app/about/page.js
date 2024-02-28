@@ -2,6 +2,7 @@ import Image from "next/image";
 import RichText from "../components/RichText";
 import { client } from "@/lib/contentful";
 import { nextImageLoader } from "../components/RecipeImage";
+import Newsletter from "../components/form/Newsletter";
 
 const AboutMe = async () => {
   const response = await client.getEntries({
@@ -10,7 +11,7 @@ const AboutMe = async () => {
   const Content = response?.items?.[0];
   const { bio, missionStatement, bioPicture } = Content?.fields;
   return (
-    <div className="min-h-screen pt-16 pb-3 px-10 md:px-40 lg:px-[300px] overflow-y-scroll scrollbar-hide justify-center">
+    <div className="min-h-screen pt-16 px-10 md:px-40 lg:px-[300px] overflow-y-scroll scrollbar-hide justify-center">
       <header className="flex flex-col p-3 m-3 justify-center">
         <p className="font-bold text-md text-center">Meet The Chef!</p>
       </header>
@@ -26,17 +27,18 @@ const AboutMe = async () => {
         </svg>
         {missionStatement}
       </blockquote>
-      
+
       <div className="">
-      <InlineImage
-        alt={bioPicture?.fields?.title}
-        src={bioPicture?.fields?.file?.url}
-        width={bioPicture?.fields?.file?.details?.image?.width}
-        height={bioPicture?.fields?.file?.details?.image?.height}
-        className="float-left rounded-md shadow-md mx-6"
-      />
+        <InlineImage
+          alt={bioPicture?.fields?.title}
+          src={bioPicture?.fields?.file?.url}
+          width={bioPicture?.fields?.file?.details?.image?.width}
+          height={bioPicture?.fields?.file?.details?.image?.height}
+          className="float-left rounded-md shadow-md mx-6"
+        />
         <RichText content={bio} />
       </div>
+      <div><Newsletter/></div>
     </div>
   );
 };
