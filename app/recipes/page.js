@@ -3,6 +3,7 @@ import CatCircles from "../components/CatLinks";
 import { fetchRecipes } from "./actions";
 import InfiniteScrollRecipes from "./infinite-scroll-recipes";
 import { v4 as uuidv4 } from "uuid";
+import Newsletter from "../components/form/Newsletter";
 export default async function Recipes({ searchParams }) {
   const search =
     typeof searchParams?.search === "string" ? searchParams.search : undefined;
@@ -27,6 +28,7 @@ export default async function Recipes({ searchParams }) {
       >
         <InfiniteScrollRecipes initialRecipes={recipes} search={search} />
       </ul>
+      <Newsletter />
     </div>
   );
 }

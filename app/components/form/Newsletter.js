@@ -33,10 +33,10 @@ const Newsletter = () => {
     <section className="w-full h-full flex-col flex place-content-center items-center m-0">
       <div className="bg-accent w-screen">
         <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
             Sign Up For My Newsletter!
           </h1>
-          <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">
+          <p className="mb-8 text-lg font-normal text-accent-content lg:text-xl sm:px-16 lg:px-48">
             Stay in the loop for when I post more fantastic food that will get
             your taste buds going again.
           </p>
@@ -52,7 +52,7 @@ const Newsletter = () => {
             <div className="relative">
               <div className="absolute inset-y-0 rtl:inset-x-0 start-0 flex items-center ps-3.5 pointer-events-none">
                 <svg
-                  className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  className="w-4 h-4 text-gray-500"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -65,7 +65,7 @@ const Newsletter = () => {
               <input
                 type="email"
                 id="default-email"
-                className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter your email here..."
                 autoComplete="email"
                 {...register("email", { required: true })}
@@ -86,7 +86,6 @@ const Newsletter = () => {
             </div>
           </form>
         </div>
-        <div class="bg-gradient-to-b from-blue-900 w-auto h-auto relative bottom-0 left-0 z-0"></div>
       </div>
     </section>
   );

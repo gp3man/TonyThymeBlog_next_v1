@@ -38,7 +38,9 @@ const AboutMe = async () => {
         />
         <RichText content={bio} />
       </div>
-      <div><Newsletter/></div>
+      <div>
+        <Newsletter />
+      </div>
     </div>
   );
 };

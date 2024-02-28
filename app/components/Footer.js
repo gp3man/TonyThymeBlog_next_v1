@@ -1,6 +1,7 @@
 import Link from "next/link";
 import logo from "@/public/logo.png";
 import LogoImage from "./LogoImage";
+import { TfiInstagram } from "react-icons/tfi";
 const Footer = () => {
   return (
     <>
@@ -24,7 +25,27 @@ const Footer = () => {
             </span>
           </p>
         </aside>
-        <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end"></nav>
+        <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <Link
+              href={"/about"}
+              className="px-3 cursor-pointer active:font-bold"
+            >
+              <p>About</p>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={"https://www.instagram.com/tony_thyme/"}
+              target="new"
+              className="cursor-pointer active:font-bold "
+            >
+              <p>{<TfiInstagram size={20} />}</p>
+            </Link>
+          </li>
+        </ul>
+        </nav>
       </footer>
     </>
   );
