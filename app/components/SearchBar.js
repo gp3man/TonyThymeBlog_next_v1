@@ -24,7 +24,7 @@ const SearchBar = () => {
     <div className="flex justify-center h-24 " >
       <div className="relative mt-2 md:w-[22vw] flex flex-col justify-center ">
         <input
-          className="peer relative -top-4 m-6 rounded-lg border-4 border-x-1 border-accent focus: outline-none focus:border-accent-focus placeholder-transparent bg-base-200 h-12  shadow-inner"
+          className="peer relative -top-4 m-6 rounded-lg border-4 border-x-1  border-accent focus: outline-none focus:border-accent-focus placeholder-transparent bg-base-200 h-12  shadow-inner"
           type="text"
           name="Name"
           id="Name"
