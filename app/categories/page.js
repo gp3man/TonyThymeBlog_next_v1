@@ -1,7 +1,6 @@
 import { getCategories } from "@/lib/getRecipes";
 import Link from "next/link";
 import HoverCatCard from "../components/HoverCatCard";
-import Newsletter from "../components/form/Newsletter";
 
 const AllCategories = async () => {
   const { categoryCollection } = await getCategories();
@@ -18,7 +17,6 @@ const AllCategories = async () => {
           </Link>
         ))}
       </div>
-      <Newsletter />
     </section>
   );
 };

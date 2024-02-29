@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import RecoilProvider from "./providers/recoilProvider";
 import NextAuthSessionProvider from "./providers/sessionProvider.js";
+import Newsletter from "./components/form/Newsletter";
 const playpen_Sans = Playpen_Sans({ subsets: ["latin"] });
 
 export const metadata = {
@@ -24,6 +25,7 @@ export default async function RootLayout({ children }) {
           <RecoilProvider>
             <Header />
             {children}
+            <Newsletter />
             <Footer />
           </RecoilProvider>
         </NextAuthSessionProvider>

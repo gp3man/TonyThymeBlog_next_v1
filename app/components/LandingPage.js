@@ -1,14 +1,12 @@
 // "use client";
 import Hero from "./Hero";
 import RecipeCard from "./RecipeCard";
-import Announcement from "./Dialog";
 import Link from "next/link";
 
 const LandingPage = ({ data }) => {
   const {
     recipeCollection,
     landingPageContentCollection,
-    announcementCollection,
   } = data;
   const announcement = announcementCollection?.items[0];
   const recipes = recipeCollection?.items;
@@ -39,7 +37,6 @@ const LandingPage = ({ data }) => {
             </div>
           )}
         </div>
-          {announcement && <Announcement data={announcement} />}
       </div>
   );
 };

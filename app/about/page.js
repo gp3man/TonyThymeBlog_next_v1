@@ -2,7 +2,8 @@ import Image from "next/image";
 import RichText from "../components/RichText";
 import { client } from "@/lib/contentful";
 import { nextImageLoader } from "../components/RecipeImage";
-import Newsletter from "../components/form/Newsletter";
+import Modal from "../modal/page";
+import NewsletterModal from "../components/modals/NewsletterModal";
 
 const AboutMe = async () => {
   const response = await client.getEntries({
@@ -10,8 +11,12 @@ const AboutMe = async () => {
   });
   const Content = response?.items?.[0];
   const { bio, missionStatement, bioPicture } = Content?.fields;
+
   return (
-    <div className="min-h-screen pt-16 px-10 md:px-40 lg:px-[300px] overflow-y-scroll scrollbar-hide justify-center">
+    <div className="py-16 px-10 md:px-40 lg:px-[300px] overflow-y-scroll scrollbar-hide justify-center flex-col">
+      <Modal>
+        <NewsletterModal />
+      </Modal>
       <header className="flex flex-col p-3 m-3 justify-center">
         <p className="font-bold text-md text-center">Meet The Chef!</p>
       </header>
@@ -28,18 +33,15 @@ const AboutMe = async () => {
         {missionStatement}
       </blockquote>
 
-      <div className="">
+      <div className="pb-10">
         <InlineImage
           alt={bioPicture?.fields?.title}
           src={bioPicture?.fields?.file?.url}
           width={bioPicture?.fields?.file?.details?.image?.width}
           height={bioPicture?.fields?.file?.details?.image?.height}
-          className="float-left rounded-md shadow-md mx-6"
+          className="float-left rounded-md border border-accent mr-4 mb-3"
         />
         <RichText content={bio} />
-      </div>
-      <div>
-        <Newsletter />
       </div>
     </div>
   );
