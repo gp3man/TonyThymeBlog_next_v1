@@ -30,7 +30,7 @@ export default async function RootLayout({ children }) {
             <Footer />
           </RecoilProvider>
         </NextAuthSessionProvider>
-        <GoogleAnalytics gtmId="G-WH0DGBWN2D" />
+        <GoogleAnalytics gaId="G-WH0DGBWN2D" />
       </body>
     </html>
   );
