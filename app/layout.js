@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import RecoilProvider from "./providers/recoilProvider";
 import NextAuthSessionProvider from "./providers/sessionProvider.js";
 import Newsletter from "./components/form/Newsletter";
+import { GoogleTagManager } from "@next/third-parties/google";
 const playpen_Sans = Playpen_Sans({ subsets: ["latin"] });
 
 export const metadata = {
@@ -29,6 +30,7 @@ export default async function RootLayout({ children }) {
             <Footer />
           </RecoilProvider>
         </NextAuthSessionProvider>
+        <GoogleTagManager gtmId="G-WH0DGBWN2D" />
       </body>
     </html>
   );
