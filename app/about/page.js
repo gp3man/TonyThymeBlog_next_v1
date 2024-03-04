@@ -13,7 +13,7 @@ const AboutMe = async () => {
   const { bio, missionStatement, bioPicture } = Content?.fields;
 
   return (
-    <div className="py-16 px-10 md:px-40 lg:px-[300px] overflow-y-scroll scrollbar-hide justify-center flex-col">
+    <div className="py-16 min-h-full px-10 md:px-40 lg:px-[300px] overflow-y-scroll scrollbar-hide justify-center flex-col">
       <Modal>
         <NewsletterModal />
       </Modal>
