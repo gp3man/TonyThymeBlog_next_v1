@@ -55,7 +55,7 @@ const SignUp = () => {
   return (
     <div className="w-full h-full flex-col flex place-content-center items-center">
       <form
-        id="signInForm"
+        id="signUpForm"
         className="form-control"
         onSubmit={handleSubmit(onSubmit)}
       >

@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import MailchimpProvider from "next-auth/providers/mailchimp";
 import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { db } from "@/lib/db";
@@ -17,6 +18,10 @@ export const authOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    MailchimpProvider({
+      clientId: process.env.MAILCHIMP_CLIENT_ID,
+      clientSecret: process.env.MAILCHIMP_CLIENT_SECRET,
     }),
     Credentials({
       name: "Credentials",
@@ -40,7 +45,6 @@ export const authOptions = {
           where: { email: credentials?.email },
         });
         if (!existingUser) {
-          console.log("bug");
           return null;
         }
         if (existingUser.password) {
@@ -60,6 +64,17 @@ export const authOptions = {
       },
     }),
   ],
+  // logger: {
+  //   error(code, metadata) {
+  //     console.log(code, metadata);
+  //   },
+  //   warn(code) {
+  //     console.log(code);
+  //   },
+  //   debug(code, metadata) {
+  //     console.log(code, metadata);
+  //   },
+  // },
   callbacks: {
     async session({ session, user, token }) {
       return {
@@ -75,7 +90,6 @@ export const authOptions = {
         return {
           ...token,
           username: user.username,
-
         };
       }
       return token;

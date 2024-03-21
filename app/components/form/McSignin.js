@@ -6,8 +6,8 @@ import ProviderBtn from "./ProviderBtn";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-const SignIn = ({providers}) => {
-  const {credentials, mailchimp, ...otherProviders} = providers
+const SignIn = ({ providers }) => {
+  const { credentials, google, ...otherProviders } = providers;
   const router = useRouter();
   const formSchema = z.object({
     email: z.string().email(),
@@ -37,7 +37,7 @@ const SignIn = ({providers}) => {
     if (signInData?.error) {
       console.log(signInData?.error);
     }
-    router.back()
+    router.back();
   };
   return (
     <div className="w-full h-full flex-col flex place-content-center items-center">
@@ -90,10 +90,19 @@ const SignIn = ({providers}) => {
         </button>
         <div className="divider">OR</div>
       </form>
-        {Object.values(otherProviders).map((provider) => (
-          <ProviderBtn key={provider.name} method="sign in" provider={provider}></ProviderBtn>
+      {Object.values(otherProviders).map((provider) => (
+        <ProviderBtn
+          key={provider.name}
+          method="sign in"
+          provider={provider}
+        ></ProviderBtn>
       ))}
-      <p className="pt-3">Don't have a account? <Link href="/sign-up" className="underline">Sign-Up</Link> </p>
+      <p className="pt-3">
+        Don't have a account?{" "}
+        <Link href="/sign-up" className="underline">
+          Sign-Up
+        </Link>{" "}
+      </p>
     </div>
   );
 };
