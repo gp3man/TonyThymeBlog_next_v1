@@ -22,7 +22,6 @@ const InfiniteScrollRecipes = ({ search, initialRecipes }) => {
       ]);
     } else {
       setSpinAnimation(false);
-      console.log("done last load");
     }
   }
   useEffect(() => {
