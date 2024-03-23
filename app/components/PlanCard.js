@@ -1,14 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 const PlanCard = ({ plan }) => {
-  const { planName, summary, mealPlanThumbnail, slug } = plan;
+  console.log("path_ ");
+  const { planName, summary, mealPlanThumbnail, sys, recipesInPlanCollection } =
+    plan;
+  const recipeItmTotal = recipesInPlanCollection.items.length;
   return (
     <Link
-      className="p-0 rounded-lg  hoverglow m-3"
-      href={`${process.env.NEXTAUTH_URL}/mealplans/${slug}`}
+      className="p-0 rounded-lg hoverglow m-3 relative"
+      href={`/mealplans/${sys?.id}`}
       aria-label={planName}
     >
-      <div className="max-w-sm bg-primary border border-gray-200 rounded-lg shadow">
+      <div className="max-w-sm bg-accent border border-gray-200 rounded-lg shadow">
         <div className="w-full h-auto">
           <Image
             loading="lazy"
@@ -18,7 +21,7 @@ const PlanCard = ({ plan }) => {
             height={mealPlanThumbnail?.height}
             quality="100"
             alt={planName}
-            className="aspect-[4/6] rounded-t-lg shadow-2xl"
+            className=" rounded-t-lg shadow-2xl"
           />
         </div>
         <div className="p-5">
@@ -39,13 +42,16 @@ const PlanCard = ({ plan }) => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 5h12m0 0L9 1m4 4L9 9"
               />
             </svg>
           </div>
+        </div>
+        <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-primary border-2 border-white rounded-full -top-2 -end-2">
+          {recipeItmTotal}
         </div>
       </div>
     </Link>
