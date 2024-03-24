@@ -5,7 +5,8 @@ import Footer from "./components/Footer";
 import RecoilProvider from "./providers/recoilProvider";
 import NextAuthSessionProvider from "./providers/sessionProvider.js";
 import Newsletter from "./components/form/Newsletter";
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { getNewsletter } from "@/lib/getRecipes";
 const playpen_Sans = Playpen_Sans({ subsets: ["latin"] });
 
 export const metadata = {
@@ -14,6 +15,8 @@ export const metadata = {
 };
 export const revalidate = 1800;
 export default async function RootLayout({ children }) {
+  const { modalCollection } = await getNewsletter();
+  const NLContent = modalCollection.items[0];
   return (
     <html lang="en" className="m-0">
       <body
@@ -26,7 +29,7 @@ export default async function RootLayout({ children }) {
           <RecoilProvider>
             <Header />
             {children}
-            <Newsletter />
+            <Newsletter content={NLContent} />
             <Footer />
           </RecoilProvider>
         </NextAuthSessionProvider>

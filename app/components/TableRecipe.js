@@ -3,9 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 const TableRecipe = async ({ recipeId }) => {
   const { recipe } = await fetchTableRecipe(recipeId);
-  const { title, timeToCook, timeToPrep, contentfulMetadata, thumbnail, slug } =
+  const { title, timeToCook, timeToPrep, thumbnail, slug } =
     recipe;
-  const { tags } = contentfulMetadata;
   const totalTime = timeToCook + timeToPrep;
   return (
     <tr className="bg-white border-b hover:bg-secondary hover:text-secondary-content">

@@ -4,8 +4,11 @@ import { client } from "@/lib/contentful";
 import { nextImageLoader } from "../components/RecipeImage";
 import Modal from "../modal/page";
 import NewsletterModal from "../components/modals/NewsletterModal";
+import { fetchNewsletter } from "../recipes/actions";
 
 const AboutMe = async () => {
+  const  {modalCollection}  = await fetchNewsletter();
+  const NLContent = modalCollection.items[0];
   const response = await client.getEntries({
     content_type: "aboutMePage",
   });
@@ -15,7 +18,7 @@ const AboutMe = async () => {
   return (
     <div className="py-16 min-h-screen px-10 md:px-40 lg:px-[300px] overflow-y-scroll scrollbar-hide justify-center flex-col">
       <Modal>
-        <NewsletterModal />
+        <NewsletterModal content={NLContent} />
       </Modal>
       <header className="flex flex-col p-3 m-3 justify-center">
         <p className="font-bold text-md text-center">Meet The Chef!</p>
