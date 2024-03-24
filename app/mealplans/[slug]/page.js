@@ -36,9 +36,6 @@ const mealPlan = async ({ params }) => {
                 Total Time
               </th>
               <th scope="col" className="px-6 py-3">
-                Tags
-              </th>
-              <th scope="col" className="px-6 py-3">
                 <span className="sr-only">Link</span>
               </th>
             </tr>

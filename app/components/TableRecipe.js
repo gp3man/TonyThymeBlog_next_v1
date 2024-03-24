@@ -1,7 +1,5 @@
 import { fetchTableRecipe } from "../mealplans/actions";
-import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
-import Badge from "./badge";
 import Image from "next/image";
 const TableRecipe = async ({ recipeId }) => {
   const { recipe } = await fetchTableRecipe(recipeId);
@@ -26,13 +24,6 @@ const TableRecipe = async ({ recipeId }) => {
       </th>
       <td className="px-3 py-2">{title}</td>
       <td className="px-3 py-2">{totalTime} mins</td>
-      <td className="px-3 py-2">
-        <div className="flex flex-wrap">
-          {tags.map((tag) => (
-            <Badge key={uuidv4()} text={tag.id} />
-          ))}
-        </div>
-      </td>
       <td className="px-3 py-2 text-center">
         <Link
           href={`/recipes/${slug}`}

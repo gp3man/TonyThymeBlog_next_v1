@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 const PlanCard = ({ plan }) => {
-  console.log("path_ ");
   const { planName, summary, mealPlanThumbnail, sys, recipesInPlanCollection } =
     plan;
   const recipeItmTotal = recipesInPlanCollection.items.length;
