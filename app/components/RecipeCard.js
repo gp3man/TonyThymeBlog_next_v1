@@ -6,11 +6,11 @@ const RecipeCard = ({ recipe }) => {
   const { title, timeToCook, thumbnail, serves, slug } = recipe;
   return (
     <Link
-      className="p-0 rounded-lg  hoverglow m-3"
+      className="p-0 rounded-lg hoverglow m-3"
       href={`/recipes/${slug}`}
       aria-label={title}
     >
-      <div className="max-w-sm bg-secondary border border-accent rounded-lg shadow ">
+      <div className="max-w-sm bg-secondary border border-accent rounded-lg shadow w-full h-full grid grid-cols-1 gap-0 content-between">
         <div className="aspect-[4/6]">
           <Image
             loading="lazy"
@@ -32,16 +32,12 @@ const RecipeCard = ({ recipe }) => {
             </h5>
           </div>
           <div className="flex justify-between mx-3">
-            {/* <div className="inline-flex content-between items-center px-4 py-2 text-sm  rounded-lg"> */}
-              <div className="inline-flex p-1 px-2 font-medium text-center text-secondary-content bg-accent rounded-lg shadow-xl">
-                <CgTimer size={22} className="pr-1" /> {timeToCook} mins
-              </div>
-              <div className="self-center p-1 px-2 font-medium text-center text-primary-content bg-primary rounded-lg shadow-xl">
-                <p className="self-center">
-                  Serves {serves}
-                </p>
-              </div>
-            {/* </div> */}
+            <div className="inline-flex p-1 px-2 font-medium text-center text-secondary-content bg-accent rounded-lg shadow-xl">
+              <CgTimer size={22} className="pr-1" /> {timeToCook} mins
+            </div>
+            <div className="self-center p-1 px-2 font-medium text-center text-primary-content bg-primary rounded-lg shadow-xl">
+              <p className="self-center">Serves {serves}</p>
+            </div>
           </div>
         </div>
       </div>
