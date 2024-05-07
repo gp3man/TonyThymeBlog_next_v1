@@ -12,7 +12,7 @@ const SingleEvent = ({ event, thumbnail }) => {
           placeholder="blur"
           blurDataURL={thumbnail?.url}
           fill={true}
-          style={{objectFit:"contain", scale:"inherit"}}
+          style={{objectFit:"contain"}}
           className="lg:pr-2"
           alt="hero_thumbnail"
         />
@@ -27,7 +27,10 @@ const SingleEvent = ({ event, thumbnail }) => {
             </span>
             </span>
           </div>
-          <p className="pt-2 font-normal text-sm lg:font-medium lg:text-lg">
+          <p className="pt-2 text-sm  lg:text-lg font-bold">
+            {event?.title}
+          </p>
+          <p className=" font-normal text-sm lg:font-medium lg:text-lg">
             {event?.address} <span className="hidden sm:inline">|</span>
             <span className="font-bold"> {event?.cityState}</span>
           </p>

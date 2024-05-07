@@ -66,6 +66,9 @@ const Hero = ({ content }) => {
             src={banner?.url}
             height={banner?.height}
             width={banner?.width}
+            blurDataURL={banner?.url}
+            placeholder="blur"
+            style={{objectFit:"contain"}}
             className="rounded-lg"
             alt="hero_banner"
           />
@@ -78,6 +81,7 @@ const Hero = ({ content }) => {
             width={banner?.width}
             blurDataURL={banner?.url}
             placeholder="blur"
+            style={{objectFit:"contain"}}
             className="rounded-lg"
             alt="hero_banner"
           />
