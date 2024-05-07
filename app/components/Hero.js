@@ -6,16 +6,15 @@ const Hero = ({ content }) => {
     <section className=" bg-gradient-to-b  from-base-100 via-base-300 to-secondary p-6">
       <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7">
-          <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-secondary-content uppercase">
+          <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-secondary-content uppercase text-center">
             {title}
           </h1>
-          <p className="max-w-2xl mb-6 font-light text-gray-600 lg:mb-8 md:text-lg lg:text-xl">
+          <p className="text-pretty max-w-2xl mb-6 font-light text-gray-600 lg:mb-8 md:text-lg lg:text-xl">
             {headline}
           </p>
           <div className="flex">
             <Link
               href="#events"
-              // as={"/"}
               className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-primary-content rounded-lg bg-primary border-accent hover:ring-4 hover:ring-accent focus:ring-3 focus:ring-primary"
             >
               <svg
@@ -58,7 +57,7 @@ const Hero = ({ content }) => {
               </svg>
             </Link>
           </div>
-          <hr className="mt-20 mx-10 my-1 border-primary border-dotted" />
+          {/* <hr className="mt-20 mx-10 my-1 border-primary border-dotted" /> */}
           <p className="max-w-2xl mb-2 pt-10 pr-10 font-ligh t text-gray-700 lg:mb-8 md:text-lg lg:text-xl">
             {details}
           </p>
