@@ -57,7 +57,6 @@ const Hero = ({ content }) => {
               </svg>
             </Link>
           </div>
-          {/* <hr className="mt-20 mx-10 my-1 border-primary border-dotted" /> */}
           <p className="max-w-2xl mb-2 pt-10 pr-10 font-ligh t text-gray-700 lg:mb-8 md:text-lg lg:text-xl">
             {details}
           </p>
