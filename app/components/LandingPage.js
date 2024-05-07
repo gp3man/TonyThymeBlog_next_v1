@@ -13,11 +13,11 @@ const LandingPage = ({ data }) => {
       <Hero content={tour} />
       {events && (
         <div
-          id="dates"
+          id="events"
           className="flex flex-col text-center justify-center bg-gradient-to-b from-secondary to-accent px-2 lg:px-10"
         >
           <h1 className="text-xl font-semibold p-7">Upcoming Events</h1>
-          <ul>
+          <ul id="events">
             {events.map((event) => (
               <li key={uuidv4()} className="p-x mx-3">
                 <SingleEvent event={event} thumbnail={tour?.thumbnail} />

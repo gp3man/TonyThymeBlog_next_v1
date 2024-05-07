@@ -35,10 +35,10 @@ const NavBar = async () => {
           >
             <li>
               <Link
-                href={"/about"}
+                href={"/recipes"}
                 className="px-3 cursor-pointer active:font-bold"
               >
-                <p>About</p>
+                <p>Recipes</p>
               </Link>
             </li>
             <li>
@@ -75,10 +75,10 @@ const NavBar = async () => {
         <ul className="menu menu-horizontal px-1">
           <li>
             <Link
-              href={"/about"}
+              href={"/recipes"}
               className="px-3 cursor-pointer active:font-bold"
             >
-              <p>About</p>
+              <p>Recipes</p>
             </Link>
           </li>
           <li>

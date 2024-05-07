@@ -14,8 +14,8 @@ const Hero = ({ content }) => {
           </p>
           <div className="flex">
             <Link
-              href="#dates"
-              as={"/"}
+              href="#events"
+              // as={"/"}
               className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-primary-content rounded-lg bg-primary border-accent hover:ring-4 hover:ring-accent focus:ring-3 focus:ring-primary"
             >
               <svg

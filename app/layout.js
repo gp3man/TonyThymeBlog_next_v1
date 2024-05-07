@@ -17,7 +17,7 @@ export default async function RootLayout({ children }) {
   const { modalCollection } = await getNewsletter();
   const NLContent = modalCollection.items[0];
   return (
-    <html lang="en" className="m-0">
+    <html lang="en" className="m-0" style={{scrollBehavior:"smooth"}}>
       <body
         className={
           playpen_Sans.className +
