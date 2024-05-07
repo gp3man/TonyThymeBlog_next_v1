@@ -1,17 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
 const Hero = ({ content }) => {
-  const { hook, buttonText, context, backgroundImage } = content;
+  const {  title, headline, details, banner } = content;
   return (
     <section className=" bg-gradient-to-b  from-base-100 via-base-300 to-secondary p-6">
       <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7">
-          <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-secondary-content">
-            Pot Pie Tour
+          <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-secondary-content uppercase">
+            {title}
           </h1>
-          <p className="max-w-2xl mb-6 font-light text-gray-600 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-            I'm happy to announce that Tony Thyme Artisan Pot Pies are now
-            available!
+          <p className="max-w-2xl mb-6 font-light text-gray-600 lg:mb-8 md:text-lg lg:text-xl">
+            {headline}
           </p>
           <div className="flex">
             <Link
@@ -42,7 +41,7 @@ const Hero = ({ content }) => {
             </Link>
             <Link
               href="/recipes"
-              className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-secondary-content rounded-lg bg-secondary hover:ring-4 hover:ring-accent focus:ring-4 focus:ring-accent"
+              className="inline-flex items-center justify-center px-2 py-3 mr-3 text-base font-medium text-center text-secondary-content rounded-lg bg-secondary hover:ring-4 hover:ring-accent focus:ring-4 focus:ring-accent"
             >
               View Recipes
               <svg
@@ -59,22 +58,31 @@ const Hero = ({ content }) => {
               </svg>
             </Link>
           </div>
-          <hr className="mt-5 border-primary" />
-          <hr className="mx-10 my-1 border-primary" />
-          <hr className="mx-20 my-1 border-primary" />
-          <hr className="mx-40 my-1 border-primary" />
-          <p className="max-w-2xl mb-6 font-light text-gray-700 lg:mb-8 md:text-lg lg:text-xl">
-            This unique spin on a classic comfort food will be sold baked or
-            frozen at the following Markets/Pop-ups in the Greater Chicagoland
-            Area. Check back for updates!
+          <hr className="mt-20 mx-10 my-1 border-primary border-dotted" />
+          <p className="max-w-2xl mb-2 pt-10 pr-10 font-ligh t text-gray-700 lg:mb-8 md:text-lg lg:text-xl">
+            {details}
           </p>
         </div>
         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-          <img
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png"
-            alt="mockup"
+          <Image
+            src={banner?.url}
+            height={banner?.height}
+            width={banner?.width}
+            className="rounded-lg"
+            alt="hero_banner"
           />
         </div>
+      </div>
+      <div className="flex content-center w-full object-contain lg:hidden ">
+      <Image
+            src={banner?.url}
+            height={banner?.height}
+            width={banner?.width}
+            blurDataURL={banner?.url}
+            placeholder="blur"
+            className="rounded-lg"
+            alt="hero_banner"
+          />
       </div>
     </section>
   );

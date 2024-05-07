@@ -1,44 +1,51 @@
 import dayjs from "dayjs";
+import Image from "next/image";
 
-const SingleEvent = () => {
+const SingleEvent = ({ event, thumbnail }) => {
   return (
-    <div className="flex-col pb-2">
-      <hr className="opacity-50 border-secondary py-3" />
-      <div className="flex justify-between">
-        <span className=" flex">
-          <div className="p-1">
-            {/* {author.image && (
-              <img
-                className="rounded-full"
-                src={author.image}
-                srcSet=""
-                alt="GoogleProfilePic"
-                sizes="128px"
-                height={40}
-                width={40}
-              />
-            )} */}
+    <div className="grid min-h-[100px] rounded-lg max-w-screen-xl grid-cols-8 sm:px-4 py-3 gap-1 sm:gap-4 mx-auto lg:gap-8 xl:gap-0  lg:grid-cols-12  hover:bg-accent hover:bg-opacity-20">
+      <div className="h-full relative col-span-1 lg:col-span-2">
+        <Image
+          src={thumbnail?.url}
+          // height={thumbnail?.height}
+          // width={thumbnail?.width}
+          placeholder="blur"
+          blurDataURL={thumbnail?.url}
+          fill={true}
+          style={{objectFit:"contain", scale:"inherit"}}
+          className="lg:pr-2"
+          alt="hero_thumbnail"
+        />
+      </div>
+      <div className="col-span-6 lg:col-span-5 text-left pl-5">
+        <div className="flex-col flex-shrink">
+          <div>
+            <span className="bg-primary rounded-md text-primary-content p-1 border border-accent text-xs sm:text-base">
+              {dayjs(event?.date).format("ddd MMM DD")}
+            <span className="lg:hidden">
+            {" " + dayjs(event?.date).format("h:mmA")+" - "+ dayjs(event?.ends).format("h:mmA")}  
+            </span>
+            </span>
           </div>
-          <div className="flex-col ml-4">
-            <p className="font-bold">United center</p>
-            <p>Chicago, IL</p>
-          </div>
-        </span>
-        <div>
-          <p>{"06/20/2024"}</p>
+          <p className="pt-2 font-normal text-sm lg:font-medium lg:text-lg">
+            {event?.address} <span className="hidden sm:inline">|</span>
+            <span className="font-bold"> {event?.cityState}</span>
+          </p>
+          <p className="lg:pt-2 font-light lg:font-sm text-sm lg:text-md text-accent-content">
+            {event?.moreInfo}
+          </p>
         </div>
       </div>
-      <div className="md:ml-16">
-        <div className="pb-2">
-          <p className="font-bold">{"title"}</p>
-          <p className="truncate">{"content"}</p>
+      {/* <div className="lg:inline-grid px-4 col-span-5 text-lg font-semibold text-primary bg-secondary bg-opacity-5 rounded-3xl hidden"> */}
+        <div className="lg:inline-grid px-4 col-span-2 text-lg font-semibold text-primary bg-secondary bg-opacity-5 rounded-3xl hidden">
+          <span>Starting</span> <br />
+          {dayjs(event?.date).format("h:mm A")}
         </div>
-        <div className="flex pb-2">
-          <div className="right-0">
-            <span>Was this Review helpful? </span>
-          </div>
+        <div className="lg:inline-grid px-4 col-span-2 text-lg font-semibold text-primary bg-secondary bg-opacity-5 rounded-3xl hidden">
+          <span>Ends</span> <br />
+          {dayjs(event?.ends).format("h:mm A ")}
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 };
