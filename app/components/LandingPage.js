@@ -1,43 +1,33 @@
 // "use client";
 import Hero from "./Hero";
-import RecipeCard from "./RecipeCard";
-import Link from "next/link";
+import SingleEvent from "./SingleEvent";
+import { v4 as uuidv4 } from "uuid";
 
 const LandingPage = ({ data }) => {
-  const {
-    recipeCollection,
-    landingPageContentCollection,
-  } = data;
-  const announcement = announcementCollection?.items[0];
-  const recipes = recipeCollection?.items;
-  const content = landingPageContentCollection?.items[0];
+  const { tourCollection } = data;
+  const tour = tourCollection?.items[0];
+  const events = tour?.eventsCollection?.items;
+
   return (
-      <div className="min-h-screen w-screen m-0 pt-10 pb-10 overflow-y-scroll scrollbar-hide">
-        <Hero content={content} />
-        <div id="hotRecipes" className="flex justify-center">
-          {recipes ? (
-            <div className="flex flex-wrap py-4 justify-center">
-              {recipes?.map((recipe, i) => (
-                <RecipeCard key={recipe?.slug || i} recipe={recipe} />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center text-4xl py-6 font-bold content-center h-1/2">
-              No featured recipes here!
-              <br />
-              <span className="font-normal text-lg text-gray-400">
-                Try Looking for all my Recipes{" "}
-                <Link
-                  className="font-bold underline hover:text-orange-500"
-                  href="/recipes"
-                >
-                  Here
-                </Link>{" "}
-              </span>
-            </div>
-          )}
+    <div className="w-screen m-0 pt-10 ">
+      <Hero content={tour} />
+      {events && (
+        <div
+          id="events"
+          className="flex flex-col text-center justify-center bg-gradient-to-b from-secondary to-accent px-2 lg:px-10"
+        >
+          <h1 className="text-xl font-semibold p-7">Upcoming Events</h1>
+          <ul id="events">
+            {events.map((event) => (
+              <li key={uuidv4()} className="p-x mx-3">
+                <SingleEvent event={event} thumbnail={tour?.thumbnail} />
+                <hr className="border-primary border-opacity-40 my-4" />
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
+      )}
+    </div>
   );
 };
 

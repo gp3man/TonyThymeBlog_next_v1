@@ -1,13 +1,13 @@
 import LandingPage from "./components/LandingPage.js";
-import { getLanding } from "@/lib/getRecipes.js";
+import { getTour } from "@/lib/getRecipes.js";
 import Recipes from "./recipes/page.js";
 
 export default async function Home() {
-  // const res = await getLanding();
+  let res = await getTour();
+  res = null;
   return (
-    <main className="flex min-h-screen">
-      {/* <LandingPage data={res} /> */}
-      <Recipes />
+    <main className="flex m-0">
+      {res ? <LandingPage data={res} /> : <Recipes />}
     </main>
   );
 }
