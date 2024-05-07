@@ -1,4 +1,4 @@
-import LandingPage from "./components/LandingPage.js";
+import LandingPage from "@/app/components/LandingPage";
 import { getTour } from "@/lib/getRecipes.js";
 
 export default async function Home() {

@@ -3,7 +3,8 @@ import { getTour } from "@/lib/getRecipes.js";
 import Recipes from "./recipes/page.js";
 
 export default async function Home() {
-  const res = await getTour();
+  let res = await getTour();
+  res = null;
   return (
     <main className="flex m-0">
       {res ? <LandingPage data={res} /> : <Recipes />}
