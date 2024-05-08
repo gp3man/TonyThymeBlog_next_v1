@@ -12,7 +12,7 @@ export const metadata = {
   title: "Tony Thyme",
   description: "Recipe Blog",
 };
-export const revalidate = 1800;
+export const revalidate = 200;
 export default async function RootLayout({ children }) {
   const { modalCollection } = await getNewsletter();
   const NLContent = modalCollection.items[0];
