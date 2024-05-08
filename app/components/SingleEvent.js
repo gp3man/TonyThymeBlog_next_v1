@@ -1,10 +1,27 @@
+import { getEventThumbnail } from "@/lib/getRecipes";
 import dayjs from "dayjs";
 import Image from "next/image";
 
-const SingleEvent = ({ event, thumbnail }) => {
+const SingleEvent = async({ event, thumbnail }) => {
+  const q = event?.sys?.id
+  const {events} = await getEventThumbnail({q});
+  const specThumb = events.thumbnail
   return (
     <div className="grid min-h-[100px] rounded-lg max-w-screen-xl grid-cols-8 sm:px-4 py-3 gap-1 sm:gap-4 mx-auto lg:gap-8 xl:gap-0  lg:grid-cols-12  hover:bg-accent hover:bg-opacity-20">
       <div className="h-full relative col-span-1 lg:col-span-2">
+        {specThumb ? (
+          <Image
+          src={specThumb?.url}
+          // height={thumbnail?.height}
+          // width={thumbnail?.width}
+          placeholder="blur"
+          blurDataURL={specThumb?.url}
+          fill={true}
+          style={{objectFit:"contain"}}
+          className="lg:pr-2"
+          alt="spec_thumbnail"
+        />
+        ):(
         <Image
           src={thumbnail?.url}
           // height={thumbnail?.height}
@@ -16,6 +33,7 @@ const SingleEvent = ({ event, thumbnail }) => {
           className="lg:pr-2"
           alt="hero_thumbnail"
         />
+        )}
       </div>
       <div className="col-span-6 lg:col-span-5 text-left pl-5">
         <div className="flex-col flex-shrink">
@@ -31,7 +49,7 @@ const SingleEvent = ({ event, thumbnail }) => {
             {event?.title}
           </p>
           <p className=" font-normal text-sm lg:font-medium lg:text-lg">
-            {event?.address} <span className="hidden sm:inline">|</span>
+            {event?.address} <span className="">|</span>
             <span className="font-bold"> {event?.cityState}</span>
           </p>
           <p className="lg:pt-2 font-light lg:font-sm text-sm lg:text-md text-accent-content">
