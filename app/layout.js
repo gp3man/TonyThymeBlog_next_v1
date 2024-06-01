@@ -1,12 +1,12 @@
 import "./globals.css";
-import { Playpen_Sans } from "next/font/google";
+import { Figtree } from "next/font/google";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NextAuthSessionProvider from "./providers/sessionProvider.js";
 import Newsletter from "./components/form/Newsletter";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { getNewsletter } from "@/lib/getRecipes";
-const playpen_Sans = Playpen_Sans({ subsets: ["latin"] });
+const figtree = Figtree({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Tony Thyme",
@@ -20,7 +20,7 @@ export default async function RootLayout({ children }) {
     <html lang="en" className="m-0" style={{scrollBehavior:"smooth"}}>
       <body
         className={
-          playpen_Sans.className +
+          figtree.className +
           " overflow-y-scroll scrollbar-hide bg-base-200 text-base-content m-0 w-100"
         }
       >

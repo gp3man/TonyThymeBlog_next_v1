@@ -58,11 +58,11 @@ const SingleEvent = async({ event, thumbnail }) => {
         </div>
       </div>
       {/* <div className="lg:inline-grid px-4 col-span-5 text-lg font-semibold text-primary bg-secondary bg-opacity-5 rounded-3xl hidden"> */}
-        <div className="lg:inline-grid px-4 col-span-2 text-lg font-semibold text-primary bg-secondary bg-opacity-5 rounded-3xl hidden">
+        <div className="lg:inline-grid px-4 col-span-2 text-lg font-semibold text-primary  rounded-3xl hidden text-shadow">
           <span>Starting</span> <br />
           {dayjs(event?.date).format("h:mm A")}
         </div>
-        <div className="lg:inline-grid px-4 col-span-2 text-lg font-semibold text-primary bg-secondary bg-opacity-5 rounded-3xl hidden">
+        <div className="lg:inline-grid px-4 col-span-2 text-lg font-semibold text-primary rounded-3xl hidden text-shadow">
           <span>Ends</span> <br />
           {dayjs(event?.ends).format("h:mm A ")}
         </div>

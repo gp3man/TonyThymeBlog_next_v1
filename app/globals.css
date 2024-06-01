@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer components {
+  .text-shadow{
+    text-shadow: 1px 1px 2px #5A6D31, 0 0 1em #5A6D31, 0 0 0.2em #000000;
+    }
   .hoverglow{
     box-shadow: none;
   }
