@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer components {
+  #sentry-feedback {
+      --trigger-background: #5A6D31;
+      --accent-background: #EA6704;
+      --box-shadow: 0px 4px 24px 0px #EA6704;
+      --success-color: #4d7c0f;
+      --error-color: #7f1d1d;
+      --background: #e8e2d5f5;
+  }
   .text-shadow{
     text-shadow: 1px 1px 2px #5A6D31, 0 0 1em #5A6D31, 0 0 0.2em #000000;
     }

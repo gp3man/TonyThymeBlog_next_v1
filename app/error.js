@@ -3,8 +3,6 @@
 import Link from "next/link";
 
 const error = ({ error, reset }) => {
-  // console.log(error)
-  // error.message
   return (
     <main className="grid min-h-screen place-items-center px-6 py-24 sm:py-32 lg:py-8">
       <div className="text-center">

@@ -25,8 +25,8 @@ const Footer = () => {
             </span>
           </p>
         </aside>
-        <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-        <ul className="menu menu-horizontal px-1">
+        <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-start">
+        <ul className="menu menu-horizontal px-1  left-0">
           <li>
             <Link
               href={"/about"}
