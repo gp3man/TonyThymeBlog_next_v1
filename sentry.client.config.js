@@ -26,7 +26,7 @@ Sentry.init({
     }),
     Sentry.feedbackIntegration({
       // Additional SDK configuration goes in here, for example:
-      colorScheme: "dark",
+      colorScheme: "light",
     }),
   ],
 });
