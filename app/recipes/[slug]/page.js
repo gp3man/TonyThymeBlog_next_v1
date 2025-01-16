@@ -125,7 +125,7 @@ export default async function RecipePage({ params }) {
               <div className="p-2">
                 <h2 className="font-bold ">Prep-Time</h2>
                 <p className="text-primary-content cursor-pointer">
-                  {timeToPrep} hrs
+                  {timeToPrep} mins
                 </p>
               </div>
             )}
