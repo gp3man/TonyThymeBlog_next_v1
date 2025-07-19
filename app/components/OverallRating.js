@@ -4,7 +4,7 @@ import ScoreCount from "./ScoreCount"
 const OverallRating = async ({ recipeId }) => {
   const getOverall = async ({ recipeId }) => {
     try {
-      const res = await fetch(`${process.env.NEXTAUTH_URL}api/overall-rating`, {
+      const res = await fetch(`${process.env.AUTH_URL}api/overall-rating`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -20,7 +20,7 @@ const OverallRating = async ({ recipeId }) => {
       console.log(error);
     }
   };
-  const { data } = await getOverall({ recipeId });
+  const  {data}  = await getOverall({ recipeId });
   // if (data === undefined){
   //   return <div className="flex w-full p-3 justify-center text-center">Preview: Has no reviews.</div>
   // }
