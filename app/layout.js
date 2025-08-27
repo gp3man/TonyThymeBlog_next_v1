@@ -7,11 +7,24 @@ import Newsletter from "./components/form/Newsletter";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { getNewsletter } from "@/lib/getRecipes";
 const figtree = Figtree({ subsets: ["latin"] });
+import * as Sentry from '@sentry/nextjs';
 
-export const metadata = {
+
+// Add or edit your "generateMetadata" to include the Sentry trace data:
+const metadata = {
   title: "Tony Thyme",
   description: "Recipe Blog",
 };
+export function generateMetadata() {
+  return {
+    // ... your existing metadata
+    metadata,
+    other: {
+      ...Sentry.getTraceData()
+    }
+  };
+}
+
 export const revalidate = 200;
 export default async function RootLayout({ children }) {
   const { modalCollection } = await getNewsletter();

@@ -30,7 +30,7 @@ const ReviewBoard = async ({ recipeId, reader}) => {
 export default ReviewBoard;
 const getReviews = async ({ recipeId }) => {
   try {
-    const res = await fetch(`${process.env.NEXTAUTH_URL}api/reviews`, {
+    const res = await fetch(`${process.env.AUTH_URL}api/reviews`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
