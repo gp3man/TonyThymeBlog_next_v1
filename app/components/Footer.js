@@ -17,7 +17,7 @@ const Footer = () => {
           </Link>
           <p>
             <span>
-              © 2024{" "}
+              © 2025{" "}
               <Link href="/" className="hover:underline">
                 TonyThyme
               </Link>
@@ -26,25 +26,41 @@ const Footer = () => {
           </p>
         </aside>
         <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-start">
-        <ul className="menu menu-horizontal px-1  left-0">
-          <li>
-            <Link
-              href={"/about"}
-              className="px-3 cursor-pointer active:font-bold"
-            >
-              <p>About</p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href={"https://www.instagram.com/tony_thyme/"}
-              target="new"
-              className="cursor-pointer active:font-bold "
-            >
-              <p>{<TfiInstagram size={20} />}</p>
-            </Link>
-          </li>
-        </ul>
+          <ul className="menu menu-horizontal px-1  left-0">
+            {/* <li>
+              <Link
+                href={"/shop"}
+                className="px-3 cursor-pointer active:font-bold"
+              >
+                <p>Shop</p>
+              </Link>
+            </li> */}
+            <li>
+              <Link
+                href={"/recipes"}
+                className="px-3 cursor-pointer active:font-bold"
+              >
+                <p>Recipes</p>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={"/about"}
+                className="px-3 cursor-pointer active:font-bold"
+              >
+                <p>About</p>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={"https://www.instagram.com/tony_thyme/"}
+                target="new"
+                className="cursor-pointer active:font-bold "
+              >
+                <p>{<TfiInstagram size={20} />}</p>
+              </Link>
+            </li>
+          </ul>
         </nav>
       </footer>
     </>
