@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import protein from "../public/joanna-kosinska-unsplash.jpg";
+import protein from "../public/noFoundPage.png";
 const NotFound = () => {
   return (
     <div className="flex flex-col h-screen justify-around p-12 items-center">
